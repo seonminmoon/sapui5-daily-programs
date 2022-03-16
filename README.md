@@ -1,5 +1,4 @@
-### Info.
-## sapui5-report-program
+## Goal
 Developed report program using SAPUI5.
 
 ## What is UI5 ?
