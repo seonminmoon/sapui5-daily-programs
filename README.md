@@ -7,18 +7,18 @@ Developed report program using SAPUI5.
 * Usually used for developing Fiori App inside SAP.
 * SDK URI : https://sapui5.hana.ondemand.com/
 
-## Skills used?
+## Skills used ?
 * JavaScript
-* odata
-* html5
-* css3
-* xml
-* jquery
-* json formatter
-* node
+* OData
+* HTML5
+* CSS3
+* XML
+* Jquery
+* JSON formatter
+* Node
 
 ## Development environment
 * VS Code
-* brouser developer tools
+* Brouser developer tools
 * fiori tools
 * sapui5 extension
