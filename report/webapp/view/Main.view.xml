@@ -2,15 +2,140 @@
     controllerName="report.controller.Main"
     xmlns:mvc="sap.ui.core.mvc"
     displayBlock="true"
+    xmlns:t="sap.ui.table"
     xmlns="sap.m"
+    xmlns:f="sap.f"
 >
-    <Shell id="shell">
-        <App id="app">
-            <pages>
-                <Page id="page" title="{i18n>title}">
-                    <content />
-                </Page>
-            </pages>
-        </App>
-    </Shell>
+    <f:DynamicPage>
+        <f:title>
+            <f:DynamicPageTitle>
+                <f:heading>
+                    <Title text="Order List"/>
+                </f:heading>
+            </f:DynamicPageTitle>
+        </f:title>
+        <f:header>
+            <f:DynamicPageHeader pinnable="true">
+                <FlexBox>
+                    <VBox class="sapUiSmallMarginEnd">
+                        <Label text="Order ID"/>
+                        <Input />
+                        <layoutData>
+                            <FlexItemData growFactor="1" />
+                        </layoutData>
+                    </VBox>
+                    <VBox class="sapUiSmallMarginEnd">
+                        <Label text="Customer ID"/>
+                        <Input />
+                        <layoutData>
+                            <FlexItemData growFactor="1" />
+                        </layoutData>
+                    </VBox>
+                    <VBox class="sapUiSmallMarginEnd">
+                        <Label text="Employee ID"/>
+                        <Input />
+                        <layoutData>
+                            <FlexItemData growFactor="1" />
+                        </layoutData>
+                    </VBox>
+                    <VBox class="sapUiSmallMarginEnd">
+                        <Label text="Order Date"/>
+                        <Input />
+                        <layoutData>
+                            <FlexItemData growFactor="1" />
+                        </layoutData>
+                    </VBox>
+                    <VBox class="sapUiSmallMarginEnd">
+                        <Label text="Required Date"/>
+                        <Input />
+                        <layoutData>
+                            <FlexItemData growFactor="1" />
+                        </layoutData>
+                    </VBox>
+                    <VBox class="sapUiSmallMarginEnd">
+                        <Label text="Shipped Date"/>
+                        <Input />
+                        <layoutData>
+                            <FlexItemData growFactor="1" />
+                        </layoutData>
+                    </VBox>
+                </FlexBox>
+                <VBox class="sapUiSmallMarginEnd" alignItems="End">
+                    <Button text="search" type="Emphasized"/>
+                    <layoutData>
+                        <FlexItemData growFactor="1" />
+                    </layoutData>
+                </VBox>
+            </f:DynamicPageHeader>
+        </f:header>
+        <f:content>
+            <t:Table
+                id="idTable"
+                rows="{/Orders}"
+                selectionBehavior="RowOnly"
+                selectionMode="None"
+                cellClick="onCellClick"
+                ariaLabelledBy="title">
+                <t:extension>
+                    <OverflowToolbar style="Clear">
+                        <!-- <Title id="title" text="Products"/> -->
+                        <ToolbarSpacer />
+                    </OverflowToolbar>
+                </t:extension>
+                <t:columns>
+                    <t:Column>
+                        <Label text="ID" />
+                        <t:template>
+                            <Text text="{OrderID}" wrapping="false" />
+                        </t:template>
+                    </t:Column>
+                    <t:Column>
+                        <Label text="CustomerID" />
+                        <t:template>
+                            <Text text="{CustomerID}" wrapping="false" />
+                        </t:template>
+                    </t:Column>
+                    <t:Column>
+                        <Label text="EmployeeID" />
+                        <t:template>
+                            <Text text="{EmployeeID}" wrapping="false" />
+                        </t:template>
+                    </t:Column>
+                    <t:Column>
+                        <Label text="OrderDate" />
+                        <t:template>
+                            <Text text="{
+                                path : 'OrderDate',
+                                formatter : '.formatter.dateTimeString'
+                            }" wrapping="false" />
+                        </t:template>
+                    </t:Column>
+                    <t:Column>
+                        <Label text="RequiredDate" />
+                        <t:template>
+                            <Text text="{
+                                path : 'RequiredDate',
+                                formatter : '.formatter.dateTimeString'
+                            }" wrapping="false" />
+                        </t:template>
+                    </t:Column>
+                    <t:Column>
+                        <Label text="ShippedDate" />
+                        <t:template>
+                            <Text text="{
+                                path : 'ShippedDate',
+                                formatter : '.formatter.dateTimeString'
+                            }" wrapping="false" />
+                        </t:template>
+                    </t:Column>
+                </t:columns>
+            </t:Table>
+        </f:content>
+        <f:footer>
+            <OverflowToolbar>
+                <ToolbarSpacer/>
+                <Button text="Submit"/>
+            </OverflowToolbar>
+        </f:footer>
+    </f:DynamicPage>
 </mvc:View>

@@ -1,0 +1,148 @@
+<mvc:View
+    controllerName="report.controller.Detail"
+    xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.uxap"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:m="sap.m"
+	height="100%">
+	<ObjectPageLayout id="ObjectPageLayout" upperCaseAnchorBar="false">
+		<headerTitle>
+			<ObjectPageHeader>
+				<navigationBar>
+					<m:Bar>
+						<m:contentLeft>
+							<m:Button icon="sap-icon://nav-back" press="onBack"/>
+						</m:contentLeft>
+						<m:contentMiddle>
+							<m:Text text="Order Detail ({view>/OrderID})"/>
+						</m:contentMiddle>
+					</m:Bar>
+				</navigationBar>
+			</ObjectPageHeader>
+		</headerTitle>
+
+		<headerContent>
+			<m:ObjectAttribute title="Order Id: " text="{view>/OrderID}"/>
+			<m:ObjectAttribute title="Order Date: " text="{
+                                path : 'view>/OrderDate',
+                                formatter : '.formatter.dateTimeString'
+                            }"/>
+		</headerContent>
+
+		<sections>
+			<ObjectPageSection titleUppercase="false" title="기본정보">
+				<subSections>
+					<ObjectPageSubSection titleUppercase="false">
+						<blocks>
+                            <m:VBox>
+                            <f:SimpleForm 
+                                editable="true"
+                                layout="ColumnLayout"
+                                singleContainerFullSize="false" >
+                                <f:content>
+                                        <m:Label text="Order ID" />
+                                        <m:Text text="{view>/OrderID}" />
+                                        <m:Label text="Order Date" />
+                                        <m:Text text="{
+                                            path : 'view>/OrderDate',
+                                            formatter : '.formatter.dateTimeString'
+                                        }" />
+                                        <m:Label text="Ship Name" />
+                                        <m:Text text="{view>/ShipName}" />
+                                        <m:Label text="Ship Region" />
+                                        <m:Text text="{view>/ShipRegion}" />
+
+                                        <m:Label text="Required Date" />
+                                        <m:Text text="{
+                                            path : 'view>/RequiredDate',
+                                            formatter : '.formatter.dateTimeString'
+                                        }" />
+                                        <m:Label text="Ship Adress" />
+                                        <m:Text text="{view>/ShipAddress}" />
+                                        <m:Label text="Ship PostalCode" />
+                                        <m:Text text="{view>/ShipPostalCode}" />
+                                        
+                                        <m:Label text="Shipped Date" />
+                                        <m:Text text="{
+                                            path : 'view>/ShippedDate',
+                                            formatter : '.formatter.dateTimeString'
+                                        }" />
+                                        <m:Label text="Ship City" />
+                                        <m:Text text="{view>/ShipCity}" />
+                                        <m:Label text="Ship Country" />
+                                        <m:Text text="{view>/ShipCountry}" />
+                                </f:content>
+                            </f:SimpleForm>
+                            </m:VBox>
+						</blocks>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+
+			<ObjectPageSection titleUppercase="false" title="고객정보">
+				<subSections>
+					<ObjectPageSubSection titleUppercase="false">
+						<blocks>
+                            <f:SimpleForm
+                                editable="true"
+                                columnsM="2"
+                                columnsL="3"
+                                columnsXL="4"
+                                layout="ColumnLayout">
+                                <f:content>
+                                    <m:Label text="Customer ID" />
+                                    <m:Text text="{view>/Customer/CustomerID}" />
+                                    <m:Link text="to Other Orders" press="onBack"/>
+
+                                    <m:Label text="Company Name" />
+                                    <m:Text text="{view>/Customer/CompanyName}" />
+                                    <m:Label text="Address" />
+                                    <m:Text text="{view>/Customer/Address}" />
+                                    <m:Label text="Postal Code" />
+                                    <m:Text text="{view>/Customer/PostalCode}" />
+                                    <m:Label text="Phone" />
+                                    <m:Text text="{view>/Customer/Phone}" />
+                                    
+                                    <m:Label text="Contact Name" />
+                                    <m:Text text="{view>/Customer/ContactName}" />
+                                    <m:Label text="City" />
+                                    <m:Text text="{view>/Customer/City}" />
+                                    <m:Label text="Country" />
+                                    <m:Text text="{view>/Customer/Country}" />
+                                    <m:Label text="Fax" />
+                                    <m:Text text="{view>/Customer/Fax}" />
+                                    
+                                    <m:Label text="Contact Title" />
+                                    <m:Text text="{view>/Customer/ContactTitle}" />
+                                    <m:Label text="Region" />
+                                    <m:Text text="{view>/Customer/Region}" />
+                                </f:content>
+                            </f:SimpleForm>
+						</blocks>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+
+			<ObjectPageSection titleUppercase="false" title="상품정보">
+				<subSections>
+					<ObjectPageSubSection titleUppercase="false">
+						<blocks>
+                            <m:Text text="Section 5 Content"/>
+						</blocks>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+
+			<ObjectPageSection titleUppercase="false" title="기타정보">
+				<subSections>
+					<ObjectPageSubSection titleUppercase="false">
+						<blocks>
+                            <m:Text text="Section 5 Content"/>
+						</blocks>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+		</sections>
+
+	</ObjectPageLayout>
+</mvc:View>
