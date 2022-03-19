@@ -3,6 +3,7 @@
     xmlns:mvc="sap.ui.core.mvc"
 	xmlns="sap.uxap"
 	xmlns:f="sap.ui.layout.form"
+    xmlns:t="sap.ui.table"
 	xmlns:m="sap.m"
 	height="100%">
 	<ObjectPageLayout id="ObjectPageLayout" upperCaseAnchorBar="false">
@@ -37,8 +38,10 @@
                             <m:VBox>
                             <f:SimpleForm 
                                 editable="true"
-                                layout="ColumnLayout"
-                                singleContainerFullSize="false" >
+                                columnsM="2"
+                                columnsL="3"
+                                columnsXL="4"
+                                layout="ColumnLayout">
                                 <f:content>
                                         <m:Label text="Order ID" />
                                         <m:Text text="{view>/OrderID}" />
@@ -127,7 +130,50 @@
 				<subSections>
 					<ObjectPageSubSection titleUppercase="false">
 						<blocks>
-                            <m:Text text="Section 5 Content"/>
+                            <t:Table
+                                rows="{view>/Order_Details/results}"
+                                selectionMode="None"
+                                visibleRowCount="7"
+                                ariaLabelledBy="title">
+                                <t:columns>
+                                    <t:Column>
+                                        <m:Label text="Product ID" />
+                                        <t:template>
+                                            <m:Text text="{view>Product/ProductID}" wrapping="false" />
+                                        </t:template>
+                                    </t:Column>
+                                    <t:Column>
+                                        <m:Label text="Product Name" />
+                                        <t:template>
+                                            <m:Text text="{view>Product/ProductName}" wrapping="false" />
+                                        </t:template>
+                                    </t:Column>
+                                    <t:Column hAlign="Right">
+                                        <m:Label text="Unit Price" />
+                                        <t:template>
+                                            <m:Text text="{view>Product/UnitPrice}" wrapping="false" />
+                                        </t:template>
+                                    </t:Column>
+                                    <t:Column hAlign="Right">
+                                        <m:Label text="Quantity" />
+                                        <t:template>
+                                            <m:Text text="{view>Product/UnitsOnOrder}" wrapping="false" />
+                                        </t:template>
+                                    </t:Column>
+                                    <t:Column hAlign="Right">
+                                        <m:Label text="Discount" />
+                                        <t:template>
+                                            <m:Text text="{view>Discount}" wrapping="false" />
+                                        </t:template>
+                                    </t:Column>
+                                    <t:Column hAlign="Right">
+                                        <m:Label text="Net Price" />
+                                        <t:template>
+                                            <m:Text text="{= ${view>Product/UnitPrice}*${view>Product/UnitsOnOrder}*(1-${view>Discount})}" wrapping="false" />
+                                        </t:template>
+                                    </t:Column>
+                                </t:columns>
+                            </t:Table>
 						</blocks>
 					</ObjectPageSubSection>
 				</subSections>
@@ -137,7 +183,31 @@
 				<subSections>
 					<ObjectPageSubSection titleUppercase="false">
 						<blocks>
-                            <m:Text text="Section 5 Content"/>
+                            <f:SimpleForm
+                                editable="true"
+                                columnsM="2"
+                                columnsL="3"
+                                columnsXL="4"
+                                layout="ColumnLayout">
+                                <f:content>
+                                    <m:Label text="Employee ID" />
+                                    <m:Text text="{view>/Employee/EmployeeID}" />
+                                    <m:Label text="First Name" />
+                                    <m:Text text="{view>/Employee/FirstName}" />
+                                    <m:Label text="Last Name" />
+                                    <m:Text text="{view>/Employee/LastName}" />
+
+                                    <m:Label text="Hire Date" />
+                                    <m:Text text="{
+                                            path : 'view>/Employee/HireDate',
+                                            formatter : '.formatter.dateTimeString'
+                                        }" />
+                                    <m:Label text="Title" />
+                                    <m:Text text="{view>/Employee/Title}" />
+                                </f:content>
+                            </f:SimpleForm>
+                            <!-- <m:Label text="Photo" />
+                            <m:Image src="data:image/png;base64,/{view>/Employee/Photo}" width="30%"/> -->
 						</blocks>
 					</ObjectPageSubSection>
 				</subSections>

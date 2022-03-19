@@ -74,6 +74,7 @@
                 rows="{/Orders}"
                 selectionBehavior="RowOnly"
                 selectionMode="None"
+                visibleRowCount="17"
                 cellClick="onCellClick"
                 ariaLabelledBy="title">
                 <t:extension>
