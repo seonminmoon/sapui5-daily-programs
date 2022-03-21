@@ -206,8 +206,6 @@
                                     <m:Text text="{view>/Employee/Title}" />
                                 </f:content>
                             </f:SimpleForm>
-                            <!-- <m:Label text="Photo" />
-                            <m:Image src="data:image/png;base64,/{view>/Employee/Photo}" width="30%"/> -->
 						</blocks>
 					</ObjectPageSubSection>
 				</subSections>

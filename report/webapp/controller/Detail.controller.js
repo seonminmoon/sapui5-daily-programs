@@ -27,10 +27,19 @@ sap.ui.define(
 				var sKey = oEvent.getParameter('arguments').OrderID;
 				var oModel = this.getView().getModel('view');
 
-				console.log(sKey);
+				// odata binding
+				// this.byId('detailTable')
+				// 	.getParent()
+				// 	.bindElement('/Orders(' + sKey + ')', { expand: 'Order_Details' });
 
+				// this.byId('detailTable').bindRows({
+				// 	path: '/Order_Details',
+				// 	parameters: { expand: 'Product' },
+				// });
+
+				// json binding
 				this.getOwnerComponent()
-					.getModel()
+					.getModel() // odata model
 					.read('/Orders', {
 						urlParameters: {
 							'$expand': 'Customer,Employee,Order_Details/Product',
@@ -38,28 +47,7 @@ sap.ui.define(
 						filters: [new Filter('OrderID', 'EQ', sKey)],
 						success: function (oReturn) {
 							console.log(oReturn);
-
-							oModel.setProperty('/', oReturn.results[0]);
-
-							/*
-							Customer: {__metadata: {…}, CustomerID: 'VINET', CompanyName: 'Vins et alcools Chevalier', ContactName: 'Paul Henriot', ContactTitle: 'Accounting Manager', …}
-							CustomerID: "VINET"
-							Employee: {__metadata: {…}, EmployeeID: 5, LastName: 'Buchanan', FirstName: 'Steven', Title: 'Sales Manager', …}
-							EmployeeID: 5
-							Freight: "32.3800"
-							OrderDate: Thu Jul 04 1996 09:00:00 GMT+0900 (한국 표준시) {}
-							OrderID: 10248
-							Order_Details: {results: Array(3)}
-							RequiredDate: Thu Aug 01 1996 09:00:00 GMT+0900 (한국 표준시) {}
-							ShipAddress: "59 rue de l'Abbaye"
-							ShipCity: "Reims"
-							ShipCountry: "France"
-							ShipName: "Vins et alcools Chevalier"
-							ShipPostalCode: "51100"
-							ShipRegion: null
-							ShipVia: 3
-							ShippedDate: Tue Jul 16 1996 09:00:00 GMT+0900 (한국 표준시) {}
-							*/
+							oModel.setProperty('/', oReturn.results[0]); // json model binding
 						},
 					});
 			},
