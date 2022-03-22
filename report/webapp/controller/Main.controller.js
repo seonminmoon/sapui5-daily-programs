@@ -12,7 +12,11 @@ sap.ui.define(
 				oRouter.getRoute('RouteMain').attachPatternMatched(this._onObjectMatched, this);
 			},
 
-			_onObjectMatched: function () {},
+			_onObjectMatched: function (oEvent) {
+				var sKey = oEvent.getParameter('arguments').CustomerID;
+				this.byId('searchCustomerID').setValue(sKey);
+				// onSearch()
+			},
 
 			formatter: {
 				dateTimeString: function (oDate) {
@@ -36,6 +40,8 @@ sap.ui.define(
 					OrderID: oData.OrderID,
 				});
 			},
+
+			onSearch: function () {},
 		});
 	}
 );

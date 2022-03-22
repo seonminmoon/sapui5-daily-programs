@@ -98,7 +98,7 @@
 			"routes": [
 				{
 					"name": "RouteMain",
-					"pattern": "",
+					"pattern": ":CustomerID:",
 					"target": ["TargetMain"]
 				},
 				{

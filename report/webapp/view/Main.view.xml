@@ -26,7 +26,7 @@
                     </VBox>
                     <VBox class="sapUiSmallMarginEnd">
                         <Label text="Customer ID"/>
-                        <Input />
+                        <Input id="searchCustomerID"/>
                         <layoutData>
                             <FlexItemData growFactor="1" />
                         </layoutData>
@@ -61,7 +61,7 @@
                     </VBox>
                 </FlexBox>
                 <VBox class="sapUiSmallMarginEnd" alignItems="End">
-                    <Button text="search" type="Emphasized"/>
+                    <Button id="searchButton" text="search" type="Emphasized" press="onSearch"/>
                     <layoutData>
                         <FlexItemData growFactor="1" />
                     </layoutData>

@@ -8,13 +8,13 @@ sap.ui.define(
 
 		return Controller.extend('report.controller.Detail', {
 			onInit: function () {
-				var oRouter = this.getOwnerComponent().getRouter();
+				const oRouter = this.getOwnerComponent().getRouter();
 				oRouter.getRoute('RouteDetail').attachPatternMatched(this._onObjectMatched, this);
 			},
 			formatter: {
 				dateTimeString: function (oDate) {
 					// Date Object ==> String
-					var oDateTimeInstance;
+					let oDateTimeInstance;
 					oDateTimeInstance = sap.ui.core.format.DateFormat.getDateTimeInstance({
 						pattern: 'yyyy-MM-dd',
 					});
@@ -24,8 +24,8 @@ sap.ui.define(
 			},
 
 			_onObjectMatched: function (oEvent) {
-				var sKey = oEvent.getParameter('arguments').OrderID;
-				var oModel = this.getView().getModel('view');
+				let sKey = oEvent.getParameter('arguments').OrderID;
+				let oModel = this.getView().getModel('view');
 
 				// odata binding
 				// this.byId('detailTable')
@@ -53,8 +53,11 @@ sap.ui.define(
 			},
 
 			onBack: function () {
-				var oRouter = this.getOwnerComponent().getRouter();
-				oRouter.navTo('RouteMain');
+				const oRouter = this.getOwnerComponent().getRouter();
+				let sCustomerID = this.getView().getModel('view').getProperty('/Customer/CustomerID');
+				oRouter.navTo('RouteMain', {
+					CustomerID: sCustomerID,
+				});
 			},
 		});
 	}
