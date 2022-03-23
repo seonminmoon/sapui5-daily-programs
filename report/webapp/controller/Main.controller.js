@@ -15,7 +15,7 @@ sap.ui.define(
 			_onObjectMatched: function (oEvent) {
 				let sKey = oEvent.getParameter('arguments').CustomerID;
 				this.byId('searchCustomerID').setValue(sKey);
-				// onSearch()
+				this.onSearch();
 			},
 
 			formatter: {
