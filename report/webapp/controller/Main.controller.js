@@ -20,13 +20,12 @@ sap.ui.define(
 
 			formatter: {
 				dateTimeString: function (oDate) {
-					// Date Object ==> String
 					let oDateTimeInstance;
 					oDateTimeInstance = sap.ui.core.format.DateFormat.getDateTimeInstance({
 						pattern: 'yyyy-MM-dd',
 					});
 
-					return oDateTimeInstance.format(oDate); // 2020-12-12
+					return oDateTimeInstance.format(oDate);
 				},
 			},
 
