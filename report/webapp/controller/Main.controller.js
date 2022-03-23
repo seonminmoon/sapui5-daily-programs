@@ -1,19 +1,19 @@
 sap.ui.define(
-	['sap/ui/core/mvc/Controller'],
+	['sap/ui/core/mvc/Controller', 'sap/ui/model/Filter', 'sap/ui/model/FilterOperator', 'sap/ui/model/json/JSONModel'],
 	/**
 	 * @param {typeof sap.ui.core.mvc.Controller} Controller
 	 */
-	function (Controller) {
+	function (Controller, Filter, FilterOperator, JSONModel) {
 		'use strict';
 
 		return Controller.extend('report.controller.Main', {
 			onInit: function () {
-				var oRouter = this.getOwnerComponent().getRouter();
+				const oRouter = this.getOwnerComponent().getRouter();
 				oRouter.getRoute('RouteMain').attachPatternMatched(this._onObjectMatched, this);
 			},
 
 			_onObjectMatched: function (oEvent) {
-				var sKey = oEvent.getParameter('arguments').CustomerID;
+				let sKey = oEvent.getParameter('arguments').CustomerID;
 				this.byId('searchCustomerID').setValue(sKey);
 				// onSearch()
 			},
@@ -21,7 +21,7 @@ sap.ui.define(
 			formatter: {
 				dateTimeString: function (oDate) {
 					// Date Object ==> String
-					var oDateTimeInstance;
+					let oDateTimeInstance;
 					oDateTimeInstance = sap.ui.core.format.DateFormat.getDateTimeInstance({
 						pattern: 'yyyy-MM-dd',
 					});
@@ -31,17 +31,26 @@ sap.ui.define(
 			},
 
 			onCellClick: function (oEvent) {
-				var oModel = this.getView().getModel();
-				var oRouter = this.getOwnerComponent().getRouter();
-				var sPath = oEvent.getParameters().rowBindingContext.getPath();
-				var oData = oModel.getProperty(sPath);
+				let oModel = this.getView().getModel();
+				let oRouter = this.getOwnerComponent().getRouter();
+				let sPath = oEvent.getParameters().rowBindingContext.getPath();
+				let oData = oModel.getProperty(sPath);
 
 				oRouter.navTo('RouteDetail', {
 					OrderID: oData.OrderID,
 				});
 			},
 
-			onSearch: function () {},
+			onSearch: function () {
+				let sValue = this.byId('searchCustomerID').getValue();
+				let oTable = this.byId('idTable');
+				let aFilters = [];
+
+				if (sValue) {
+					aFilters.push(new Filter('CustomerID', 'EQ', sValue));
+				}
+				oTable.getBinding('rows').filter(aFilters);
+			},
 		});
 	}
 );
