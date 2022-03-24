@@ -19,42 +19,60 @@
                 <FlexBox>
                     <VBox class="sapUiSmallMarginEnd">
                         <Label text="Order ID"/>
-                        <Input />
+                        <Input fieldGroupIds="search" name="OrderID"/>
                         <layoutData>
                             <FlexItemData growFactor="1" />
                         </layoutData>
                     </VBox>
                     <VBox class="sapUiSmallMarginEnd">
                         <Label text="Customer ID"/>
-                        <Input id="searchCustomerID"/>
+                        <Input id="searchCustomerID" fieldGroupIds="search" name="CustomerID"/>
                         <layoutData>
                             <FlexItemData growFactor="1" />
                         </layoutData>
                     </VBox>
                     <VBox class="sapUiSmallMarginEnd">
                         <Label text="Employee ID"/>
-                        <Input />
+                        <Input fieldGroupIds="search" name="EmployeeID"/>
                         <layoutData>
                             <FlexItemData growFactor="1" />
                         </layoutData>
                     </VBox>
                     <VBox class="sapUiSmallMarginEnd">
                         <Label text="Order Date"/>
-                        <Input />
+                        <DatePicker
+                            fieldGroupIds="search"
+                            name="OrderDate"
+                            displayFormat="yyyy-MM-dd"
+                            valueFormat="yyyy-MM-dd"
+                            value=""
+                        />
                         <layoutData>
                             <FlexItemData growFactor="1" />
                         </layoutData>
                     </VBox>
                     <VBox class="sapUiSmallMarginEnd">
                         <Label text="Required Date"/>
-                        <Input />
+                        <DatePicker
+                            fieldGroupIds="search"
+                            name="RequiredDate"
+                            displayFormat="yyyy-MM-dd"
+                            valueFormat="yyyy-MM-dd"
+                            value=""
+                        />
                         <layoutData>
                             <FlexItemData growFactor="1" />
                         </layoutData>
                     </VBox>
                     <VBox class="sapUiSmallMarginEnd">
                         <Label text="Shipped Date"/>
-                        <Input />
+                        <DatePicker
+                            fieldGroupIds="search"
+                            name="ShippedDate"
+                            displayFormat="yyyy-MM-dd"
+                            valueFormat="yyyy-MM-dd"
+                            value=""
+                        />
                         <layoutData>
                             <FlexItemData growFactor="1" />
                         </layoutData>

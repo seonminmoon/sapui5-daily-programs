@@ -1,5 +1,10 @@
 sap.ui.define(
-	['sap/ui/core/mvc/Controller', 'sap/ui/model/Filter', 'sap/ui/model/FilterOperator', 'sap/ui/model/json/JSONModel'],
+	[
+		'report/controller/BaseController',
+		'sap/ui/model/Filter',
+		'sap/ui/model/FilterOperator',
+		'sap/ui/model/json/JSONModel',
+	],
 	/**
 	 * @param {typeof sap.ui.core.mvc.Controller} Controller
 	 */
@@ -44,6 +49,11 @@ sap.ui.define(
 				let sValue = this.byId('searchCustomerID').getValue();
 				let oTable = this.byId('idTable');
 				let aFilters = [];
+				let aSearchControls = this.getView()
+					.getControlsByFieldGroupId('search')
+					.filter(function (item) {
+						return item.getName;
+					});
 
 				if (sValue) {
 					aFilters.push(new Filter('CustomerID', 'EQ', sValue));
