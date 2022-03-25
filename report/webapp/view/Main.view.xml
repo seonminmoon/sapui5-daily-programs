@@ -19,21 +19,31 @@
                 <FlexBox>
                     <VBox class="sapUiSmallMarginEnd">
                         <Label text="Order ID"/>
-                        <Input fieldGroupIds="search" name="OrderID"/>
+                        <Input 
+                            fieldGroupIds="search" 
+                            name="OrderID" 
+                            value="{view>/search/EQ/OrderID}"
+                            submit="onSearch"/>
                         <layoutData>
                             <FlexItemData growFactor="1" />
                         </layoutData>
                     </VBox>
                     <VBox class="sapUiSmallMarginEnd">
                         <Label text="Customer ID"/>
-                        <Input id="searchCustomerID" fieldGroupIds="search" name="CustomerID"/>
+                        <Input id="searchCustomerID" 
+                        fieldGroupIds="search" 
+                        name="CustomerID" 
+                        value="{view>/search/EQ/CustomerID}" submit="onSearch"/>
                         <layoutData>
                             <FlexItemData growFactor="1" />
                         </layoutData>
                     </VBox>
                     <VBox class="sapUiSmallMarginEnd">
                         <Label text="Employee ID"/>
-                        <Input fieldGroupIds="search" name="EmployeeID"/>
+                        <Input 
+                        fieldGroupIds="search" 
+                        name="EmployeeID" 
+                        value="{view>/search/EQ/EmployeeID}" submit="onSearch"/>
                         <layoutData>
                             <FlexItemData growFactor="1" />
                         </layoutData>
@@ -42,10 +52,9 @@
                         <Label text="Order Date"/>
                         <DatePicker
                             fieldGroupIds="search"
-                            name="OrderDate"
+                            name="OrderDate" value="{view>/search/EQ/OrderDate}"
                             displayFormat="yyyy-MM-dd"
                             valueFormat="yyyy-MM-dd"
-                            value=""
                         />
                         <layoutData>
                             <FlexItemData growFactor="1" />
@@ -55,10 +64,9 @@
                         <Label text="Required Date"/>
                         <DatePicker
                             fieldGroupIds="search"
-                            name="RequiredDate"
+                            name="RequiredDate" value="{view>/search/EQ/RequiredDate}"
                             displayFormat="yyyy-MM-dd"
                             valueFormat="yyyy-MM-dd"
-                            value=""
                         />
                         <layoutData>
                             <FlexItemData growFactor="1" />
@@ -68,10 +76,9 @@
                         <Label text="Shipped Date"/>
                         <DatePicker
                             fieldGroupIds="search"
-                            name="ShippedDate"
+                            name="ShippedDate" value="{view>/search/EQ/ShippedDate}"
                             displayFormat="yyyy-MM-dd"
                             valueFormat="yyyy-MM-dd"
-                            value=""
                         />
                         <layoutData>
                             <FlexItemData growFactor="1" />

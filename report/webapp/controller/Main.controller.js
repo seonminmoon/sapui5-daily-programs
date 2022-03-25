@@ -14,7 +14,18 @@ sap.ui.define(
 		return Controller.extend('report.controller.Main', {
 			onInit: function () {
 				const oRouter = this.getOwnerComponent().getRouter();
+
+				this.setInitialFilter();
 				oRouter.getRoute('RouteMain').attachPatternMatched(this._onObjectMatched, this);
+			},
+
+			setInitialFilter: function () {
+				var oModel = this.getOwnerComponent().getModel('view');
+
+				oModel.setProperty('/search', {
+					'EQ': {},
+					'Contains': {},
+				});
 			},
 
 			_onObjectMatched: function (oEvent) {
@@ -46,18 +57,8 @@ sap.ui.define(
 			},
 
 			onSearch: function () {
-				let sValue = this.byId('searchCustomerID').getValue();
 				let oTable = this.byId('idTable');
-				let aFilters = [];
-				let aSearchControls = this.getView()
-					.getControlsByFieldGroupId('search')
-					.filter(function (item) {
-						return item.getName;
-					});
-
-				if (sValue) {
-					aFilters.push(new Filter('CustomerID', 'EQ', sValue));
-				}
+				let aFilters = this.getConditions();
 				oTable.getBinding('rows').filter(aFilters);
 			},
 		});
