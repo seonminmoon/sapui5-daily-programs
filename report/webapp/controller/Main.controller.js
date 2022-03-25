@@ -15,11 +15,11 @@ sap.ui.define(
 			onInit: function () {
 				const oRouter = this.getOwnerComponent().getRouter();
 
-				this.setInitialFilter();
+				this._setInitialFilter();
 				oRouter.getRoute('RouteMain').attachPatternMatched(this._onObjectMatched, this);
 			},
 
-			setInitialFilter: function () {
+			_setInitialFilter: function () {
 				var oModel = this.getOwnerComponent().getModel('view');
 
 				oModel.setProperty('/search', {
