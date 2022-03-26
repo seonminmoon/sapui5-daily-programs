@@ -5,8 +5,13 @@
     xmlns:t="sap.ui.table"
     xmlns="sap.m"
     xmlns:f="sap.f"
+    xmlns:core="sap.ui.core"
 >
     <f:DynamicPage>
+        <f:customData>
+            <!-- customdata 호출 시 객체.data() 로 불러올 수 있다.-->
+            <core:CustomData key="viewType" value="Main"/>
+        </f:customData>
         <f:title>
             <f:DynamicPageTitle>
                 <f:heading>
@@ -15,7 +20,7 @@
             </f:DynamicPageTitle>
         </f:title>
         <f:header>
-            <f:DynamicPageHeader pinnable="true">
+            <f:DynamicPageHeader>
                 <FlexBox>
                     <VBox class="sapUiSmallMarginEnd">
                         <Label text="Order ID"/>

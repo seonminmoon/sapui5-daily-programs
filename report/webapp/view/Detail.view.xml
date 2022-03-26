@@ -5,29 +5,61 @@
 	xmlns:f="sap.ui.layout.form"
     xmlns:t="sap.ui.table"
 	xmlns:m="sap.m"
+    xmlns:viz="sap.viz.ui5.controls"
+    xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds"
+    xmlns:viz.data="sap.viz.ui5.data"
+	xmlns:layout="sap.ui.layout"
+    xmlns:core="sap.ui.core"
 	height="100%">
-	<ObjectPageLayout id="ObjectPageLayout" upperCaseAnchorBar="false">
+	<ObjectPageLayout id="ObjectPageLayout" showTitleInHeaderContent="true" upperCaseAnchorBar="false">
 		<headerTitle>
-			<ObjectPageHeader>
-				<navigationBar>
-					<m:Bar>
-						<m:contentLeft>
-							<m:Button icon="sap-icon://nav-back" press="onBack"/>
-						</m:contentLeft>
-						<m:contentMiddle>
-							<m:Text text="Order Detail ({view>/OrderID})"/>
-						</m:contentMiddle>
-					</m:Bar>
-				</navigationBar>
-			</ObjectPageHeader>
+            <ObjectPageDynamicHeaderTitle>
+                <expandedHeading>
+                    <m:Title text="AA Company Detail ({view>/OrderID})" wrapping="true"/>
+                </expandedHeading>
+
+                <snappedHeading>
+                    <m:FlexBox fitContainer="true" alignItems="Center">
+                        <m:Image src="../image/ryan.png" class="sapUiTinyMarginEnd" width="50px" height="50px"/>
+                        <m:Title text="AA Company ({view>/OrderID})" wrapping="true" />
+                    </m:FlexBox>
+                </snappedHeading>
+
+                <expandedContent>
+                    <!-- full header description -->
+                    <m:Text text="Click to view short header."/>
+                </expandedContent>
+
+                <snappedContent>
+                    <!-- short header description -->
+                    <m:Text text="Click to view full header. "/>
+                </snappedContent>
+
+                <snappedTitleOnMobile>
+                    <m:Title text="Order Detail ({view>/OrderID})"/>
+                </snappedTitleOnMobile>
+            </ObjectPageDynamicHeaderTitle>
 		</headerTitle>
 
 		<headerContent>
-			<m:ObjectAttribute title="Order Id: " text="{view>/OrderID}"/>
-			<m:ObjectAttribute title="Order Date: " text="{
-                                path : 'view>/OrderDate',
-                                formatter : '.formatter.dateTimeString'
-                            }"/>
+			<m:FlexBox wrap="Wrap">
+				<m:Image src="../image/ryan.png" width="100px" height="100px"/>
+                <layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
+                    <m:ObjectStatus title="User ID" text="{view>/OrderID}"/>
+                    <m:ObjectStatus title="Language" text="{
+                                    path : 'view>/OrderDate',
+                                    formatter : '.formatter.dateTimeString'
+                                }"/>
+                    <m:ObjectStatus title="Country" text="USA"/>
+                    <m:ObjectStatus title="Phone Number" text="1-844-726-7733"/>
+                </layout:VerticalLayout>
+
+                <layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
+                    <m:ObjectStatus title="Functional Area" text="Developement"/>
+                    <m:ObjectStatus title="Cost Center" text="PI DFA GD Programs and Product"/>
+                    <m:ObjectStatus title="Email" text="email@address.com"/>
+                </layout:VerticalLayout>
+			</m:FlexBox>
 		</headerContent>
 
 		<sections>
@@ -130,6 +162,7 @@
 				<subSections>
 					<ObjectPageSubSection titleUppercase="false">
 						<blocks>
+                        <m:HBox>
                             <t:Table
                                 rows="{view>/Order_Details/results}"
                                 selectionMode="None"
@@ -174,6 +207,31 @@
                                     </t:Column>
                                 </t:columns>
                             </t:Table>
+                            <viz:VizFrame id="idPieChart" vizType='pie' height="300px" vizProperties="{
+                                'legend' : { 'visible' : true },
+                                'title' : { 'visible' : true , text : 'Products Chart'},
+                                plotArea: {
+                                    dataLabel: { visible: false },
+                                    colorPalette:['#B5B2FF', '#B2EBF4', '#B7F0B1', '#FFE08C', '#FFC19E', '#FFA7A7']
+                                }
+                            }">
+                                <viz:dataset>
+                                    <viz.data:FlattenedDataset data="{view>/Order_Details/results}">
+                                        <viz.data:dimensions>
+                                            <viz.data:DimensionDefinition name="Product Name" value="{view>Product/ProductName}" />
+                                        </viz.data:dimensions>
+                                        <viz.data:measures>
+                                            <viz.data:MeasureDefinition name="Unit Price" value="{view>Product/UnitPrice}" />
+                                        </viz.data:measures>
+                                    </viz.data:FlattenedDataset>
+                                </viz:dataset>
+
+                                <viz:feeds>
+                                    <viz.feeds:FeedItem uid="size" type="Measure" values="Unit Price" />
+                                    <viz.feeds:FeedItem uid="color" type="Dimension" values="Product Name" />
+                                </viz:feeds>
+                            </viz:VizFrame>
+                        </m:HBox>
 						</blocks>
 					</ObjectPageSubSection>
 				</subSections>
@@ -183,29 +241,35 @@
 				<subSections>
 					<ObjectPageSubSection titleUppercase="false">
 						<blocks>
-                            <f:SimpleForm
-                                editable="true"
-                                columnsM="2"
-                                columnsL="3"
-                                columnsXL="4"
-                                layout="ColumnLayout">
-                                <f:content>
-                                    <m:Label text="Employee ID" />
-                                    <m:Text text="{view>/Employee/EmployeeID}" />
-                                    <m:Label text="First Name" />
-                                    <m:Text text="{view>/Employee/FirstName}" />
-                                    <m:Label text="Last Name" />
-                                    <m:Text text="{view>/Employee/LastName}" />
+                            <m:VBox>
+                                <f:SimpleForm
+                                    editable="true"
+                                    columnsM="2"
+                                    columnsL="3"
+                                    columnsXL="4"
+                                    layout="ColumnLayout">
+                                    <f:content>
+                                        <m:Label text="Employee ID" />
+                                        <m:Text text="{view>/Employee/EmployeeID}" />
+                                        <m:Label text="First Name" />
+                                        <m:Text text="{view>/Employee/FirstName}" />
+                                        <m:Label text="Last Name" />
+                                        <m:Text text="{view>/Employee/LastName}" />
 
-                                    <m:Label text="Hire Date" />
-                                    <m:Text text="{
-                                            path : 'view>/Employee/HireDate',
-                                            formatter : '.formatter.dateTimeString'
-                                        }" />
-                                    <m:Label text="Title" />
-                                    <m:Text text="{view>/Employee/Title}" />
-                                </f:content>
-                            </f:SimpleForm>
+                                        <m:Label text="Hire Date" />
+                                        <m:Text text="{
+                                                path : 'view>/Employee/HireDate',
+                                                formatter : '.formatter.dateTimeString'
+                                            }" />
+                                        <m:Label text="Title" />
+                                        <m:Text text="{view>/Employee/Title}" />
+                                    </f:content>
+                                </f:SimpleForm>
+                                <m:MessageStrip text="문의사항이 있는 경우 담당자에게 연락 바랍니다." 
+                                                showIcon="true"
+                                                class="sapUiMediumMarginBottom" />
+                            </m:VBox>
+                            
 						</blocks>
 					</ObjectPageSubSection>
 				</subSections>

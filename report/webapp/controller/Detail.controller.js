@@ -1,9 +1,9 @@
 sap.ui.define(
-	['sap/ui/core/mvc/Controller', 'sap/ui/model/Filter', 'sap/ui/model/FilterOperator'],
+	['sap/ui/core/mvc/Controller', 'sap/ui/model/Filter', 'sap/ui/model/FilterOperator', 'sap/ui/model/json/JSONModel'],
 	/**
 	 * @param {typeof sap.ui.core.mvc.Controller} Controller
 	 */
-	function (Controller, Filter, FilterOperator) {
+	function (Controller, Filter, FilterOperator, JSONModel) {
 		'use strict';
 
 		return Controller.extend('report.controller.Detail', {
@@ -11,6 +11,7 @@ sap.ui.define(
 				const oRouter = this.getOwnerComponent().getRouter();
 				oRouter.getRoute('RouteDetail').attachPatternMatched(this._onObjectMatched, this);
 			},
+
 			formatter: {
 				dateTimeString: function (oDate) {
 					// Date Object ==> String
@@ -25,8 +26,8 @@ sap.ui.define(
 
 			_onObjectMatched: function (oEvent) {
 				let sKey = oEvent.getParameter('arguments').OrderID;
-				let oModel = this.getView().getModel('view');
-
+				let oView = this.getView();
+				let oModel = oView.getModel('view');
 				// odata binding
 				// this.byId('detailTable')
 				// 	.getParent()
@@ -37,6 +38,7 @@ sap.ui.define(
 				// 	parameters: { expand: 'Product' },
 				// });
 
+				oView.setBusy(true);
 				// json binding
 				this.getOwnerComponent()
 					.getModel() // odata model
@@ -48,6 +50,10 @@ sap.ui.define(
 						success: function (oReturn) {
 							console.log(oReturn);
 							oModel.setProperty('/', oReturn.results[0]); // json model binding
+							oView.setBusy(false);
+						},
+						error: function (oError) {
+							oView.setBusy(false);
 						},
 					});
 			},
