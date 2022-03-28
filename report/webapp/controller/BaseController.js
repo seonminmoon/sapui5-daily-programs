@@ -7,7 +7,7 @@ sap.ui.define(
 			getConditions: function () {
 				var that = this,
 					aFilters = [],
-					oCondData = this.getOwnerComponent().getModel('view').getProperty('/search');
+					oCondData = this.getOwnerComponent().getModel('local').getProperty('/search');
 				for (var operator in oCondData) {
 					if (oCondData.hasOwnProperty(operator)) {
 						for (var field in oCondData[operator]) {
@@ -55,6 +55,7 @@ sap.ui.define(
 						}
 					}
 				}
+				console.log('Search Filters : ', aFilters);
 				return aFilters;
 			},
 			getYYYYMMDD: function (oDate) {
