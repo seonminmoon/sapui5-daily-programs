@@ -62,6 +62,9 @@ sap.ui.define(
 				let aFilters = this.getConditions();
 				oTable.getBinding('rows').filter(aFilters);
 			},
+
+			onClear: function () {},
+			onReset: function () {},
 		});
 	}
 );

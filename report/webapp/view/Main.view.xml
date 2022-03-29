@@ -27,6 +27,8 @@
                     header="Search Filters"
                     showRestoreOnFB="true"
                     showClearOnFB="true" 
+                    clear="onClear"
+                    reset="onReset"
                     search="onSearch"
                     filterContainerWidth="16rem"
                     showClearButton="true">
