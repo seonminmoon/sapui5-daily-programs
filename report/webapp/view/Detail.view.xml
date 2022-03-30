@@ -45,19 +45,22 @@
 			<m:FlexBox wrap="Wrap">
 				<m:Image src="../image/ryan.png" width="100px" height="100px"/>
                 <layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
-                    <m:ObjectStatus title="User ID" text="{view>/OrderID}"/>
-                    <m:ObjectStatus title="Language" text="{
-                                    path : 'view>/OrderDate',
-                                    formatter : '.formatter.dateTimeString'
-                                }"/>
-                    <m:ObjectStatus title="Country" text="USA"/>
-                    <m:ObjectStatus title="Phone Number" text="1-844-726-7733"/>
+                    <m:ObjectStatus title="Order ID" text="{view>/OrderID}"/>
+                    <m:ObjectStatus title="Order Date" text="{
+                                            path : 'view>/OrderDate',
+                                            formatter : '.formatter.dateTimeString'
+                                        }"/>
+                    <m:ObjectStatus title="Required Date" text="{
+                                            path : 'view>/RequiredDate',
+                                            formatter : '.formatter.dateTimeString'
+                                        }"/>
                 </layout:VerticalLayout>
 
                 <layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
-                    <m:ObjectStatus title="Functional Area" text="Developement"/>
-                    <m:ObjectStatus title="Cost Center" text="PI DFA GD Programs and Product"/>
-                    <m:ObjectStatus title="Email" text="email@address.com"/>
+                    <m:ObjectStatus title="Customer ID" text="{view>/Customer/CustomerID}"/>
+                    <m:ObjectStatus title="Company Name" text="{view>/Customer/CompanyName}"/>
+                    <m:ObjectStatus title="Contact Name" text="{view>/Customer/ContactName}"/>
+                    <m:ObjectStatus title="Phone" text="{view>/Customer/Phone}"/>
                 </layout:VerticalLayout>
 			</m:FlexBox>
 		</headerContent>
