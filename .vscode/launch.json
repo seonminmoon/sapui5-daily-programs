@@ -1,14 +1,4 @@
 {
-	"inputs": [
-		{
-			"id": "UI5MinVersion1.65.0",
-			"type": "command",
-			"command": "sap.ux.appGenerator.ui5Version",
-			"args": {
-				"minUI5Version": "1.65.0"
-			}
-		}
-	],
 	"configurations": [
 		{
 			"name": "Start report",
@@ -70,7 +60,78 @@
 			"internalConsoleOptions": "neverOpen",
 			"port": 9229,
 			"env": {}
+		},
+		{
+			"name": "Start todolist",
+			"type": "node",
+			"request": "launch",
+			"runtimeExecutable": "npx",
+			"cwd": "${workspaceFolder}/todolist",
+			"windows": {
+				"runtimeExecutable": "npx.cmd"
+			},
+			"runtimeArgs": ["fiori", "run"],
+			"args": ["--open", "test/flpSandbox.html?sap-ui-xx-viewCache=false#todolist-display"],
+			"console": "integratedTerminal",
+			"internalConsoleOptions": "neverOpen",
+			"port": 9229,
+			"env": {
+				"DEBUG": "--inspect"
+			}
+		},
+		{
+			"name": "Start todolist with UI5 Version",
+			"type": "node",
+			"request": "launch",
+			"runtimeExecutable": "npx",
+			"cwd": "${workspaceFolder}/todolist",
+			"windows": {
+				"runtimeExecutable": "npx.cmd"
+			},
+			"runtimeArgs": ["fiori", "run"],
+			"args": [
+				"--open",
+				"test/flpSandbox.html?sap-ui-xx-viewCache=false#todolist-display",
+				"${input:UI5MinVersion1.65.0}"
+			],
+			"console": "integratedTerminal",
+			"internalConsoleOptions": "neverOpen",
+			"port": 9229,
+			"env": {
+				"DEBUG": "--inspect"
+			}
+		},
+		{
+			"name": "Start todolist Local",
+			"type": "node",
+			"request": "launch",
+			"cwd": "${workspaceFolder}/todolist",
+			"runtimeExecutable": "npx",
+			"windows": {
+				"runtimeExecutable": "npx.cmd"
+			},
+			"runtimeArgs": ["fiori", "run"],
+			"args": [
+				"--config",
+				"./ui5-local.yaml",
+				"--open",
+				"test/flpSandbox.html?sap-ui-xx-viewCache=false#todolist-display"
+			],
+			"console": "integratedTerminal",
+			"internalConsoleOptions": "neverOpen",
+			"port": 9229,
+			"env": {}
 		}
 	],
-	"compounds": []
+	"compounds": [],
+	"inputs": [
+		{
+			"id": "UI5MinVersion1.65.0",
+			"type": "command",
+			"command": "sap.ux.appGenerator.ui5Version",
+			"args": {
+				"minUI5Version": "1.65.0"
+			}
+		}
+	]
 }
