@@ -2,6 +2,7 @@
     controllerName="todolist.controller.Main"
     xmlns:mvc="sap.ui.core.mvc"
     displayBlock="true"
+	xmlns:t="sap.ui.table"
     xmlns="sap.m"
 >
     <Shell id="shell">
@@ -9,7 +10,20 @@
             <pages>
                 <Page id="page" title="{i18n>title}">
                     <content>
-                    
+                        <t:Table
+                            rows="{/ProductCollection}"
+                            visibleRowCount="7"
+                            ariaLabelledBy="title">
+                            <t:columns>
+                                
+                                <t:Column width="11rem" hAlign="Center">
+                                    <Label text="Delivery Date" />
+                                    <t:template>
+                                        <Text text="test" />
+                                    </t:template>
+                                </t:Column>
+                            </t:columns>
+                        </t:Table>
                     </content>
                 </Page>
             </pages>
