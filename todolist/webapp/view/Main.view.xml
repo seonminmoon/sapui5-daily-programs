@@ -16,11 +16,12 @@
                             visibleRowCount="7"
                             ariaLabelledBy="title">
                             <t:extension>
-                                <OverflowToolbar>
+                                <OverflowToolbar style="Clear">
                                     <content>
                                         <Title text="sap.ui.table.Table" level="H2"/>
                                         <ToolbarSpacer />
-                                        <Label text="Sticky options:" />
+                                        <Button icon="sap-icon://add" press="onAdd1"/>
+                                        <Button icon="sap-icon://delete" press="onDelete1"/>
                                     </content>
                                 </OverflowToolbar>
                             </t:extension>
@@ -36,7 +37,6 @@
                         </t:Table>
 
                         <Table id="idProductsTable"
-                            inset="false"
                             items="{
                                 path: '/ProductCollection',
                                 sorter: {
@@ -48,7 +48,8 @@
                                     <content>
                                         <Title text="sap.m.Table"/>
                                         <ToolbarSpacer />
-                                        <Label text="Sticky options:" />
+                                        <Button icon="sap-icon://add" press="onAdd2"/>
+                                        <Button icon="sap-icon://delete" press="onDelete2"/>
                                     </content>
                                 </OverflowToolbar>
                             </headerToolbar>
