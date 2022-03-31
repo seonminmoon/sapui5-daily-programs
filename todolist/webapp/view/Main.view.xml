@@ -3,6 +3,7 @@
     xmlns:mvc="sap.ui.core.mvc"
     displayBlock="true"
 	xmlns:t="sap.ui.table"
+	xmlns:core="sap.ui.core"
     xmlns="sap.m"
 >
     <Shell id="shell">
@@ -14,6 +15,15 @@
                             rows="{/ProductCollection}"
                             visibleRowCount="7"
                             ariaLabelledBy="title">
+                            <t:extension>
+                                <OverflowToolbar>
+                                    <content>
+                                        <Title text="sap.ui.table.Table" level="H2"/>
+                                        <ToolbarSpacer />
+                                        <Label text="Sticky options:" />
+                                    </content>
+                                </OverflowToolbar>
+                            </t:extension>
                             <t:columns>
                                 
                                 <t:Column width="11rem" hAlign="Center">
@@ -24,6 +34,87 @@
                                 </t:Column>
                             </t:columns>
                         </t:Table>
+
+                        <Table id="idProductsTable"
+                            inset="false"
+                            items="{
+                                path: '/ProductCollection',
+                                sorter: {
+                                    path: 'Name'
+                                }
+                            }">
+                            <headerToolbar>
+                                <OverflowToolbar>
+                                    <content>
+                                        <Title text="sap.m.Table"/>
+                                        <ToolbarSpacer />
+                                        <Label text="Sticky options:" />
+                                    </content>
+                                </OverflowToolbar>
+                            </headerToolbar>
+                            <infoToolbar>
+                                <OverflowToolbar>
+                                    <Label text="Wide range of available products"/>
+                                </OverflowToolbar>
+                            </infoToolbar>
+                            <columns>
+                                <Column
+                                    width="12em">
+                                    <Text text="Product" />
+                                </Column>
+                                <Column
+                                    minScreenWidth="Tablet"
+                                    demandPopin="true">
+                                    <Text text="Supplier" />
+                                </Column>
+                                <Column
+                                    minScreenWidth="Desktop"
+                                    demandPopin="true"
+                                    hAlign="End">
+                                    <Text text="Dimensions" />
+                                </Column>
+                                <Column
+                                    minScreenWidth="Desktop"
+                                    demandPopin="true"
+                                    hAlign="Center">
+                                    <Text text="Weight" />
+                                </Column>
+                                <Column
+                                    hAlign="End">
+                                    <Text text="Price" />
+                                </Column>
+                            </columns>
+                            <items>
+                                <ColumnListItem vAlign="Middle">
+                                    <cells>
+                                        <ObjectIdentifier
+                                            title="{Name}"
+                                            text="{ProductId}"/>
+                                        <Text
+                                            text="{SupplierName}" />
+                                        <Text
+                                            text="{Width} x {Depth} x {Height} {DimUnit}" />
+                                        <ObjectNumber
+                                            number="{WeightMeasure}"
+                                            unit="{WeightUnit}"
+                                            state="{
+                                                parts: [
+                                                    {path: 'WeightMeasure'},
+                                                    {path: 'WeightUnit'}
+                                                ],
+                                                formatter: 'sap.m.sample.Table.Formatter.weightState'
+                                            }" />
+                                        <ObjectNumber
+                                                number="{
+                                                    parts:[{path:'Price'},{path:'CurrencyCode'}],
+                                                    type: 'sap.ui.model.type.Currency',
+                                                    formatOptions: {showMeasure: false}
+                                                }"
+                                                unit="{CurrencyCode}" />
+                                    </cells>
+                                </ColumnListItem>
+                            </items>
+                        </Table>
                     </content>
                 </Page>
             </pages>
