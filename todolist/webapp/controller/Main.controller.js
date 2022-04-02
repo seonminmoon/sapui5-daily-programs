@@ -5,76 +5,14 @@ sap.ui.define(
 		'sap/ui/Device',
 		'sap/base/Log',
 		'sap/ui/model/json/JSONModel',
-		'sap/viz/ui5/data/FlattenedDataset',
-		'sap/viz/ui5/controls/common/feeds/FeedItem',
 	],
-	function (MessageToast, Controller, Device, Log, JSONModel, FlattenedDataset, FeedItem) {
+	function (MessageToast, Controller, Device, Log, JSONModel) {
 		'use strict';
 
 		return Controller.extend('todolist.controller.Main', {
 			onInit: function () {
 				let oModel = this.getOwnerComponent().getModel();
-				oModel.setData({
-					'uiTable': [],
-					'mTable': [],
-					'lineChartData': [],
-					'Product': [
-						{
-							'ProductName': 'A',
-							'UnitPrice': 65,
-							'items': [
-								{ 'name': '부품1', 'rate': '12' },
-								{ 'name': '부품2', 'rate': '3' },
-								{ 'name': '부품3', 'rate': '5' },
-							],
-						},
-						{
-							'ProductName': 'B',
-							'UnitPrice': 70,
-							'items': [
-								{ 'name': '부품1', 'rate': '6' },
-								{ 'name': '부품2', 'rate': '44' },
-								{ 'name': '부품3', 'rate': '25' },
-							],
-						},
-						{
-							'ProductName': 'E',
-							'UnitPrice': 83,
-							'items': [
-								{ 'name': '부품1', 'rate': '12' },
-								{ 'name': '부품2', 'rate': '46' },
-								{ 'name': '부품3', 'rate': '13' },
-							],
-						},
-						{
-							'ProductName': 'C',
-							'UnitPrice': 92,
-							'items': [
-								{ 'name': '부품1', 'rate': '5' },
-								{ 'name': '부품2', 'rate': '5' },
-								{ 'name': '부품3', 'rate': '2' },
-							],
-						},
-						{
-							'ProductName': 'D',
-							'UnitPrice': 77,
-							'items': [
-								{ 'name': '부품1', 'rate': '55' },
-								{ 'name': '부품2', 'rate': '12' },
-								{ 'name': '부품3', 'rate': '66' },
-							],
-						},
-						{
-							'ProductName': 'F',
-							'UnitPrice': 88,
-							'items': [
-								{ 'name': '부품1', 'rate': '111' },
-								{ 'name': '부품2', 'rate': '25' },
-								{ 'name': '부품3', 'rate': '20' },
-							],
-						},
-					],
-				});
+				oModel.loadData('../model/datas.json');
 
 				this.getSplitAppObj().setHomeIcon({
 					'phone': 'phone-icon.png',
