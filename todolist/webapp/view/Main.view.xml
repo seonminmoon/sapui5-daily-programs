@@ -3,11 +3,14 @@
 	xmlns="sap.m"
 	xmlns:t="sap.ui.table"
 	xmlns:core="sap.ui.core"
+    xmlns:viz="sap.viz.ui5.controls"
+    xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds"
+    xmlns:viz.data="sap.viz.ui5.data"
 	xmlns:mvc="sap.ui.core.mvc"
 	xmlns:custom="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
 	<SplitApp
 		id="SplitAppDemo"
-		initialDetail="defaultDetail"
+		initialDetail="detail"
 		initialMaster="master">
 		<masterPages>
 			<Page
@@ -26,11 +29,38 @@
 				navButtonPress=".onPressMasterBack">
 				<List itemPress=".onListItemPress">
 					<items>
-						<StandardListItem title="To Detail 1" type="Active" custom:to="detail" />
-						<StandardListItem title="To Detail 2" type="Active" custom:to="detailDetail" />
-						<StandardListItem title="To Detail 3" type="Active" custom:to="defaultDetail" />
+						<StandardListItem title="sap.ui.table.Table" type="Active" custom:to="detail" />
+						<StandardListItem title="sap.m.Table" type="Active" custom:to="detailDetail" />
+						<!-- <StandardListItem title="Product Details Line Chart" type="Active" custom:to="chartDetail" /> -->
 					</items>
 				</List>
+                <viz:VizFrame id="idPieChart" vizType='pie' height="300px" width="auto" 
+                selectData="onPressChartSelectData"
+                custom:to="chartDetail"
+                vizProperties="{
+                    'legend' : { 'visible' : true },
+                    'title' : { 'visible' : true , text : 'Products Chart'},
+                    plotArea: {
+                        dataLabel: { visible: false },
+                        colorPalette:['#B5B2FF', '#B2EBF4', '#B7F0B1', '#FFE08C', '#FFC19E', '#FFA7A7']
+                    }
+                }">
+                    <viz:dataset>
+                        <viz.data:FlattenedDataset data="{/Product}">
+                            <viz.data:dimensions>
+                                <viz.data:DimensionDefinition name="Product Name" value="{ProductName}" />
+                            </viz.data:dimensions>
+                            <viz.data:measures>
+                                <viz.data:MeasureDefinition name="Unit Price" value="{UnitPrice}" />
+                            </viz.data:measures>
+                        </viz.data:FlattenedDataset>
+                    </viz:dataset>
+
+                    <viz:feeds>
+                        <viz.feeds:FeedItem uid="size" type="Measure" values="Unit Price" />
+                        <viz.feeds:FeedItem uid="color" type="Dimension" values="Product Name" />
+                    </viz:feeds>
+                </viz:VizFrame>
 			</Page>
 		</masterPages>
 		<detailPages>
@@ -154,10 +184,30 @@
 			</Page>
             <!-- 세번째 상세페이지 : Default -->
 			<Page
-				id="defaultDetail"
-				title="Detail 3"
+				id="chartDetail"
+				title="Product Details Line Chart"
 				backgroundDesign= "Solid">
-				<Label text="This is Detail Page" />
+                <viz:VizFrame 
+                    id="idLineChart"
+                    width="100%" height="70%"
+                    vizType='line'
+                    vizProperties="{ 'title' : { 'visible' : false , text : 'Product Details'} }">
+                    <viz:dataset>
+                        <viz.data:FlattenedDataset data="{/lineChartData}">
+                            <viz.data:dimensions>
+                                <viz.data:DimensionDefinition name="SkillName" value="{name}" />
+                            </viz.data:dimensions>
+                            <viz.data:measures>
+                                <viz.data:MeasureDefinition name="rate" value="{rate}" />
+                            </viz.data:measures>
+                        </viz.data:FlattenedDataset>
+                    </viz:dataset>
+
+                    <viz:feeds>
+                        <viz.feeds:FeedItem uid="categoryAxis" type="Dimension" values="SkillName" />
+                        <viz.feeds:FeedItem uid="valueAxis" type="Measure" values="rate" />
+                    </viz:feeds>
+                </viz:VizFrame>
 			</Page>
 		</detailPages>
 	</SplitApp>
