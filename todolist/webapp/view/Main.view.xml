@@ -1,124 +1,164 @@
 <mvc:View
-    controllerName="todolist.controller.Main"
-    xmlns:mvc="sap.ui.core.mvc"
-    displayBlock="true"
+	controllerName="todolist.controller.Main"
+	xmlns="sap.m"
 	xmlns:t="sap.ui.table"
 	xmlns:core="sap.ui.core"
-    xmlns="sap.m"
->
-    <Shell id="shell">
-        <App id="app">
-            <pages>
-                <Page id="page" title="{i18n>title}">
-                    <content>
-                        <t:Table
-                            rows="{/ProductCollection}"
-                            visibleRowCount="7"
-                            ariaLabelledBy="title">
-                            <t:extension>
-                                <OverflowToolbar style="Clear">
-                                    <content>
-                                        <Title text="sap.ui.table.Table" level="H2"/>
-                                        <ToolbarSpacer />
-                                        <Button icon="sap-icon://add" press="onAdd1"/>
-                                        <Button icon="sap-icon://delete" press="onDelete1"/>
-                                    </content>
-                                </OverflowToolbar>
-                            </t:extension>
-                            <t:columns>
-                                
-                                <t:Column width="11rem" hAlign="Center">
-                                    <Label text="Delivery Date" />
-                                    <t:template>
-                                        <Text text="test" />
-                                    </t:template>
-                                </t:Column>
-                            </t:columns>
-                        </t:Table>
-
-                        <Table id="idProductsTable"
-                            items="{
-                                path: '/ProductCollection',
-                                sorter: {
-                                    path: 'Name'
-                                }
-                            }">
-                            <headerToolbar>
-                                <OverflowToolbar>
-                                    <content>
-                                        <Title text="sap.m.Table"/>
-                                        <ToolbarSpacer />
-                                        <Button icon="sap-icon://add" press="onAdd2"/>
-                                        <Button icon="sap-icon://delete" press="onDelete2"/>
-                                    </content>
-                                </OverflowToolbar>
-                            </headerToolbar>
-                            <infoToolbar>
-                                <OverflowToolbar>
-                                    <Label text="Wide range of available products"/>
-                                </OverflowToolbar>
-                            </infoToolbar>
-                            <columns>
-                                <Column
-                                    width="12em">
-                                    <Text text="Product" />
-                                </Column>
-                                <Column
-                                    minScreenWidth="Tablet"
-                                    demandPopin="true">
-                                    <Text text="Supplier" />
-                                </Column>
-                                <Column
-                                    minScreenWidth="Desktop"
-                                    demandPopin="true"
-                                    hAlign="End">
-                                    <Text text="Dimensions" />
-                                </Column>
-                                <Column
-                                    minScreenWidth="Desktop"
-                                    demandPopin="true"
-                                    hAlign="Center">
-                                    <Text text="Weight" />
-                                </Column>
-                                <Column
-                                    hAlign="End">
-                                    <Text text="Price" />
-                                </Column>
-                            </columns>
-                            <items>
-                                <ColumnListItem vAlign="Middle">
-                                    <cells>
-                                        <ObjectIdentifier
-                                            title="{Name}"
-                                            text="{ProductId}"/>
-                                        <Text
-                                            text="{SupplierName}" />
-                                        <Text
-                                            text="{Width} x {Depth} x {Height} {DimUnit}" />
-                                        <ObjectNumber
-                                            number="{WeightMeasure}"
-                                            unit="{WeightUnit}"
-                                            state="{
-                                                parts: [
-                                                    {path: 'WeightMeasure'},
-                                                    {path: 'WeightUnit'}
-                                                ],
-                                                formatter: 'sap.m.sample.Table.Formatter.weightState'
-                                            }" />
-                                        <ObjectNumber
-                                                number="{
-                                                    parts:[{path:'Price'},{path:'CurrencyCode'}],
-                                                    type: 'sap.ui.model.type.Currency',
-                                                    formatOptions: {showMeasure: false}
-                                                }"
-                                                unit="{CurrencyCode}" />
-                                    </cells>
-                                </ColumnListItem>
-                            </items>
-                        </Table>
-                    </content>
-                </Page>
-            </pages>
-        </App>
-    </Shell>
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:custom="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
+	<SplitApp
+		id="SplitAppDemo"
+		initialDetail="defaultDetail"
+		initialMaster="master">
+		<masterPages>
+			<Page
+				id="master"
+				title="Master 1"
+				backgroundDesign= "List">
+				<List>
+					<StandardListItem title="To Master2" type="Navigation" press=".onPressGoToMaster" />
+				</List>
+			</Page>
+			<Page
+				id="master2"
+				title="Master 2"
+				backgroundDesign="List"
+				showNavButton="true"
+				navButtonPress=".onPressMasterBack">
+				<List itemPress=".onListItemPress">
+					<items>
+						<StandardListItem title="To Detail 1" type="Active" custom:to="detail" />
+						<StandardListItem title="To Detail 2" type="Active" custom:to="detailDetail" />
+						<StandardListItem title="To Detail 3" type="Active" custom:to="defaultDetail" />
+					</items>
+				</List>
+			</Page>
+		</masterPages>
+		<detailPages>
+            <!-- 첫번째 상세페이지 : UI Table-->
+			<Page
+				id="detail"
+				title="Detail 1"
+				backgroundDesign= "Solid">
+                <Table id="idProductsTable"
+                    items="{
+                        path: '/ProductCollection',
+                        sorter: {
+                            path: 'Name'
+                        }
+                    }">
+                    <headerToolbar>
+                        <OverflowToolbar>
+                            <content>
+                                <Title text="sap.m.Table"/>
+                                <ToolbarSpacer />
+                                <Button icon="sap-icon://add" press="onAdd2"/>
+                                <Button icon="sap-icon://delete" press="onDelete2"/>
+                            </content>
+                        </OverflowToolbar>
+                    </headerToolbar>
+                    <infoToolbar>
+                        <OverflowToolbar>
+                            <Label text="Wide range of available products"/>
+                        </OverflowToolbar>
+                    </infoToolbar>
+                    <columns>
+                        <Column
+                            width="12em">
+                            <Text text="Product" />
+                        </Column>
+                        <Column
+                            minScreenWidth="Tablet"
+                            demandPopin="true">
+                            <Text text="Supplier" />
+                        </Column>
+                        <Column
+                            minScreenWidth="Desktop"
+                            demandPopin="true"
+                            hAlign="End">
+                            <Text text="Dimensions" />
+                        </Column>
+                        <Column
+                            minScreenWidth="Desktop"
+                            demandPopin="true"
+                            hAlign="Center">
+                            <Text text="Weight" />
+                        </Column>
+                        <Column
+                            hAlign="End">
+                            <Text text="Price" />
+                        </Column>
+                    </columns>
+                    <items>
+                        <ColumnListItem vAlign="Middle">
+                            <cells>
+                                <ObjectIdentifier
+                                    title="{Name}"
+                                    text="{ProductId}"/>
+                                <Text
+                                    text="{SupplierName}" />
+                                <Text
+                                    text="{Width} x {Depth} x {Height} {DimUnit}" />
+                                <ObjectNumber
+                                    number="{WeightMeasure}"
+                                    unit="{WeightUnit}"
+                                    state="{
+                                        parts: [
+                                            {path: 'WeightMeasure'},
+                                            {path: 'WeightUnit'}
+                                        ],
+                                        formatter: 'sap.m.sample.Table.Formatter.weightState'
+                                    }" />
+                                <ObjectNumber
+                                        number="{
+                                            parts:[{path:'Price'},{path:'CurrencyCode'}],
+                                            type: 'sap.ui.model.type.Currency',
+                                            formatOptions: {showMeasure: false}
+                                        }"
+                                        unit="{CurrencyCode}" />
+                            </cells>
+                        </ColumnListItem>
+                    </items>
+                </Table>
+			</Page>
+            <!-- 두번째 상세페이지 : M Table-->
+			<Page
+				id="detailDetail"
+				title="Detail Detail"
+				backgroundDesign= "Solid"
+				showNavButton="true"
+				navButtonPress=".onPressDetailBack">
+                <t:Table
+                    rows="{/mTable}"
+                    visibleRowCount="7"
+                    ariaLabelledBy="title">
+                    <t:extension>
+                        <OverflowToolbar style="Clear">
+                            <content>
+                                <Title text="sap.ui.table.Table" level="H2"/>
+                                <ToolbarSpacer />
+                                <Button icon="sap-icon://add" press="onAdd1"/>
+                                <Button icon="sap-icon://delete" press="onDelete1"/>
+                            </content>
+                        </OverflowToolbar>
+                    </t:extension>
+                    <t:columns>
+                        
+                        <t:Column width="11rem" hAlign="Center">
+                            <Label text="Delivery Date" />
+                            <t:template>
+                                <Text text="test" />
+                            </t:template>
+                        </t:Column>
+                    </t:columns>
+                </t:Table>
+			</Page>
+            <!-- 세번째 상세페이지 : Default -->
+			<Page
+				id="defaultDetail"
+				title="Detail 3"
+				backgroundDesign= "Solid">
+				<Label text="This is Detail Page" />
+			</Page>
+		</detailPages>
+	</SplitApp>
 </mvc:View>

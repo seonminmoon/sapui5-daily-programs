@@ -1,27 +1,71 @@
 sap.ui.define(
-	['sap/ui/core/mvc/Controller'],
-	/**
-	 * @param {typeof sap.ui.core.mvc.Controller} Controller
-	 */
-	function (Controller) {
+	['sap/m/MessageToast', 'sap/ui/core/mvc/Controller', 'sap/ui/Device', 'sap/base/Log'],
+	function (MessageToast, Controller, Device, Log) {
 		'use strict';
 
 		return Controller.extend('todolist.controller.Main', {
 			onInit: function () {
+				
 				let oModel = this.getOwnerComponent().getModel();
 				oModel.setData({
 					'uiTable': [],
 					'mTable': [],
 				});
+				
+				this.getSplitAppObj().setHomeIcon({
+					'phone': 'phone-icon.png',
+					'tablet': 'tablet-icon.png',
+					'icon': 'desktop.ico',
+				});
+
+				Device.orientation.attachHandler(this.onOrientationChange, this);
 			},
 
-			onAdd1: function () {},
+			onExit: function () {
+				Device.orientation.detachHandler(this.onOrientationChange, this);
+			},
 
-			onDelete1: function () {},
+			onOrientationChange: function (mParams) {
+				var sMsg = 'Orientation now is: ' + (mParams.landscape ? 'Landscape' : 'Portrait');
+				MessageToast.show(sMsg, { duration: 5000 });
+			},
 
-			onAdd2: function () {},
+			onPressNavToDetail: function () {
+				this.getSplitAppObj().to(this.createId('detailDetail'));
+			},
 
-			onDelete2: function () {},
+			onPressDetailBack: function () {
+				this.getSplitAppObj().backDetail();
+			},
+
+			onPressMasterBack: function () {
+				this.getSplitAppObj().backMaster();
+			},
+
+			onPressGoToMaster: function () {
+				this.getSplitAppObj().toMaster(this.createId('master2'));
+			},
+
+			onListItemPress: function (oEvent) {
+				var sToPageId = oEvent.getParameter('listItem').getCustomData()[0].getValue();
+
+				this.getSplitAppObj().toDetail(this.createId(sToPageId));
+			},
+
+			onPressModeBtn: function (oEvent) {
+				var sSplitAppMode = oEvent.getSource().getSelectedButton().getCustomData()[0].getValue();
+
+				this.getSplitAppObj().setMode(sSplitAppMode);
+				MessageToast.show('Split Container mode is changed to: ' + sSplitAppMode, { duration: 5000 });
+			},
+
+			getSplitAppObj: function () {
+				var result = this.byId('SplitAppDemo');
+				if (!result) {
+					Log.info("SplitApp object can't be found");
+				}
+				return result;
+			},
 		});
 	}
 );

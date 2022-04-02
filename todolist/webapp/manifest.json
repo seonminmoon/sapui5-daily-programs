@@ -75,33 +75,6 @@
 				}
 			]
 		},
-		"routing": {
-			"config": {
-				"routerClass": "sap.m.routing.Router",
-				"viewType": "XML",
-				"async": true,
-				"viewPath": "todolist.view",
-				"controlAggregation": "pages",
-				"controlId": "app",
-				"clearControlAggregation": false
-			},
-			"routes": [
-				{
-					"name": "RouteMain",
-					"pattern": "RouteMain",
-					"target": ["TargetMain"]
-				}
-			],
-			"targets": {
-				"TargetMain": {
-					"viewType": "XML",
-					"transition": "slide",
-					"clearControlAggregation": false,
-					"viewId": "Main",
-					"viewName": "Main"
-				}
-			}
-		},
 		"rootView": {
 			"viewName": "todolist.view.Main",
 			"type": "XML",
