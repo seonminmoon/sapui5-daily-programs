@@ -1,60 +1,60 @@
 {
 	"uiTable": [],
 	"mTable": [],
-	"lineChartData": [],
+	"chartDetail": [],
 	"Product": [
 		{
 			"ProductName": "A",
 			"UnitPrice": 65,
 			"items": [
-				{ "name": "부품1", "rate": "12" },
-				{ "name": "부품2", "rate": "3" },
-				{ "name": "부품3", "rate": "5" }
+				{ "name": "부품1", "rate": "12", "cost": "10" },
+				{ "name": "부품2", "rate": "3", "cost": "11" },
+				{ "name": "부품3", "rate": "5", "cost": "12" }
 			]
 		},
 		{
 			"ProductName": "B",
 			"UnitPrice": 70,
 			"items": [
-				{ "name": "부품1", "rate": "6" },
-				{ "name": "부품2", "rate": "44" },
-				{ "name": "부품3", "rate": "25" }
+				{ "name": "부품1", "rate": "6", "cost": "11" },
+				{ "name": "부품2", "rate": "44", "cost": "11" },
+				{ "name": "부품3", "rate": "25", "cost": "11" }
 			]
 		},
 		{
 			"ProductName": "E",
 			"UnitPrice": 83,
 			"items": [
-				{ "name": "부품1", "rate": "12" },
-				{ "name": "부품2", "rate": "46" },
-				{ "name": "부품3", "rate": "13" }
+				{ "name": "부품1", "rate": "12", "cost": "11" },
+				{ "name": "부품2", "rate": "46", "cost": "11" },
+				{ "name": "부품3", "rate": "13", "cost": "11" }
 			]
 		},
 		{
 			"ProductName": "C",
 			"UnitPrice": 92,
 			"items": [
-				{ "name": "부품1", "rate": "5" },
-				{ "name": "부품2", "rate": "5" },
-				{ "name": "부품3", "rate": "2" }
+				{ "name": "부품1", "rate": "5", "cost": "11" },
+				{ "name": "부품2", "rate": "5", "cost": "12" },
+				{ "name": "부품3", "rate": "2", "cost": "13" }
 			]
 		},
 		{
 			"ProductName": "D",
 			"UnitPrice": 77,
 			"items": [
-				{ "name": "부품1", "rate": "55" },
-				{ "name": "부품2", "rate": "12" },
-				{ "name": "부품3", "rate": "66" }
+				{ "name": "부품1", "rate": "55", "cost": "11" },
+				{ "name": "부품2", "rate": "12", "cost": "12" },
+				{ "name": "부품3", "rate": "66", "cost": "13" }
 			]
 		},
 		{
 			"ProductName": "F",
 			"UnitPrice": 88,
 			"items": [
-				{ "name": "부품1", "rate": "111" },
-				{ "name": "부품2", "rate": "25" },
-				{ "name": "부품3", "rate": "20" }
+				{ "name": "부품1", "rate": "111", "cost": "11" },
+				{ "name": "부품2", "rate": "25", "cost": "12" },
+				{ "name": "부품3", "rate": "20", "cost": "13" }
 			]
 		}
 	]

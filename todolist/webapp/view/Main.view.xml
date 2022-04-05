@@ -14,24 +14,14 @@
 		initialMaster="master">
 		<masterPages>
 			<Page
-				id="master"
-				title="Master 1"
-				backgroundDesign= "List">
-				<List>
-					<StandardListItem title="To Master2" type="Navigation" press=".onPressGoToMaster" />
-				</List>
-			</Page>
-			<Page
-				id="master2"
-				title="Master 2"
-				backgroundDesign="List"
-				showNavButton="true"
-				navButtonPress=".onPressMasterBack">
+				id="maste"
+				title="Master"
+				backgroundDesign="List">
 				<List itemPress=".onListItemPress">
 					<items>
-						<StandardListItem title="sap.ui.table.Table" type="Active" custom:to="detail" />
-						<StandardListItem title="sap.m.Table" type="Active" custom:to="detailDetail" />
-						<!-- <StandardListItem title="Product Details Line Chart" type="Active" custom:to="chartDetail" /> -->
+						<StandardListItem title="Mobile Table" type="Active" custom:to="detail" />
+						<StandardListItem title="PC Table" type="Active" custom:to="detailDetail" />
+						<StandardListItem title="Product Details Chart View" type="Active" custom:to="chartDetail" />
 					</items>
 				</List>
                 <viz:VizFrame id="idPieChart" vizType='pie' height="300px" width="auto" 
@@ -39,7 +29,7 @@
                 custom:to="chartDetail"
                 vizProperties="{
                     'legend' : { 'visible' : true },
-                    'title' : { 'visible' : true , text : 'Products Chart'},
+                    'title' : { 'visible' : true , text : 'Products Pie'},
                     plotArea: {
                         dataLabel: { visible: false },
                         colorPalette:['#B5B2FF', '#B2EBF4', '#B7F0B1', '#FFE08C', '#FFC19E', '#FFA7A7']
@@ -67,7 +57,7 @@
             <!-- 첫번째 상세페이지 : UI Table-->
 			<Page
 				id="detail"
-				title="Detail 1"
+				title="Detail View 1"
 				backgroundDesign= "Solid">
                 <Table id="idProductsTable"
                     items="{
@@ -153,7 +143,7 @@
             <!-- 두번째 상세페이지 : M Table-->
 			<Page
 				id="detailDetail"
-				title="Detail Detail"
+				title="Detail View 2"
 				backgroundDesign= "Solid"
 				showNavButton="true"
 				navButtonPress=".onPressDetailBack">
@@ -162,7 +152,7 @@
                     visibleRowCount="7"
                     ariaLabelledBy="title">
                     <t:extension>
-                        <OverflowToolbar style="Clear">
+                        <OverflowToolbar design="Transparent">
                             <content>
                                 <Title text="sap.ui.table.Table" level="H2"/>
                                 <ToolbarSpacer />
@@ -182,30 +172,32 @@
                     </t:columns>
                 </t:Table>
 			</Page>
-            <!-- 세번째 상세페이지 : Default -->
+            <!-- 세번째 상세페이지 : Chart Details -->
 			<Page
 				id="chartDetail"
-				title="Product Details Line Chart"
+				title="Product Details Chart View"
 				backgroundDesign= "Solid">
                 <viz:VizFrame 
                     id="idLineChart"
                     width="100%" height="70%"
                     vizType='line'
-                    vizProperties="{ 'title' : { 'visible' : false , text : 'Product Details'} }">
+                    vizProperties="{ 'title' : { 'visible' : true , text : 'Product Details'} }">
                     <viz:dataset>
-                        <viz.data:FlattenedDataset data="{/lineChartData}">
+                        <viz.data:FlattenedDataset data="{/chartDetail}">
                             <viz.data:dimensions>
-                                <viz.data:DimensionDefinition name="SkillName" value="{name}" />
+                                <viz.data:DimensionDefinition name="Part Name" value="{name}" />
                             </viz.data:dimensions>
                             <viz.data:measures>
-                                <viz.data:MeasureDefinition name="rate" value="{rate}" />
+                                <viz.data:MeasureDefinition name="Rate" value="{rate}" />
+                                <viz.data:MeasureDefinition name="Cost" value="{cost}" />
                             </viz.data:measures>
                         </viz.data:FlattenedDataset>
                     </viz:dataset>
 
                     <viz:feeds>
-                        <viz.feeds:FeedItem uid="categoryAxis" type="Dimension" values="SkillName" />
-                        <viz.feeds:FeedItem uid="valueAxis" type="Measure" values="rate" />
+                        <viz.feeds:FeedItem uid="categoryAxis" type="Dimension" values="Part Name" />
+                        <viz.feeds:FeedItem uid="valueAxis" type="Measure" values="Rate" />
+                        <viz.feeds:FeedItem uid="valueAxis" type="Measure" values="Cost" />
                     </viz:feeds>
                 </viz:VizFrame>
 			</Page>
