@@ -58,13 +58,45 @@ sap.ui.define(
 			},
 
 			onSearch: function () {
-				let oTable = this.byId('idTable');
-				let aFilters = this.getConditions();
-				oTable.getBinding('rows').filter(aFilters);
+				let oTable, aFilters, aMandatoryControls, validation, oControl;
+
+				oTable = this.byId('idTable');
+				aFilters = this.getConditions();
+
+				aMandatoryControls = this.byId('filterBar')
+					.getFilterGroupItems()
+					.filter(function (item) {
+						return item.getMandatory();
+					});
+
+				validation = aMandatoryControls.some(function (item) {
+					oControl = item.getControl();
+					if (oControl.getValue && !oControl.getValue()) {
+						oControl.setValueState('Error');
+						oControl.setValueStateText('필수값을 입력하세요.');
+						return true;
+					}
+					return false;
+				});
+
+				if (!validation) {
+					oTable.getBinding('rows').filter(aFilters);
+				}
 			},
 
-			onClear: function () {},
-			onReset: function () {},
+			onClear: function () {
+				var oModel = this.getOwnerComponent().getModel('local');
+
+				oModel.setProperty('/search', {
+					'EQ': {},
+					'Contains': {},
+					'BT': {},
+					// FilterOperator 조건 추가 가능
+				});
+			},
+			onReset: function () {
+				this._setInitialFilter();
+			},
 		});
 	}
 );
