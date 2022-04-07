@@ -54,25 +54,20 @@
 			</Page>
 		</masterPages>
 		<detailPages>
-            <!-- 첫번째 상세페이지 : UI Table-->
+            <!-- 첫번째 상세페이지 : M Table-->
 			<Page
 				id="detail"
 				title="Detail View 1"
 				backgroundDesign= "Solid">
                 <Table id="idProductsTable"
-                    items="{
-                        path: '/ProductCollection',
-                        sorter: {
-                            path: 'Name'
-                        }
-                    }">
+                    items="{/mTable}">
                     <headerToolbar>
                         <OverflowToolbar>
                             <content>
                                 <Title text="sap.m.Table"/>
                                 <ToolbarSpacer />
-                                <Button icon="sap-icon://add" press="onAdd2"/>
-                                <Button icon="sap-icon://delete" press="onDelete2"/>
+                                <Button icon="sap-icon://add" press="onAdd('m')"/>
+                                <Button icon="sap-icon://delete" press="onDelete('m')"/>
                             </content>
                         </OverflowToolbar>
                     </headerToolbar>
@@ -82,30 +77,13 @@
                         </OverflowToolbar>
                     </infoToolbar>
                     <columns>
-                        <Column
-                            width="12em">
+                        <Column>
                             <Text text="Product" />
                         </Column>
                         <Column
                             minScreenWidth="Tablet"
                             demandPopin="true">
                             <Text text="Supplier" />
-                        </Column>
-                        <Column
-                            minScreenWidth="Desktop"
-                            demandPopin="true"
-                            hAlign="End">
-                            <Text text="Dimensions" />
-                        </Column>
-                        <Column
-                            minScreenWidth="Desktop"
-                            demandPopin="true"
-                            hAlign="Center">
-                            <Text text="Weight" />
-                        </Column>
-                        <Column
-                            hAlign="End">
-                            <Text text="Price" />
                         </Column>
                     </columns>
                     <items>
@@ -116,9 +94,7 @@
                                     text="{ProductId}"/>
                                 <Text
                                     text="{SupplierName}" />
-                                <Text
-                                    text="{Width} x {Depth} x {Height} {DimUnit}" />
-                                <ObjectNumber
+                                <!-- <ObjectNumber
                                     number="{WeightMeasure}"
                                     unit="{WeightUnit}"
                                     state="{
@@ -134,13 +110,13 @@
                                             type: 'sap.ui.model.type.Currency',
                                             formatOptions: {showMeasure: false}
                                         }"
-                                        unit="{CurrencyCode}" />
+                                        unit="{CurrencyCode}" /> -->
                             </cells>
                         </ColumnListItem>
                     </items>
                 </Table>
 			</Page>
-            <!-- 두번째 상세페이지 : M Table-->
+            <!-- 두번째 상세페이지 : UI Table-->
 			<Page
 				id="detailDetail"
 				title="Detail View 2"
@@ -148,7 +124,7 @@
 				showNavButton="true"
 				navButtonPress=".onPressDetailBack">
                 <t:Table
-                    rows="{/mTable}"
+                    rows="{/uiTable}"
                     visibleRowCount="7"
                     ariaLabelledBy="title">
                     <t:extension>
@@ -156,17 +132,28 @@
                             <content>
                                 <Title text="sap.ui.table.Table" level="H2"/>
                                 <ToolbarSpacer />
-                                <Button icon="sap-icon://add" press="onAdd1"/>
-                                <Button icon="sap-icon://delete" press="onDelete1"/>
+                                <Button icon="sap-icon://add" press="onAdd('ui')"/>
+                                <Button icon="sap-icon://delete" press="onDelete('ui')"/>
                             </content>
                         </OverflowToolbar>
                     </t:extension>
                     <t:columns>
-                        
-                        <t:Column width="11rem" hAlign="Center">
-                            <Label text="Delivery Date" />
+                        <t:Column hAlign="Center">
+                            <Label text="Data1" />
                             <t:template>
-                                <Text text="test" />
+                                <Text text="{data1}" />
+                            </t:template>
+                        </t:Column>
+                        <t:Column hAlign="Center">
+                            <Label text="Data2" />
+                            <t:template>
+                                <Text text="{data2}" />
+                            </t:template>
+                        </t:Column>
+                        <t:Column hAlign="Center">
+                            <Label text="Data3" />
+                            <t:template>
+                                <Text text="{data3}" />
                             </t:template>
                         </t:Column>
                     </t:columns>

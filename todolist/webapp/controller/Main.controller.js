@@ -46,6 +46,30 @@ sap.ui.define(
 				this._getSplitAppObj().toDetail(this.createId(sToPageId)); // chart page 출력
 				oModel.setProperty('/chartDetail', aSelectItems[0].items); // chart model 세팅
 			},
+
+			onAdd: function (gubun) {
+				let oModel = this.getView().getModel();
+				let aDatas;
+
+				const addUiTable = () => {
+					aDatas = oModel.getData().uiTable;
+					aDatas.push({ 'data1': 'default value' });
+					oModel.setProperty('/uiTable', aDatas);
+				};
+				const addMTable = () => {
+					aDatas = oModel.getData().mTable;
+					aDatas.push({
+						'Name': 'default value',
+						'ProductId': 'default ID',
+						'SupplierName': 'Supplier Name',
+					});
+					oModel.setProperty('/mTable', aDatas);
+				};
+
+				gubun === 'ui' ? addUiTable() : addMTable();
+			},
+
+			onDelete: function (gubun) {},
 		});
 	}
 );
