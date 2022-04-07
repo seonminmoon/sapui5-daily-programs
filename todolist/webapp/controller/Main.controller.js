@@ -69,7 +69,38 @@ sap.ui.define(
 				gubun === 'ui' ? addUiTable() : addMTable();
 			},
 
-			onDelete: function (gubun) {},
+			onDelete: function (oEvent, gubun) {
+				var oTable = oEvent.getSource().getParent().getParent();
+				var oModel = this.getView().getModel();
+				var aDatas, aSelectItems;
+
+				if (gubun === 'ui') {
+					aDatas = oModel.getData().uiTable;
+					aSelectItems = oTable.getSelectedIndices();
+
+					for (var i = aSelectItems.length - 1; i >= 0; i--) {
+						aDatas.splice(aSelectItems[i], 1);
+					}
+					oModel.setProperty('/uiTable', aDatas);
+				} else {
+					aDatas = oModel.getData().mTable;
+					aSelectItems = oTable.getSelectedContextPaths();
+
+					aSelectItems
+						.sort(function (a, b) {
+							var na = a.split('/').reverse()[0];
+							var nb = b.split('/').reverse()[0];
+							return nb - na;
+						})
+						.forEach(function (item) {
+							var index = item.split('/').reverse()[0];
+							aDatas.splice(index, 1);
+						});
+
+					oModel.setProperty('/mTable', aDatas);
+					oTable.removeSelections();
+				}
+			},
 		});
 	}
 );

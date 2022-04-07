@@ -59,7 +59,9 @@
 				id="detail"
 				title="Detail View 1"
 				backgroundDesign= "Solid">
-                <Table id="idProductsTable"
+                <Table 
+                    id="idProductsTable"
+                    mode="MultiSelect"
                     items="{/mTable}">
                     <headerToolbar>
                         <OverflowToolbar>
@@ -67,7 +69,7 @@
                                 <Title text="sap.m.Table"/>
                                 <ToolbarSpacer />
                                 <Button icon="sap-icon://add" press="onAdd('m')"/>
-                                <Button icon="sap-icon://delete" press="onDelete('m')"/>
+                                <Button icon="sap-icon://delete" press="onDelete($event, 'm')"/>
                             </content>
                         </OverflowToolbar>
                     </headerToolbar>
@@ -92,8 +94,8 @@
                                 <ObjectIdentifier
                                     title="{Name}"
                                     text="{ProductId}"/>
-                                <Text
-                                    text="{SupplierName}" />
+                                <Input
+                                    value="{SupplierName}" />
                                 <!-- <ObjectNumber
                                     number="{WeightMeasure}"
                                     unit="{WeightUnit}"
@@ -133,7 +135,7 @@
                                 <Title text="sap.ui.table.Table" level="H2"/>
                                 <ToolbarSpacer />
                                 <Button icon="sap-icon://add" press="onAdd('ui')"/>
-                                <Button icon="sap-icon://delete" press="onDelete('ui')"/>
+                                <Button icon="sap-icon://delete" press="onDelete($event, 'ui')"/>
                             </content>
                         </OverflowToolbar>
                     </t:extension>
@@ -147,7 +149,7 @@
                         <t:Column hAlign="Center">
                             <Label text="Data2" />
                             <t:template>
-                                <Text text="{data2}" />
+                                <Input value="{data2}" />
                             </t:template>
                         </t:Column>
                         <t:Column hAlign="Center">
