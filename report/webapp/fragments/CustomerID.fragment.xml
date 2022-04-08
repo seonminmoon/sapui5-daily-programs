@@ -1,0 +1,17 @@
+<c:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:c="sap.ui.core"
+>
+   <Dialog
+      id="helloDialog"
+      title="Hello {/recipient/name}">
+      <content>
+      </content>
+      <!-- <beginButton>
+          <Button text="ok" />
+      </beginButton> -->
+        <endButton>
+          <Button text="close" press="onClose"/>
+        </endButton>
+   </Dialog>
+</c:FragmentDefinition>

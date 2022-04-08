@@ -46,7 +46,9 @@
                         <fb:FilterGroupItem groupName="__$INTERNAL$" name="CustomerID" label="Customer ID" mandatory="true" visibleInFilterBar="true">
                             <fb:control>
                                 <Input id="searchCustomerID" 
-                                fieldGroupIds="search" 
+                                fieldGroupIds="search"
+                                showValueHelp="true"
+                                valueHelpRequest="onValueHelpCustomerID"
                                 name="CustomerID" 
                                 value="{local>/search/EQ/CustomerID}" submit="onSearch"/>
                             </fb:control>

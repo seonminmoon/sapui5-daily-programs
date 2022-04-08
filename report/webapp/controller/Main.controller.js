@@ -4,11 +4,12 @@ sap.ui.define(
 		'sap/ui/model/Filter',
 		'sap/ui/model/FilterOperator',
 		'sap/ui/model/json/JSONModel',
+		'sap/ui/core/Fragment',
 	],
 	/**
 	 * @param {typeof sap.ui.core.mvc.Controller} Controller
 	 */
-	function (Controller, Filter, FilterOperator, JSONModel) {
+	function (Controller, Filter, FilterOperator, JSONModel, Fragment) {
 		'use strict';
 
 		return Controller.extend('report.controller.Main', {
@@ -98,6 +99,19 @@ sap.ui.define(
 			},
 			onReset: function () {
 				this._setInitialFilter();
+			},
+
+			onValueHelpCustomerID: function () {
+				Fragment.load({
+					name: 'report.fragments.CustomerID',
+					type: 'XML',
+					controller: this,
+				}).then(function (oDialog) {
+					oDialog.open();
+				});
+			},
+			onClose: function (oEvent) {
+				oEvent.getSource().getParent().close();
 			},
 		});
 	}
