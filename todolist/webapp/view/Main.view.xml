@@ -25,16 +25,18 @@
 					</items>
 				</List>
                 <viz:VizFrame id="idPieChart" vizType='pie' height="300px" width="auto" 
-                selectData="onPressChartSelectData"
-                custom:to="chartDetail"
-                vizProperties="{
-                    'legend' : { 'visible' : true },
-                    'title' : { 'visible' : true , text : 'Products Pie'},
-                    plotArea: {
-                        dataLabel: { visible: false },
-                        colorPalette:['#B5B2FF', '#B2EBF4', '#B7F0B1', '#FFE08C', '#FFC19E', '#FFA7A7']
-                    }
-                }">
+                    uiConfig="{'applicationSet': 'fiori'}"
+                    selectData="onPressChartSelectData"
+                    custom:to="chartDetail"
+                    vizProperties="{
+                        'title' : { 'visible' : true , text : 'Products Pie'},
+                        'legendGroup':{layout:{position: 'left'}},
+                        'plotArea': {
+                            drawingEffect: 'glossy',
+                            dataLabel: { visible: true, type:'value'},
+                            colorPalette:['#B5B2FF', '#B2EBF4', '#B7F0B1', '#FFE08C', '#FFC19E', '#FFA7A7']
+                        }
+                    }">
                     <viz:dataset>
                         <viz.data:FlattenedDataset data="{/Product}">
                             <viz.data:dimensions>

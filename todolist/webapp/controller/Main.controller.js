@@ -13,6 +13,9 @@ sap.ui.define(
 			onInit: function () {
 				let oModel = this.getOwnerComponent().getModel();
 				oModel.loadData('../model/datas.json');
+
+				var vizPopover = new sap.viz.ui5.controls.Popover({});
+				vizPopover.connect(this.byId('idPieChart').getVizUid());
 			},
 
 			onPressDetailBack: function () {
@@ -42,6 +45,9 @@ sap.ui.define(
 					// get selected items
 					return item.ProductName === sSelectKey;
 				});
+				oEvent
+					.getSource()
+					.vizSelection([{ 'data': oEvent.getParameters().data[0].data }], { 'clearSelection': true });
 
 				this._getSplitAppObj().toDetail(this.createId(sToPageId)); // chart page 출력
 				oModel.setProperty('/chartDetail', aSelectItems[0].items); // chart model 세팅
