@@ -1,15 +1,38 @@
 <c:FragmentDefinition
 	xmlns="sap.m"
+  xmlns:t="sap.ui.table"
 	xmlns:c="sap.ui.core"
 >
    <Dialog
-      id="helloDialog"
-      title="Hello {/recipient/name}">
+      id="DialogCustomerId"
+      title="Select Customer ID">
       <content>
+        <t:Table
+          rows="{/uiTable}"
+          visibleRowCount="7"
+          ariaLabelledBy="title">
+          <t:columns>
+              <t:Column hAlign="Center">
+                  <Label text="Data1" />
+                  <t:template>
+                      <Text text="{data1}" />
+                  </t:template>
+              </t:Column>
+              <t:Column hAlign="Center">
+                  <Label text="Data2" />
+                  <t:template>
+                      <Input value="{data2}" />
+                  </t:template>
+              </t:Column>
+              <t:Column hAlign="Center">
+                  <Label text="Data3" />
+                  <t:template>
+                      <Text text="{data3}" />
+                  </t:template>
+              </t:Column>
+          </t:columns>
+      </t:Table>
       </content>
-      <!-- <beginButton>
-          <Button text="ok" />
-      </beginButton> -->
         <endButton>
           <Button text="close" press="onClose"/>
         </endButton>

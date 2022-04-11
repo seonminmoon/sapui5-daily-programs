@@ -20,7 +20,7 @@ sap.ui.define(
 						pattern: 'yyyy-MM-dd',
 					});
 
-					return oDateTimeInstance.format(oDate); // 2020-12-12
+					return oDateTimeInstance.format(oDate); // yyyy-MM-dd
 				},
 			},
 

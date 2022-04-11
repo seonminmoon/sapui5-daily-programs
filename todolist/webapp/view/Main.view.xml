@@ -2,7 +2,6 @@
 	controllerName="todolist.controller.Main"
 	xmlns="sap.m"
 	xmlns:t="sap.ui.table"
-	xmlns:core="sap.ui.core"
     xmlns:viz="sap.viz.ui5.controls"
     xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds"
     xmlns:viz.data="sap.viz.ui5.data"
