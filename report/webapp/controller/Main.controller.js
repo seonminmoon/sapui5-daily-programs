@@ -102,11 +102,13 @@ sap.ui.define(
 			},
 
 			onValueHelpCustomerID: function () {
+				var oModel = this.getView().getModel();
 				Fragment.load({
 					name: 'report.fragments.CustomerID',
 					type: 'XML',
 					controller: this,
 				}).then(function (oDialog) {
+					oDialog.setModel(oModel);
 					oDialog.open();
 				});
 			},

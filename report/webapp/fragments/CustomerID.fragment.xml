@@ -5,29 +5,32 @@
 >
    <Dialog
       id="DialogCustomerId"
+      contentWidth="40%"
+      draggable="true"
+      contentHeight="50%"
       title="Select Customer ID">
       <content>
         <t:Table
-          rows="{/uiTable}"
-          visibleRowCount="7"
+          rows="{/Customers}"
+          visibleRowCount="12"
           ariaLabelledBy="title">
           <t:columns>
               <t:Column hAlign="Center">
-                  <Label text="Data1" />
+                  <Label text="CustomerID" />
                   <t:template>
-                      <Text text="{data1}" />
+                      <Text text="{CustomerID}" />
                   </t:template>
               </t:Column>
               <t:Column hAlign="Center">
-                  <Label text="Data2" />
+                  <Label text="CompanyName" />
                   <t:template>
-                      <Input value="{data2}" />
+                      <Input value="{CompanyName}" />
                   </t:template>
               </t:Column>
               <t:Column hAlign="Center">
-                  <Label text="Data3" />
+                  <Label text="ContactName" />
                   <t:template>
-                      <Text text="{data3}" />
+                      <Text text="{ContactName}" />
                   </t:template>
               </t:Column>
           </t:columns>
