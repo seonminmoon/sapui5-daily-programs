@@ -13,6 +13,7 @@
         <t:Table
           rows="{/Customers}"
           visibleRowCount="12"
+          rowSelectionChange="onCustomerRowSelectionChange"
           ariaLabelledBy="title">
           <t:columns>
               <t:Column hAlign="Center">
