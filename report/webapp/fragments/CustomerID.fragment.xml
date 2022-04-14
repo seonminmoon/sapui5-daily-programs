@@ -11,10 +11,12 @@
       title="Select Customer ID">
       <content>
         <t:Table
-          rows="{/Customers}"
-          visibleRowCount="12"
-          rowSelectionChange="onCustomerRowSelectionChange"
-          ariaLabelledBy="title">
+            rows="{/Customers}"
+            visibleRowCount="12"
+            selectionMode="Single"
+            selectionBehavior="RowOnly"
+            rowSelectionChange="onCustomerRowSelectionChange"
+            ariaLabelledBy="title">
           <t:columns>
               <t:Column hAlign="Center">
                   <Label text="CustomerID" />

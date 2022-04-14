@@ -65,10 +65,6 @@ sap.ui.define(
 					CustomerID: sCustomerID,
 				});
 			},
-
-			onCustomerRowSelectionChange: function (oEvent) {
-				debugger;
-			},
 		});
 	}
 );

@@ -112,8 +112,15 @@ sap.ui.define(
 					oDialog.open();
 				});
 			},
-			onClose: function (oEvent) {
-				oEvent.getSource().getParent().close();
+			onClose: function (oEventObject) {
+				oEventObject.getSource ? oEventObject.getSource().getParent().close() : oEventObject.close();
+			},
+
+			onCustomerRowSelectionChange: function (oEvent) {
+				var oSelectItem = oEvent.getParameters().rowContext.getObject();
+
+				this.byId('searchCustomerID').setValue(oSelectItem.CustomerID);
+				this.onClose(oEvent.getSource().getParent());
 			},
 		});
 	}
