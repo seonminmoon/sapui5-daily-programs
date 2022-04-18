@@ -22,7 +22,7 @@
 						<StandardListItem title="PC Table" type="Active" custom:to="detailDetail" />
 						<StandardListItem title="Product Details Chart View" type="Active" custom:to="chartDetail" />
 					</items>
-				</List>
+				</List> 
                 <viz:VizFrame id="idPieChart" vizType='pie' height="300px" width="auto" 
                     uiConfig="{'applicationSet': 'fiori'}"
                     selectData="onPressChartSelectData"
