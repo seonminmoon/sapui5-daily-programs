@@ -33,6 +33,7 @@ sap.ui.define(
 			_onObjectMatched: function (oEvent) {
 				let sKey = oEvent.getParameter('arguments').CustomerID;
 				this.byId('searchCustomerID').setValue(sKey);
+				this.getView().setBusy(false);
 				if (sKey) {
 					this.onSearch();
 				}
@@ -55,6 +56,7 @@ sap.ui.define(
 				let sPath = oEvent.getParameters().rowBindingContext.getPath();
 				let oData = oModel.getProperty(sPath);
 
+				this.getView().setBusy(true);
 				oRouter.navTo('RouteDetail', {
 					OrderID: oData.OrderID,
 				});
