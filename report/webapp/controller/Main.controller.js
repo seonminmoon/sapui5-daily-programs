@@ -1,6 +1,8 @@
 sap.ui.define(
 	[
-		'report/controller/BaseController',
+		'./BaseController',
+		'./fragments/CustomerIdController',
+		'./DialogController',
 		'sap/ui/model/Filter',
 		'sap/ui/model/FilterOperator',
 		'sap/ui/model/json/JSONModel',
@@ -9,10 +11,12 @@ sap.ui.define(
 	/**
 	 * @param {typeof sap.ui.core.mvc.Controller} Controller
 	 */
-	function (Controller, Filter, FilterOperator, JSONModel, Fragment) {
+	function (BaseController, CustomerIdController, DialogController, Filter, FilterOperator, JSONModel, Fragment) {
 		'use strict';
 
-		return Controller.extend('report.controller.Main', {
+		return BaseController.extend('report.controller.Main', {
+			CustomerIdController: CustomerIdController,
+			DialogController: DialogController,
 			onInit: function () {
 				const oRouter = this.getOwnerComponent().getRouter();
 
@@ -113,23 +117,13 @@ sap.ui.define(
 				}
 
 				Fragment.load({
-					name: 'report.fragments.CustomerID',
+					name: 'report.view.fragments.CustomerID',
 					type: 'XML',
 					controller: this,
 				}).then(function (oDialog) {
 					oDialog.setModel(oModel);
 					oDialog.open();
 				});
-			},
-			onClose: function (oEventObject) {
-				oEventObject.getSource ? oEventObject.getSource().getParent().close() : oEventObject.close();
-			},
-
-			onCustomerRowSelectionChange: function (oEvent) {
-				var oSelectItem = oEvent.getParameters().rowContext.getObject();
-
-				this.byId('searchCustomerID').setValue(oSelectItem.CustomerID);
-				this.onClose(oEvent.getSource().getParent());
 			},
 		});
 	}

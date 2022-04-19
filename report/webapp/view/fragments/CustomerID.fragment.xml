@@ -5,17 +5,20 @@
 >
    <Dialog
       id="DialogCustomerId"
+      beforeOpen=".CustomerIdController.onBeforeOpen($controller, $event)"
       contentWidth="40%"
       draggable="true"
       contentHeight="50%"
       title="Select Customer ID">
       <content>
         <t:Table
+            class="sapUiSmallMargin"
+            id="DialogCustomerIdTable"
             rows="{/Customers}"
             visibleRowCount="12"
             selectionMode="Single"
             selectionBehavior="RowOnly"
-            rowSelectionChange="onCustomerRowSelectionChange"
+            rowSelectionChange=".CustomerIdController.onCustomerRowSelectionChange($controller, $event)"
             ariaLabelledBy="title">
           <t:columns>
               <t:Column hAlign="Center">
@@ -40,7 +43,7 @@
       </t:Table>
       </content>
         <endButton>
-          <Button text="close" press="onClose"/>
+          <Button text="close" press=".CustomerIdController.DialogController.onClose"/>
         </endButton>
    </Dialog>
 </c:FragmentDefinition>
