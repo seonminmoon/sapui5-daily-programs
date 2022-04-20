@@ -9,7 +9,6 @@ sap.ui.define(['../DialogController', 'sap/ui/base/ManagedObject'], function (Di
 			that.byId('searchCustomerID').setValue(oSelectItem.CustomerID);
 			DialogController.onClose(oEvent.getSource().getParent());
 		},
-
 		onBeforeOpen: function (that, oEvent) {
 			sap.ui.getCore().byId('DialogCustomerIdTable').setSelectedIndex(-1);
 		},
