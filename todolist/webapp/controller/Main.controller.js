@@ -21,6 +21,9 @@ sap.ui.define(
 			onPressDetailBack: function () {
 				this._getSplitAppObj().backDetail();
 			},
+			onPressNavToSecondDetail2: function () {
+				this._getSplitAppObj().to(this.createId('secondDetaildetail'));
+			},
 
 			onListItemPress: function (oEvent) {
 				var sToPageId = oEvent.getParameter('listItem').getCustomData()[0].getValue();

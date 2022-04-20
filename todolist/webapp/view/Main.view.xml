@@ -2,6 +2,7 @@
 	controllerName="todolist.controller.Main"
 	xmlns="sap.m"
 	xmlns:t="sap.ui.table"
+	xmlns:f="sap.ui.layout.form"
     xmlns:viz="sap.viz.ui5.controls"
     xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds"
     xmlns:viz.data="sap.viz.ui5.data"
@@ -18,9 +19,10 @@
 				backgroundDesign="List">
 				<List itemPress=".onListItemPress">
 					<items>
-						<StandardListItem title="Mobile Table" type="Active" custom:to="detail" />
-						<StandardListItem title="PC Table" type="Active" custom:to="detailDetail" />
+						<StandardListItem title="Mobile Table" type="Active" custom:to="firstDetail" />
+						<StandardListItem title="PC Table" type="Active" custom:to="secondDetail" />
 						<StandardListItem title="Product Details Chart View" type="Active" custom:to="chartDetail" />
+						<StandardListItem title="second Detaildetail" type="Inactive" custom:to="secondDetaildetail" visible="false"/>
 					</items>
 				</List> 
                 <viz:VizFrame id="idPieChart" vizType='pie' height="300px" width="auto" 
@@ -57,7 +59,7 @@
 		<detailPages>
             <!-- 첫번째 상세페이지 : M Table-->
 			<Page
-				id="detail"
+				id="firstDetail"
 				title="Detail View 1"
 				backgroundDesign= "Solid">
                 <Table 
@@ -121,14 +123,13 @@
 			</Page>
             <!-- 두번째 상세페이지 : UI Table-->
 			<Page
-				id="detailDetail"
+				id="secondDetail"
 				title="Detail View 2"
-				backgroundDesign= "Solid"
-				showNavButton="true"
-				navButtonPress=".onPressDetailBack">
+				backgroundDesign= "Solid">
                 <t:Table
                     rows="{/uiTable}"
                     visibleRowCount="7"
+                    rowSelectionChange="onUiTableRowSelectionChange"
                     ariaLabelledBy="title">
                     <t:extension>
                         <OverflowToolbar design="Transparent">
@@ -137,6 +138,7 @@
                                 <ToolbarSpacer />
                                 <Button icon="sap-icon://add" press="onAdd('ui')"/>
                                 <Button icon="sap-icon://delete" press="onDelete($event, 'ui')"/>
+                                <Button text="detail" press="onPressNavToSecondDetail2" />
                             </content>
                         </OverflowToolbar>
                     </t:extension>
@@ -190,6 +192,44 @@
                         <viz.feeds:FeedItem uid="valueAxis" type="Measure" values="Cost" />
                     </viz:feeds>
                 </viz:VizFrame>
+			</Page>
+            <!--두번째 상세페이지의 내부 상세페이지-->
+			<Page
+				id="secondDetaildetail"
+				title="UI Table RowItem Content"
+				backgroundDesign= "Solid"
+				showNavButton="true"
+				navButtonPress=".onPressDetailBack">
+                <VBox class="sapUiSmallMargin">
+                    <f:SimpleForm 
+                        editable="false"
+                        layout="ResponsiveGridLayout"
+                        title="Contents"
+                        labelSpanXL="3"
+                        labelSpanL="3"
+                        labelSpanM="3"
+                        labelSpanS="12"
+                        adjustLabelSpan="false"
+                        emptySpanXL="4"
+                        emptySpanL="4"
+                        emptySpanM="4"
+                        emptySpanS="0"
+                        columnsXL="1"
+                        columnsL="1"
+                        columnsM="1"
+                        singleContainerFullSize="false" >
+                        <f:content>
+                            <Label text="Name" />
+                            <Text id="nameText" text="{SupplierName}" />
+                            <Label text="Street/No." />
+                            <Text text="{Street} {HouseNumber}" />
+                            <Label text="ZIP Code/City" />
+                            <Text text="{ZIPCode} {City}" />
+                            <Label text="Country" />
+                            <Text id="countryText" text="{Country}" />
+                        </f:content>
+                    </f:SimpleForm>
+                </VBox>
 			</Page>
 		</detailPages>
 	</SplitApp>
