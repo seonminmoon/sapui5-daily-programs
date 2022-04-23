@@ -121,6 +121,128 @@
 			"internalConsoleOptions": "neverOpen",
 			"port": 9229,
 			"env": {}
+		},
+		{
+			"name": "Start processflow",
+			"type": "node",
+			"request": "launch",
+			"runtimeExecutable": "npx",
+			"cwd": "${workspaceFolder}/processflow",
+			"windows": {
+				"runtimeExecutable": "npx.cmd"
+			},
+			"runtimeArgs": ["fiori", "run"],
+			"args": ["--open", "test/flpSandbox.html?sap-ui-xx-viewCache=false#processflow-display"],
+			"console": "integratedTerminal",
+			"internalConsoleOptions": "neverOpen",
+			"port": 9229,
+			"env": {
+				"DEBUG": "--inspect"
+			}
+		},
+		{
+			"name": "Start processflow with UI5 Version",
+			"type": "node",
+			"request": "launch",
+			"runtimeExecutable": "npx",
+			"cwd": "${workspaceFolder}/processflow",
+			"windows": {
+				"runtimeExecutable": "npx.cmd"
+			},
+			"runtimeArgs": ["fiori", "run"],
+			"args": [
+				"--open",
+				"test/flpSandbox.html?sap-ui-xx-viewCache=false#processflow-display",
+				"${input:UI5MinVersion1.65.0}"
+			],
+			"console": "integratedTerminal",
+			"internalConsoleOptions": "neverOpen",
+			"port": 9229,
+			"env": {
+				"DEBUG": "--inspect"
+			}
+		},
+		{
+			"name": "Start processflow Local",
+			"type": "node",
+			"request": "launch",
+			"cwd": "${workspaceFolder}/processflow",
+			"runtimeExecutable": "npx",
+			"windows": {
+				"runtimeExecutable": "npx.cmd"
+			},
+			"runtimeArgs": ["fiori", "run"],
+			"args": [
+				"--config",
+				"./ui5-local.yaml",
+				"--open",
+				"test/flpSandbox.html?sap-ui-xx-viewCache=false#processflow-display"
+			],
+			"console": "integratedTerminal",
+			"internalConsoleOptions": "neverOpen",
+			"port": 9229,
+			"env": {}
+		},
+		{
+			"name": "Start processflow",
+			"type": "node",
+			"request": "launch",
+			"runtimeExecutable": "npx",
+			"cwd": "${workspaceFolder}/processflow",
+			"windows": {
+				"runtimeExecutable": "npx.cmd"
+			},
+			"runtimeArgs": ["fiori", "run"],
+			"args": ["--open", "test/flpSandbox.html?sap-ui-xx-viewCache=false#processflow-display"],
+			"console": "integratedTerminal",
+			"internalConsoleOptions": "neverOpen",
+			"port": 9229,
+			"env": {
+				"DEBUG": "--inspect"
+			}
+		},
+		{
+			"name": "Start processflow with UI5 Version",
+			"type": "node",
+			"request": "launch",
+			"runtimeExecutable": "npx",
+			"cwd": "${workspaceFolder}/processflow",
+			"windows": {
+				"runtimeExecutable": "npx.cmd"
+			},
+			"runtimeArgs": ["fiori", "run"],
+			"args": [
+				"--open",
+				"test/flpSandbox.html?sap-ui-xx-viewCache=false#processflow-display",
+				"${input:UI5MinVersion1.65.0}"
+			],
+			"console": "integratedTerminal",
+			"internalConsoleOptions": "neverOpen",
+			"port": 9229,
+			"env": {
+				"DEBUG": "--inspect"
+			}
+		},
+		{
+			"name": "Start processflow Local",
+			"type": "node",
+			"request": "launch",
+			"cwd": "${workspaceFolder}/processflow",
+			"runtimeExecutable": "npx",
+			"windows": {
+				"runtimeExecutable": "npx.cmd"
+			},
+			"runtimeArgs": ["fiori", "run"],
+			"args": [
+				"--config",
+				"./ui5-local.yaml",
+				"--open",
+				"test/flpSandbox.html?sap-ui-xx-viewCache=false#processflow-display"
+			],
+			"console": "integratedTerminal",
+			"internalConsoleOptions": "neverOpen",
+			"port": 9229,
+			"env": {}
 		}
 	],
 	"compounds": [],
