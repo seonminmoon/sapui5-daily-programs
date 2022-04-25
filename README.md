@@ -25,4 +25,6 @@ Developed report program using SAPUI5.
 
 ## Program List
 * report
-* todo list + chart
+* todo list + split app
+* process flow
+* charts
