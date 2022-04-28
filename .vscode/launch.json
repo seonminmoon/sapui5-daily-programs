@@ -243,6 +243,67 @@
 			"internalConsoleOptions": "neverOpen",
 			"port": 9229,
 			"env": {}
+		},
+		{
+			"name": "Start charts",
+			"type": "node",
+			"request": "launch",
+			"runtimeExecutable": "npx",
+			"cwd": "${workspaceFolder}/charts",
+			"windows": {
+				"runtimeExecutable": "npx.cmd"
+			},
+			"runtimeArgs": ["fiori", "run"],
+			"args": ["--open", "test/flpSandbox.html?sap-ui-xx-viewCache=false#charts-display"],
+			"console": "integratedTerminal",
+			"internalConsoleOptions": "neverOpen",
+			"port": 9229,
+			"env": {
+				"DEBUG": "--inspect"
+			}
+		},
+		{
+			"name": "Start charts with UI5 Version",
+			"type": "node",
+			"request": "launch",
+			"runtimeExecutable": "npx",
+			"cwd": "${workspaceFolder}/charts",
+			"windows": {
+				"runtimeExecutable": "npx.cmd"
+			},
+			"runtimeArgs": ["fiori", "run"],
+			"args": [
+				"--open",
+				"test/flpSandbox.html?sap-ui-xx-viewCache=false#charts-display",
+				"${input:UI5MinVersion1.65.0}"
+			],
+			"console": "integratedTerminal",
+			"internalConsoleOptions": "neverOpen",
+			"port": 9229,
+			"env": {
+				"DEBUG": "--inspect"
+			}
+		},
+		{
+			"name": "Start charts Local",
+			"type": "node",
+			"request": "launch",
+			"cwd": "${workspaceFolder}/charts",
+			"runtimeExecutable": "npx",
+			"windows": {
+				"runtimeExecutable": "npx.cmd"
+			},
+			"runtimeArgs": ["fiori", "run"],
+			"args": [
+				"--config",
+				"./ui5-local.yaml",
+				"--open",
+				"test/flpSandbox.html?sap-ui-xx-viewCache=false#charts-display"
+			],
+			"console": "integratedTerminal",
+			"internalConsoleOptions": "neverOpen",
+			"port": 9229,
+			"env": {}
 		}
 	],
 	"compounds": [],
