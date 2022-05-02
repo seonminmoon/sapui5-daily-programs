@@ -3,12 +3,17 @@
     xmlns:mvc="sap.ui.core.mvc"
     displayBlock="true"
     xmlns="sap.m"
+    xmlns:viz="sap.viz.ui5.controls"
 >
     <Shell id="shell">
         <App id="app">
             <pages>
                 <Page id="page" title="{i18n>title}">
-                    <content />
+                    <content>
+                        <viz:VizFrame id="idPieChart" vizType="pie" />
+                        <viz:VizFrame id="idLineChart" vizType="line" />
+                        <viz:VizFrame id="idColChart" vizType="column" />
+                    </content>
                 </Page>
             </pages>
         </App>
