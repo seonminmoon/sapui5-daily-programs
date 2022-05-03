@@ -10,9 +10,36 @@
             <pages>
                 <Page id="page" title="{i18n>title}">
                     <content>
+                        <!-- Made in Controller-->
                         <viz:VizFrame id="idPieChart" vizType="pie" />
                         <viz:VizFrame id="idLineChart" vizType="line" />
                         <viz:VizFrame id="idColChart" vizType="column" />
+
+                        
+                        <!-- Made in View -->
+                        <!-- <viz:VizFrame 
+                            id="idLineChart"
+                            width="100%" height="70%"
+                            vizType='line'
+                            vizProperties="{ 'title' : { 'visible' : true , text : 'Product Details'} }">
+                            <viz:dataset>
+                                <viz.data:FlattenedDataset data="{/chartDetail}">
+                                    <viz.data:dimensions>
+                                        <viz.data:DimensionDefinition name="Part Name" value="{name}" />
+                                    </viz.data:dimensions>
+                                    <viz.data:measures>
+                                        <viz.data:MeasureDefinition name="Rate" value="{rate}" />
+                                        <viz.data:MeasureDefinition name="Cost" value="{cost}" />
+                                    </viz.data:measures>
+                                </viz.data:FlattenedDataset>
+                            </viz:dataset>
+
+                            <viz:feeds>
+                                <viz.feeds:FeedItem uid="categoryAxis" type="Dimension" values="Part Name" />
+                                <viz.feeds:FeedItem uid="valueAxis" type="Measure" values="Rate" />
+                                <viz.feeds:FeedItem uid="valueAxis" type="Measure" values="Cost" />
+                            </viz:feeds>
+                        </viz:VizFrame> -->
                     </content>
                 </Page>
             </pages>
