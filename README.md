@@ -24,7 +24,7 @@ Developed report program using SAPUI5.
 * sapui5 extension
 
 ## Program List
-* report
-* todo list + split app
+* report (App)
+* todo list (split app)
 * process flow
-* charts
+* charts (App)
