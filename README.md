@@ -23,7 +23,7 @@ Developed report program using SAPUI5.
 * fiori tools
 * sapui5 extension
 
-## Program List
+## Programs
 * report (App)
 * todo list (split app)
 * process flow
