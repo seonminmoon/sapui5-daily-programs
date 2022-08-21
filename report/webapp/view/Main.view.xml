@@ -104,12 +104,35 @@
                 selectionMode="None"
                 visibleRowCount="17"
                 cellClick="onCellClick"
+                beforeOpenContextMenu="opBeforeOpenContextMenu"
                 ariaLabelledBy="title">
+                <!--cellClick="onCellClick"-->
                 <t:extension>
                     <OverflowToolbar style="Clear">
                         <ToolbarSpacer />
                     </OverflowToolbar>
                 </t:extension>
+                <t:contextMenu>
+                    <Menu itemSelected="onMenuAction">
+                        <MenuItem text="Hide Existing Sites"/>
+                        <MenuItem text="Simulate Visitor Traffic">
+                            <items>
+                                <MenuItem text="A"/>
+                                <MenuItem text="B"/>
+                            </items>
+                        </MenuItem>
+                        <MenuItem text="Create New Site">
+                            <items>
+                                <MenuItem text="Official Store"/>
+                                <MenuItem text="Partner Store"/>
+                                <MenuItem text="Franchise Store"/>
+                                <MenuItem text="Temporary Store"/>
+                                <MenuItem text="Other"/>
+                            </items>
+                        </MenuItem>
+                        <MenuItem text="Export Map"/>
+                    </Menu>
+                </t:contextMenu>
                 <t:columns>
                     <t:Column>
                         <Label text="ID" />
