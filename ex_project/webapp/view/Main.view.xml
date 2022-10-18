@@ -1,0 +1,230 @@
+<mvc:View controllerName="sap.btp.exproject.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:l="sap.ui.layout"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:core="sap.ui.core"
+    xmlns:viz.data="sap.viz.ui5.data"
+    xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds"
+    xmlns:viz="sap.viz.ui5.controls"
+    xmlns="sap.m">
+    <Page
+		title="연도별 항공사 매출"
+		class="sapUiContentPadding sapUiResponsivePadding--header sapUiResponsivePadding--subHeader sapUiResponsivePadding--content sapUiResponsivePadding--footer">
+		<content>
+			<l:Grid containerQuery="true">
+				<VBox width="100%">
+                    <f:Form id="FormToolbar"
+                        editable="true"
+                        ariaLabelledBy="Title1">
+                        <f:toolbar>
+                            <Toolbar id="TB1">
+                                <Title id="Title1" text="조건"/>
+                                <ToolbarSpacer />
+                                <Button 
+                                    icon="sap-icon://search"
+                                    press="onSearchPress"/>
+                            </Toolbar>
+                        </f:toolbar>
+                        <f:layout>
+                            <f:ResponsiveGridLayout
+                                labelSpanXL="1"
+                                labelSpanL="1"
+                                labelSpanM="1"
+                                labelSpanS="12"
+                                adjustLabelSpan="false"
+                                emptySpanXL="0"
+                                emptySpanL="0"
+                                emptySpanM="0"
+                                emptySpanS="0"
+                                columnsXL="2"
+                                columnsL="1"
+                                columnsM="1"
+                                singleContainerFullSize="false" />
+                        </f:layout>
+                        <f:formContainers>
+                            <f:FormContainer ariaLabelledBy="Title2">
+                                <f:formElements>
+                                    <f:FormElement label="선택연도">
+                                        <f:fields>
+                                            <Select width="100%" id="selectYear" selectedKey="{Country}">
+                                                <items>
+                                                    <core:Item text="2022년" key="2022"/>
+                                                    <core:Item text="2021년" key="2021"/>
+                                                    <core:Item text="2020년" key="2020"/>
+                                                </items>                                                
+                                            </Select>
+                                        </f:fields>
+                                    </f:FormElement>
+                                </f:formElements>
+                            </f:FormContainer>
+                        </f:formContainers>
+                    </f:Form>
+                    <layoutData>
+                        <l:GridData span="XL2 L2 M12 S12" />
+                    </layoutData>
+                </VBox>
+                <VBox width="100%">
+                    <VBox>
+                        <Panel 
+                            expandable="true"
+                            expanded="true"
+                            headerText="항공사별 매출" 
+                            width="auto">
+                            <content>
+                                <Table 
+                                    id="airplanTable"
+                                    inset="false"
+                                    items="{
+                                        path: 'data>/'
+                                    }"
+                                    growing="true"
+                                    growingThreshold="3">
+                                    <columns>
+                                        <Column
+                                            width="12em">
+                                            <Text text="년도" />
+                                        </Column>
+                                        <Column
+                                            hAlign="Begin"
+                                            minScreenWidth="Tablet"
+                                            demandPopin="true">
+                                            <Text text="항공사" />
+                                        </Column>
+                                        <Column
+                                            minScreenWidth="Desktop"
+                                            demandPopin="true"
+                                            hAlign="Begin">
+                                            <Text text="항공사명" />
+                                        </Column>
+                                        <Column
+                                            minScreenWidth="Desktop"
+                                            demandPopin="true"
+                                            hAlign="Begin">
+                                            <Text text="예약건수" />
+                                        </Column>
+                                        <Column
+                                            hAlign="Begin">
+                                            <Text text="매출액" />
+                                        </Column>
+                                        <Column
+                                            hAlign="Begin">
+                                            <Text text="취소건수" />
+                                        </Column>
+                                    </columns>
+                                    <items>
+                                        <ColumnListItem 
+                                            type="Active"
+                                            vAlign="Middle" 
+                                            press="onTableItemPress">
+                                            <cells>
+                                                <Text
+                                                    text="{data>year}" />
+                                                <Text
+                                                    text="{data>airline}" />
+                                                <Text
+                                                    text="{data>airlineName}" />
+                                                <Text
+                                                    text="{data>numberOfReservations}" />
+                                                <Text
+                                                    text="{
+                                                        path: 'data>salesAmount',
+                                                        type: 'sap.ui.model.type.Float'
+                                                    } {data>salesCurrency}" />
+                                                <Text
+                                                    text="{data>cancellations}" />    
+                                            </cells>
+                                        </ColumnListItem>
+                                    </items>
+                                </Table>
+                            </content>
+                        </Panel>
+                    </VBox>
+                    
+                    <!-- Chart line  -->
+                    <VBox>
+                        <l:Grid containerQuery="true">
+                            <VBox width="100%">
+                                <l:FixFlex id='chartFixFlex' minFlexSize="250">
+                                    <!--Below is the setting panel -->
+                                    <l:flexContent>
+                                        <viz:Popover id="donutPopover"></viz:Popover>
+                                        <viz:VizFrame 
+                                            id="donutChart" 
+                                            uiConfig="{applicationSet:'fiori'}"
+                                            height="100%" 
+                                            width="100%" 
+                                            vizType='donut'
+                                            selectData="onSelectData">
+                                            <viz:dataset>
+                                                <viz.data:FlattenedDataset data="{donut>/}">
+                                                    <viz.data:dimensions>
+                                                        <viz.data:DimensionDefinition name="연도"
+                                                            value="{donut>year}" />
+                                                    </viz.data:dimensions>
+                                                    <viz.data:measures>
+                                                        <viz.data:MeasureDefinition name="매출액"
+                                                            value="{
+                                                                path: 'donut>salesAmount'
+                                                            }" />
+                                                    </viz.data:measures>
+                                                </viz.data:FlattenedDataset>
+                                            </viz:dataset>
+
+                                            <viz:feeds>
+                                                <viz.feeds:FeedItem uid="size" type="Measure"
+                                                    values="매출액" />
+                                                <viz.feeds:FeedItem uid="color" type="Dimension"
+                                                    values="연도" />
+                                            </viz:feeds>
+                                        </viz:VizFrame>
+                                    </l:flexContent>
+                                </l:FixFlex>
+                            </VBox>
+
+                            <VBox width="100%">
+                                <l:FixFlex id='chartFixFlex2' minFlexSize="250">
+                                    <!--Below is the setting panel -->
+                                    <l:flexContent>
+                                        <viz:Popover id="stackPopover"></viz:Popover>
+                                        <viz:VizFrame 
+                                            id="stackChart" 
+                                            uiConfig="{applicationSet:'fiori'}"
+                                            height="100%" 
+                                            width="100%" 
+                                            vizType='stacked_column'>
+                                            <viz:dataset>
+                                                <viz.data:FlattenedDataset data="{stacked>/}">
+                                                    <viz.data:dimensions>
+                                                        <viz.data:DimensionDefinition name="월별"
+                                                            value="{stacked>Month}" />
+                                                    </viz.data:dimensions>
+                                                    <viz.data:measures>
+                                                        <viz.data:MeasureDefinition name="매출액"
+                                                            value="{stacked>Curam}" />
+                                                        <viz.data:MeasureDefinition name="취소 매출액"
+                                                            value="{stacked>Curam_c}" />
+                                                    </viz.data:measures>
+                                                </viz.data:FlattenedDataset>
+                                            </viz:dataset>
+
+                                            <viz:feeds>
+                                                <viz.feeds:FeedItem uid="valueAxis" type="Measure"
+                                                    values="취소 매출액,매출액" />
+                                                <viz.feeds:FeedItem uid="categoryAxis" type="Dimension"
+                                                    values="월별" />
+                                            </viz:feeds>
+                                        </viz:VizFrame>
+                                    </l:flexContent>
+                                </l:FixFlex>
+                            </VBox>
+                        </l:Grid>
+                        
+                    </VBox>
+                    <layoutData>
+                        <l:GridData span="XL10 L10 M12 S12" />
+                    </layoutData>
+                </VBox>
+			</l:Grid>
+		</content>
+	</Page>
+</mvc:View>

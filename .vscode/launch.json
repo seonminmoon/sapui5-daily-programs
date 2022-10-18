@@ -9,8 +9,14 @@
 			"windows": {
 				"runtimeExecutable": "npx.cmd"
 			},
-			"runtimeArgs": ["fiori", "run"],
-			"args": ["--open", "test/flpSandbox.html?sap-ui-xx-viewCache=false#report-display"],
+			"runtimeArgs": [
+				"fiori",
+				"run"
+			],
+			"args": [
+				"--open",
+				"test/flpSandbox.html?sap-ui-xx-viewCache=false#report-display"
+			],
 			"console": "integratedTerminal",
 			"internalConsoleOptions": "neverOpen",
 			"port": 9229,
@@ -27,7 +33,10 @@
 			"windows": {
 				"runtimeExecutable": "npx.cmd"
 			},
-			"runtimeArgs": ["fiori", "run"],
+			"runtimeArgs": [
+				"fiori",
+				"run"
+			],
 			"args": [
 				"--open",
 				"test/flpSandbox.html?sap-ui-xx-viewCache=false#report-display",
@@ -49,7 +58,10 @@
 			"windows": {
 				"runtimeExecutable": "npx.cmd"
 			},
-			"runtimeArgs": ["fiori", "run"],
+			"runtimeArgs": [
+				"fiori",
+				"run"
+			],
 			"args": [
 				"--config",
 				"./ui5-local.yaml",
@@ -70,8 +82,14 @@
 			"windows": {
 				"runtimeExecutable": "npx.cmd"
 			},
-			"runtimeArgs": ["fiori", "run"],
-			"args": ["--open", "test/flpSandbox.html?sap-ui-xx-viewCache=false#todolist-display"],
+			"runtimeArgs": [
+				"fiori",
+				"run"
+			],
+			"args": [
+				"--open",
+				"test/flpSandbox.html?sap-ui-xx-viewCache=false#todolist-display"
+			],
 			"console": "integratedTerminal",
 			"internalConsoleOptions": "neverOpen",
 			"port": 9229,
@@ -88,7 +106,10 @@
 			"windows": {
 				"runtimeExecutable": "npx.cmd"
 			},
-			"runtimeArgs": ["fiori", "run"],
+			"runtimeArgs": [
+				"fiori",
+				"run"
+			],
 			"args": [
 				"--open",
 				"test/flpSandbox.html?sap-ui-xx-viewCache=false#todolist-display",
@@ -110,7 +131,10 @@
 			"windows": {
 				"runtimeExecutable": "npx.cmd"
 			},
-			"runtimeArgs": ["fiori", "run"],
+			"runtimeArgs": [
+				"fiori",
+				"run"
+			],
 			"args": [
 				"--config",
 				"./ui5-local.yaml",
@@ -131,8 +155,14 @@
 			"windows": {
 				"runtimeExecutable": "npx.cmd"
 			},
-			"runtimeArgs": ["fiori", "run"],
-			"args": ["--open", "test/flpSandbox.html?sap-ui-xx-viewCache=false#processflow-display"],
+			"runtimeArgs": [
+				"fiori",
+				"run"
+			],
+			"args": [
+				"--open",
+				"test/flpSandbox.html?sap-ui-xx-viewCache=false#processflow-display"
+			],
 			"console": "integratedTerminal",
 			"internalConsoleOptions": "neverOpen",
 			"port": 9229,
@@ -149,7 +179,10 @@
 			"windows": {
 				"runtimeExecutable": "npx.cmd"
 			},
-			"runtimeArgs": ["fiori", "run"],
+			"runtimeArgs": [
+				"fiori",
+				"run"
+			],
 			"args": [
 				"--open",
 				"test/flpSandbox.html?sap-ui-xx-viewCache=false#processflow-display",
@@ -171,7 +204,10 @@
 			"windows": {
 				"runtimeExecutable": "npx.cmd"
 			},
-			"runtimeArgs": ["fiori", "run"],
+			"runtimeArgs": [
+				"fiori",
+				"run"
+			],
 			"args": [
 				"--config",
 				"./ui5-local.yaml",
@@ -192,8 +228,14 @@
 			"windows": {
 				"runtimeExecutable": "npx.cmd"
 			},
-			"runtimeArgs": ["fiori", "run"],
-			"args": ["--open", "test/flpSandbox.html?sap-ui-xx-viewCache=false#processflow-display"],
+			"runtimeArgs": [
+				"fiori",
+				"run"
+			],
+			"args": [
+				"--open",
+				"test/flpSandbox.html?sap-ui-xx-viewCache=false#processflow-display"
+			],
 			"console": "integratedTerminal",
 			"internalConsoleOptions": "neverOpen",
 			"port": 9229,
@@ -210,7 +252,10 @@
 			"windows": {
 				"runtimeExecutable": "npx.cmd"
 			},
-			"runtimeArgs": ["fiori", "run"],
+			"runtimeArgs": [
+				"fiori",
+				"run"
+			],
 			"args": [
 				"--open",
 				"test/flpSandbox.html?sap-ui-xx-viewCache=false#processflow-display",
@@ -232,7 +277,10 @@
 			"windows": {
 				"runtimeExecutable": "npx.cmd"
 			},
-			"runtimeArgs": ["fiori", "run"],
+			"runtimeArgs": [
+				"fiori",
+				"run"
+			],
 			"args": [
 				"--config",
 				"./ui5-local.yaml",
@@ -253,8 +301,14 @@
 			"windows": {
 				"runtimeExecutable": "npx.cmd"
 			},
-			"runtimeArgs": ["fiori", "run"],
-			"args": ["--open", "test/flpSandbox.html?sap-ui-xx-viewCache=false#charts-display"],
+			"runtimeArgs": [
+				"fiori",
+				"run"
+			],
+			"args": [
+				"--open",
+				"test/flpSandbox.html?sap-ui-xx-viewCache=false#charts-display"
+			],
 			"console": "integratedTerminal",
 			"internalConsoleOptions": "neverOpen",
 			"port": 9229,
@@ -271,7 +325,10 @@
 			"windows": {
 				"runtimeExecutable": "npx.cmd"
 			},
-			"runtimeArgs": ["fiori", "run"],
+			"runtimeArgs": [
+				"fiori",
+				"run"
+			],
 			"args": [
 				"--open",
 				"test/flpSandbox.html?sap-ui-xx-viewCache=false#charts-display",
@@ -293,7 +350,10 @@
 			"windows": {
 				"runtimeExecutable": "npx.cmd"
 			},
-			"runtimeArgs": ["fiori", "run"],
+			"runtimeArgs": [
+				"fiori",
+				"run"
+			],
 			"args": [
 				"--config",
 				"./ui5-local.yaml",
@@ -304,6 +364,86 @@
 			"internalConsoleOptions": "neverOpen",
 			"port": 9229,
 			"env": {}
+		},
+		{
+			"name": "Start test0000",
+			"type": "node",
+			"request": "launch",
+			"runtimeExecutable": "npx",
+			"cwd": "${workspaceFolder}/test0000",
+			"windows": {
+				"runtimeExecutable": "npx.cmd"
+			},
+			"runtimeArgs": [
+				"fiori",
+				"run"
+			],
+			"args": [
+				"--open",
+				"test/flpSandbox.html#test0000-display"
+			],
+			"console": "internalConsole",
+			"internalConsoleOptions": "openOnSessionStart",
+			"outputCapture": "std",
+			"port": 9229,
+			"env": {
+				"DEBUG": "--inspect",
+				"FIORI_TOOLS_URL_PARAMS": "sap-ui-xx-viewCache=false"
+			}
+		},
+		{
+			"name": "Start test0000 Mock",
+			"type": "node",
+			"request": "launch",
+			"cwd": "${workspaceFolder}/test0000",
+			"runtimeExecutable": "npx",
+			"windows": {
+				"runtimeExecutable": "npx.cmd"
+			},
+			"runtimeArgs": [
+				"fiori",
+				"run"
+			],
+			"args": [
+				"--config",
+				"./ui5-mock.yaml",
+				"--open",
+				"test/flpSandbox.html#test0000-display"
+			],
+			"console": "internalConsole",
+			"internalConsoleOptions": "openOnSessionStart",
+			"outputCapture": "std",
+			"port": 9229,
+			"env": {
+				"FIORI_TOOLS_URL_PARAMS": "sap-ui-xx-viewCache=false"
+			}
+		},
+		{
+			"name": "Start test0000 Local",
+			"type": "node",
+			"request": "launch",
+			"cwd": "${workspaceFolder}/test0000",
+			"runtimeExecutable": "npx",
+			"windows": {
+				"runtimeExecutable": "npx.cmd"
+			},
+			"runtimeArgs": [
+				"fiori",
+				"run"
+			],
+			"args": [
+				"--config",
+				"./ui5-local.yaml",
+				"--open",
+				"test/flpSandbox.html#test0000-display"
+			],
+			"console": "internalConsole",
+			"internalConsoleOptions": "openOnSessionStart",
+			"outputCapture": "std",
+			"port": 9229,
+			"env": {
+				"FIORI_TOOLS_URL_PARAMS": "sap-ui-xx-viewCache=false"
+			}
 		}
 	],
 	"compounds": [],

@@ -1,0 +1,46 @@
+<mvc:View controllerName="test0000.controller.Detail" xmlns:mvc="sap.ui.core.mvc" xmlns:m="sap.m" xmlns:f="sap.f" xmlns:form="sap.ui.layout.form" xmlns="sap.uxap">
+    <ObjectPageLayout id="ObjectPageLayout" showTitleInHeaderContent="true" alwaysShowContentHeader="false" preserveHeaderStateOnScroll="false" headerContentPinnable="true" isChildPage="true" upperCaseAnchorBar="false">
+        <headerTitle>
+            <ObjectPageDynamicHeaderTitle>
+                <expandedHeading>
+                    <m:HBox>
+                        <m:Title text="Detail View" wrapping="true" />
+                        <m:ObjectMarker type="Favorite" class="sapUiTinyMarginBegin" />
+                    </m:HBox>
+                </expandedHeading>
+
+                <snappedHeading>
+                    <m:FlexBox fitContainer="true" alignItems="Center">
+                        <m:Title text="Detail Title" wrapping="true" />
+                    </m:FlexBox>
+                </snappedHeading>
+            </ObjectPageDynamicHeaderTitle>
+        </headerTitle>
+
+        <headerContent>
+            <m:FlexBox wrap="Wrap" fitContainer="true" alignItems="Stretch" />
+        </headerContent>
+
+        <sections>
+            <ObjectPageSection title="General Information">
+                <subSections>
+                    <ObjectPageSubSection>
+                        <blocks>
+                            <m:Text text="General Information" />
+                        </blocks>
+                    </ObjectPageSubSection>
+                </subSections>
+            </ObjectPageSection>
+
+            <ObjectPageSection title="Suppliers">
+                <subSections>
+                    <ObjectPageSubSection>
+                        <blocks>
+                            <m:Text id="headerKey" text="test test" />
+                        </blocks>
+                    </ObjectPageSubSection>
+                </subSections>
+            </ObjectPageSection>
+        </sections>
+    </ObjectPageLayout>
+</mvc:View>

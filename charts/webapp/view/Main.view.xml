@@ -3,33 +3,76 @@
     xmlns:mvc="sap.ui.core.mvc"
     displayBlock="true"
     xmlns="sap.m"
+    xmlns:t="sap.ui.table"
     xmlns:viz="sap.viz.ui5.controls"
+    xmlns:viz.data="sap.viz.ui5.data"
+    xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds"
 >
     <Shell id="shell">
         <App id="app">
             <pages>
                 <Page id="page" title="{i18n>title}">
                     <content>
+                        <Input width="30%" placeholder="조회할 데이터를 입력하세요."/>
+                        <t:Table
+                            rows="{/table}"
+                            selectionMode="MultiToggle"
+                            visibleRowCount="7"
+                            paste="onPaste"
+                            ariaLabelledBy="title">
+                            <t:extension>
+                                <OverflowToolbar style="Clear">
+                                    <Title id="title" text="Producs"/>
+                                </OverflowToolbar>
+                            </t:extension>
+                            <t:columns>
+                                <t:Column width="11rem">
+                                    <Label text="Amount" />
+                                    <t:template>
+                                    <Input
+                                        value="{ 
+                                            path:'amount', 
+                                            type: 'sap.ui.model.type.Float',
+                                            formatOptions: {
+                                                minFractionDigits: 2,
+                                                maxFractionDigits: 2
+                                            }
+                                        }"/>
+                                    </t:template>
+                                </t:Column>
+                                <t:Column width="11rem">
+                                    <Label text="Amount2" />
+                                    <t:template>
+                                        <ObjectNumber number="{
+                                                parts:[{path:'amount'},{path:'currency'}],
+                                                type: 'sap.ui.model.type.Currency',
+                                                formatOptions: { showMeasure: true }
+                                            }"/>
+                                    </t:template>
+                                </t:Column>
+                            </t:columns>
+                        </t:Table>
+
+
                         <!-- Made in Controller-->
-                        <viz:VizFrame id="idPieChart" vizType="pie" />
-                        <viz:VizFrame id="idLineChart" vizType="line" />
+                        <!-- <viz:VizFrame id="idPieChart" vizType="pie" />
+                        <viz:VizFrame id="idLineChart" vizType="line" /> -->
                         <viz:VizFrame id="idColChart" vizType="column" />
 
-                        
+
                         <!-- Made in View -->
-                        <!-- <viz:VizFrame 
+                        <viz:VizFrame 
                             id="idLineChart"
-                            width="100%" height="70%"
+                            width="50%" height="50%"
                             vizType='line'
                             vizProperties="{ 'title' : { 'visible' : true , text : 'Product Details'} }">
                             <viz:dataset>
-                                <viz.data:FlattenedDataset data="{/chartDetail}">
+                                <viz.data:FlattenedDataset data="{view>/list}">
                                     <viz.data:dimensions>
-                                        <viz.data:DimensionDefinition name="Part Name" value="{name}" />
+                                        <viz.data:DimensionDefinition name="Part Name" value="{view>name}" />
                                     </viz.data:dimensions>
                                     <viz.data:measures>
-                                        <viz.data:MeasureDefinition name="Rate" value="{rate}" />
-                                        <viz.data:MeasureDefinition name="Cost" value="{cost}" />
+                                        <viz.data:MeasureDefinition name="Rate" value="{view>rate}" />
                                     </viz.data:measures>
                                 </viz.data:FlattenedDataset>
                             </viz:dataset>
@@ -37,9 +80,10 @@
                             <viz:feeds>
                                 <viz.feeds:FeedItem uid="categoryAxis" type="Dimension" values="Part Name" />
                                 <viz.feeds:FeedItem uid="valueAxis" type="Measure" values="Rate" />
-                                <viz.feeds:FeedItem uid="valueAxis" type="Measure" values="Cost" />
                             </viz:feeds>
-                        </viz:VizFrame> -->
+                        </viz:VizFrame>
+
+
                     </content>
                 </Page>
             </pages>

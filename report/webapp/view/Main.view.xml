@@ -110,6 +110,7 @@
                 <t:extension>
                     <OverflowToolbar style="Clear">
                         <ToolbarSpacer />
+                        <Button icon="sap-icon://download" press="onExportExcel"/>
                     </OverflowToolbar>
                 </t:extension>
                 <t:contextMenu>
@@ -135,24 +136,36 @@
                 </t:contextMenu>
                 <t:columns>
                     <t:Column>
+                        <t:customData>
+                            <core:CustomData key="key" value="OrderID"/>
+                        </t:customData>
                         <Label text="ID" />
                         <t:template>
                             <Text text="{OrderID}" wrapping="false" />
                         </t:template>
                     </t:Column>
                     <t:Column>
+                        <t:customData>
+                            <core:CustomData key="key" value="CustomerID"/>
+                        </t:customData>
                         <Label text="CustomerID" />
                         <t:template>
                             <Text text="{CustomerID}" wrapping="false" />
                         </t:template>
                     </t:Column>
                     <t:Column>
+                        <t:customData>
+                            <core:CustomData key="key" value="EmployeeID"/>
+                        </t:customData>
                         <Label text="EmployeeID" />
                         <t:template>
                             <Text text="{EmployeeID}" wrapping="false" />
                         </t:template>
                     </t:Column>
                     <t:Column>
+                        <t:customData>
+                            <core:CustomData key="key" value="OrderDate"/>
+                        </t:customData>
                         <Label text="OrderDate" />
                         <t:template>
                             <Text text="{
@@ -162,6 +175,9 @@
                         </t:template>
                     </t:Column>
                     <t:Column>
+                        <t:customData>
+                            <core:CustomData key="key" value="RequiredDate"/>
+                        </t:customData>
                         <Label text="RequiredDate" />
                         <t:template>
                             <Text text="{
@@ -171,11 +187,13 @@
                         </t:template>
                     </t:Column>
                     <t:Column>
+                        <t:customData>
+                            <core:CustomData key="key" value="ShippedDate"/>
+                        </t:customData>
                         <Label text="ShippedDate" />
                         <t:template>
                             <Text text="{
-                                path : 'ShippedDate',
-                                formatter : '.formatter.dateTimeString'
+                                path : 'ShippedDate'
                             }" wrapping="false" />
                         </t:template>
                     </t:Column>

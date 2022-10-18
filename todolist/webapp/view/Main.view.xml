@@ -15,7 +15,7 @@
 		<masterPages>
 			<Page
 				id="maste"
-				title="Master"
+				title="Title"
 				backgroundDesign="List">
 				<List itemPress=".onListItemPress">
 					<items>
@@ -25,9 +25,10 @@
 						<StandardListItem title="second Detaildetail" type="Inactive" custom:to="secondDetaildetail" visible="false"/>
 					</items>
 				</List> 
+                <viz:Popover id="idPiePopover"/>
                 <viz:VizFrame id="idPieChart" vizType='pie' height="300px" width="auto" 
                     uiConfig="{'applicationSet': 'fiori'}"
-                    selectData="onPressChartSelectData"
+                    selectData="onChartSelectData"
                     custom:to="chartDetail"
                     vizProperties="{
                         'title' : { 'visible' : true , text : 'Products Pie'},
@@ -60,7 +61,7 @@
             <!-- 첫번째 상세페이지 : M Table-->
 			<Page
 				id="firstDetail"
-				title="Detail View 1"
+				title="Detail Title"
 				backgroundDesign= "Solid">
                 <Table 
                     id="idProductsTable"
@@ -71,8 +72,8 @@
                             <content>
                                 <Title text="sap.m.Table"/>
                                 <ToolbarSpacer />
-                                <Button icon="sap-icon://add" press="onAdd('m')"/>
-                                <Button icon="sap-icon://delete" press="onDelete($event, 'm')"/>
+                                <Button icon="sap-icon://add" press="onAddPress('m')"/>
+                                <Button icon="sap-icon://delete" press="onDeletePress($event, 'm')"/>
                             </content>
                         </OverflowToolbar>
                     </headerToolbar>
@@ -136,9 +137,9 @@
                             <content>
                                 <Title text="sap.ui.table.Table" level="H2"/>
                                 <ToolbarSpacer />
-                                <Button icon="sap-icon://add" press="onAdd('ui')"/>
-                                <Button icon="sap-icon://delete" press="onDelete($event, 'ui')"/>
-                                <Button text="detail" press="onPressNavToSecondDetail2" />
+                                <Button icon="sap-icon://add" press="onAddPress('ui')"/>
+                                <Button icon="sap-icon://delete" press="onDeletePress($event, 'ui')"/>
+                                <Button text="detail" press="onNavToSecondDetailDetailPress" />
                             </content>
                         </OverflowToolbar>
                     </t:extension>
@@ -169,6 +170,7 @@
 				id="chartDetail"
 				title="Product Details Chart View"
 				backgroundDesign= "Solid">
+                <viz:Popover id="idLinePopover"/>
                 <viz:VizFrame 
                     id="idLineChart"
                     width="100%" height="70%"
@@ -199,7 +201,7 @@
 				title="UI Table RowItem Content"
 				backgroundDesign= "Solid"
 				showNavButton="true"
-				navButtonPress=".onPressDetailBack">
+				navButtonPress=".onBackNavButtonPress">
                 <VBox class="sapUiSmallMargin">
                     <f:SimpleForm 
                         editable="false"

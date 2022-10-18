@@ -1,0 +1,186 @@
+<mvc:View
+	controllerName="report.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns:t="sap.ui.table"
+    xmlns="sap.m"
+    xmlns:f="sap.f"
+    xmlns:fb="sap.ui.comp.filterbar"
+    xmlns:core="sap.ui.core">
+	<f:DynamicPage id="dynamicPageId" toggleHeaderOnTitleClick="false">
+		<!-- DynamicPage Title -->
+        <f:header>
+            <f:DynamicPageHeader>
+                <fb:FilterBar 
+                    id="filterBar"
+                    header="Search Filters"
+                    showRestoreOnFB="true"
+                    showClearOnFB="true" 
+                    clear="onClear"
+                    reset="onReset"
+                    search="onSearch"
+                    filterContainerWidth="16rem"
+                    showClearButton="true">
+                    <fb:filterGroupItems>
+                        <fb:FilterGroupItem groupName="__$INTERNAL$" name="OrderID" label="Order ID" visibleInFilterBar="true">
+                            <fb:control>
+                                <Input 
+                                    fieldGroupIds="search" 
+                                    name="OrderID" 
+                                    value="{local>/search/EQ/OrderID}"
+                                    submit="onSearch"/>
+                            </fb:control>
+                        </fb:FilterGroupItem>
+
+                        <fb:FilterGroupItem groupName="__$INTERNAL$" name="CustomerID" label="Customer ID" mandatory="true" visibleInFilterBar="true">
+                            <fb:control>
+                                <Input id="searchCustomerID" 
+                                fieldGroupIds="search"
+                                showValueHelp="true"
+                                valueHelpRequest="onValueHelpCustomerID"
+                                name="CustomerID" 
+                                value="{local>/search/EQ/CustomerID}" submit="onSearch"/>
+                            </fb:control>
+                        </fb:FilterGroupItem>
+                        <fb:FilterGroupItem groupName="G1" name="EmployeeID" groupTitle="Group1" label="Employee ID" labelTooltip="Tooltip GroupItem Example" visibleInFilterBar="true">
+                            <fb:control>
+                                <Input 
+                                fieldGroupIds="search" 
+                                name="EmployeeID" 
+                                value="{local>/search/EQ/EmployeeID}" submit="onSearch"/>
+                            </fb:control>
+                        </fb:FilterGroupItem>
+                        <fb:FilterGroupItem groupName="G1" name="OrderDate" groupTitle="Group1" label="Order Date" visibleInFilterBar="true">
+                            <fb:control>
+                                <DatePicker
+                                    fieldGroupIds="search"
+                                    name="OrderDate" value="{local>/search/EQ/OrderDate}"
+                                    displayFormat="yyyy-MM-dd"
+                                    valueFormat="yyyy-MM-dd"
+                                />
+                            </fb:control>
+                        </fb:FilterGroupItem>
+                        <fb:FilterGroupItem groupName="G2" name="RequiredDate" groupTitle="Group2" label="Required Date" visibleInFilterBar="true">
+                            <fb:control>
+                                <DatePicker
+                                    fieldGroupIds="search"
+                                    name="RequiredDate" value="{local>/search/EQ/RequiredDate}"
+                                    displayFormat="yyyy-MM-dd"
+                                    valueFormat="yyyy-MM-dd"
+                                />
+                            </fb:control>
+                        </fb:FilterGroupItem>
+                        <fb:FilterGroupItem groupName="G2" name="ShippedDate" groupTitle="Group2" label="Shipped Date" visibleInFilterBar="true">
+                            <fb:control>
+                                <DatePicker
+                                    fieldGroupIds="search"
+                                    name="ShippedDate" value="{local>/search/EQ/ShippedDate}"
+                                    displayFormat="yyyy-MM-dd"
+                                    valueFormat="yyyy-MM-dd"
+                                />
+                            </fb:control>
+                        </fb:FilterGroupItem>
+                    </fb:filterGroupItems>
+
+                </fb:FilterBar>
+            </f:DynamicPageHeader>
+        </f:header>
+
+		<!-- DynamicPage Content -->
+		<f:content>
+			<t:Table
+                id="idTable"
+                rows="{/Orders}"
+                selectionBehavior="RowOnly"
+                selectionMode="None"
+                visibleRowCount="17"
+                cellClick="onCellClick"
+                beforeOpenContextMenu="opBeforeOpenContextMenu"
+                ariaLabelledBy="title">
+                <!--cellClick="onCellClick"-->
+                <t:extension>
+                    <OverflowToolbar style="Clear">
+                        <ToolbarSpacer />
+                    </OverflowToolbar>
+                </t:extension>
+                <t:contextMenu>
+                    <Menu itemSelected="onMenuAction">
+                        <MenuItem text="Hide Existing Sites"/>
+                        <MenuItem text="Simulate Visitor Traffic">
+                            <items>
+                                <MenuItem text="A"/>
+                                <MenuItem text="B"/>
+                            </items>
+                        </MenuItem>
+                        <MenuItem text="Create New Site">
+                            <items>
+                                <MenuItem text="Official Store"/>
+                                <MenuItem text="Partner Store"/>
+                                <MenuItem text="Franchise Store"/>
+                                <MenuItem text="Temporary Store"/>
+                                <MenuItem text="Other"/>
+                            </items>
+                        </MenuItem>
+                        <MenuItem text="Export Map"/>
+                    </Menu>
+                </t:contextMenu>
+                <t:columns>
+                    <t:Column>
+                        <Label text="ID" />
+                        <t:template>
+                            <Text text="{OrderID}" wrapping="false" />
+                        </t:template>
+                    </t:Column>
+                    <t:Column>
+                        <Label text="CustomerID" />
+                        <t:template>
+                            <Text text="{CustomerID}" wrapping="false" />
+                        </t:template>
+                    </t:Column>
+                    <t:Column>
+                        <Label text="EmployeeID" />
+                        <t:template>
+                            <Text text="{EmployeeID}" wrapping="false" />
+                        </t:template>
+                    </t:Column>
+                    <t:Column>
+                        <Label text="OrderDate" />
+                        <t:template>
+                            <Text text="{
+                                path : 'OrderDate',
+                                formatter : '.formatter.dateTimeString'
+                            }" wrapping="false" />
+                        </t:template>
+                    </t:Column>
+                    <t:Column>
+                        <Label text="RequiredDate" />
+                        <t:template>
+                            <Text text="{
+                                path : 'RequiredDate',
+                                formatter : '.formatter.dateTimeString'
+                            }" wrapping="false" />
+                        </t:template>
+                    </t:Column>
+                    <t:Column>
+                        <Label text="ShippedDate" />
+                        <t:template>
+                            <Text text="{
+                                path : 'ShippedDate',
+                                formatter : '.formatter.dateTimeString'
+                            }" wrapping="false" />
+                        </t:template>
+                    </t:Column>
+                </t:columns>
+            </t:Table>
+		</f:content>
+
+		<!-- DynamicPage Footer -->
+		<f:footer>
+			<OverflowToolbar>
+				<ToolbarSpacer/>
+				<Button type="Accept" text="Accept"/>
+				<Button type="Reject" text="Reject"/>
+			</OverflowToolbar>
+		</f:footer>
+	</f:DynamicPage>
+</mvc:View>

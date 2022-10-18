@@ -1,0 +1,30 @@
+<mvc:View controllerName="test0000.controller.Main" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:f="sap.f">
+    <f:DynamicPage toggleHeaderOnTitleClick="false">
+        <f:title>
+            <f:DynamicPageTitle>
+                <f:heading>
+                    <Title text="Main View" />
+                </f:heading>
+            </f:DynamicPageTitle>
+        </f:title>
+
+        <f:content>
+            <VBox fitContainer="true">
+                <Table id="productTable" inset="false" items="{/Products}" class="sapFDynamicPageAlignContent" width="auto">
+                    <columns>
+                        <Column width="12em">
+                            <Text text="Products" />
+                        </Column>
+                    </columns>
+                    <items>
+                        <ColumnListItem type="Navigation" press=".onListItemPress">
+                            <cells>
+                                <ObjectIdentifier title="{ProductName}" />
+                            </cells>
+                        </ColumnListItem>
+                    </items>
+                </Table>
+            </VBox>
+        </f:content>
+    </f:DynamicPage>
+</mvc:View>

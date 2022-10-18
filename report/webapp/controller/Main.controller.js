@@ -7,6 +7,7 @@ sap.ui.define(
     "sap/ui/model/FilterOperator",
     "sap/ui/model/json/JSONModel",
     "sap/ui/core/Fragment",
+    "sap/ui/export/Spreadsheet",
   ],
   /**
    * @param {typeof sap.ui.core.mvc.Controller} Controller
@@ -18,7 +19,8 @@ sap.ui.define(
     Filter,
     FilterOperator,
     JSONModel,
-    Fragment
+    Fragment,
+    Spreadsheet
   ) {
     "use strict";
 
@@ -144,6 +146,50 @@ sap.ui.define(
 
       onMenuAction: function (oEvent) {
         sap.m.MessageToast.show(oEvent.getParameters().item.getText());
+      },
+
+      /*
+      Excel Export 버튼을 누를 경우
+      */
+      onExportExcel: function () {
+        var oTable = this.byId("idTable");
+        var oSettings = {
+          workbook: {
+            columns: this._getCoulmnsExcel(),
+          },
+          dataSource: oTable.getBinding("rows"),
+          fileName: "excel test",
+        };
+        var oSheet = new Spreadsheet(oSettings);
+
+        // Excel Export
+        oSheet.build().finally(function () {
+          oSheet.destroy();
+        });
+      },
+
+      /*
+      Excel Export 를 위한 Column Info
+      */
+      _getCoulmnsExcel: function () {
+        var oTable = this.byId("idTable");
+        var aWorkBook = [];
+        var aColumns = oTable.getColumns();
+
+        aColumns.forEach(function (oColumn) {
+          var obj = {};
+
+          obj.label = oColumn.getLabel().getText();
+          obj.property = oColumn.data("key");
+          obj.width = oColumn.getWidth();
+          if (oColumn.data("key") === "ShippedDate") {
+            obj.format = "yyyymmdd";
+            obj.type = sap.ui.export.EdmType.Date;
+          }
+          aWorkBook.push(obj);
+        });
+
+        return aWorkBook;
       },
     });
   }
