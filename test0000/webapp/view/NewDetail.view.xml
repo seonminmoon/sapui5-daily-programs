@@ -1,0 +1,20 @@
+<mvc:View displayBlock="true" controllerName="test0000.controller.NewDetail" height="100%" xmlns="sap.uxap" xmlns:mvc="sap.ui.core.mvc" xmlns:m="sap.m" xmlns:f="sap.f" xmlns:form="sap.ui.layout.form">
+    <ObjectPageLayout id="ObjectPageLayout" showTitleInHeaderContent="true" alwaysShowContentHeader="false" preserveHeaderStateOnScroll="false" headerContentPinnable="true" isChildPage="true" upperCaseAnchorBar="false">
+        <headerTitle>
+            <ObjectPageDynamicHeaderTitle>
+            </ObjectPageDynamicHeaderTitle>
+        </headerTitle>
+
+        <sections>
+            <ObjectPageSection title="New Detail Page">
+                <subSections>
+                    <ObjectPageSubSection>
+                        <blocks>
+                          <m:Text text="New Detail"/>
+                        </blocks>
+                    </ObjectPageSubSection>
+                </subSections>
+            </ObjectPageSection>
+        </sections>
+    </ObjectPageLayout>
+</mvc:View>

@@ -13,6 +13,9 @@
 		<content>
 			<l:Grid containerQuery="true">
 				<VBox width="100%">
+                    <layoutData>
+                        <l:GridData span="XL2 L2 M12 S12" />
+                    </layoutData>
                     <f:Form id="FormToolbar"
                         editable="true"
                         ariaLabelledBy="Title1">
@@ -59,12 +62,12 @@
                             </f:FormContainer>
                         </f:formContainers>
                     </f:Form>
-                    <layoutData>
-                        <l:GridData span="XL2 L2 M12 S12" />
-                    </layoutData>
                 </VBox>
                 <VBox width="100%">
-                    <VBox>
+                
+                    <layoutData>
+                        <l:GridData span="XL10 L10 M12 S12" />
+                    </layoutData>
                         <Panel 
                             expandable="true"
                             expanded="true"
@@ -138,7 +141,6 @@
                                 </Table>
                             </content>
                         </Panel>
-                    </VBox>
                     
                     <!-- Chart line  -->
                     <VBox>
@@ -220,9 +222,6 @@
                         </l:Grid>
                         
                     </VBox>
-                    <layoutData>
-                        <l:GridData span="XL10 L10 M12 S12" />
-                    </layoutData>
                 </VBox>
 			</l:Grid>
 		</content>

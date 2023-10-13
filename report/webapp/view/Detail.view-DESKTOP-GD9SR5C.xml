@@ -1,0 +1,266 @@
+<mvc:View
+    controllerName="report.controller.Detail"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.uxap"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:t="sap.ui.table"
+    xmlns:m="sap.m"
+    xmlns:viz="sap.viz.ui5.controls"
+    xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds"
+    xmlns:viz.data="sap.viz.ui5.data"
+    xmlns:layout="sap.ui.layout"
+    xmlns:core="sap.ui.core"
+    height="100%"
+>
+    <ObjectPageLayout id="ObjectPageLayout" showTitleInHeaderContent="true" upperCaseAnchorBar="false">
+        <headerTitle> <!-- aggregation -->
+            <ObjectPageDynamicHeaderTitle>
+                <expandedHeading>
+                    <m:Title text="AA Company Detail ({view>/OrderID})" wrapping="true" />
+                </expandedHeading>
+
+                <snappedHeading>
+                    <m:FlexBox fitContainer="true" alignItems="Center">
+                        <m:Image src="../image/ryan.png" class="sapUiTinyMarginEnd" width="50px" height="50px" />
+                        <m:Title text="AA Company ({view>/OrderID})" wrapping="true" />
+                    </m:FlexBox>
+                </snappedHeading>
+
+                <expandedContent>
+                    <!-- full header description -->
+                    <m:Text text="Click to view short header." />
+                </expandedContent>
+
+                <snappedContent>
+                    <!-- short header description -->
+                    <m:Text text="Click to view full header. " />
+                </snappedContent>
+
+                <snappedTitleOnMobile>
+                    <m:Title text="Order Detail ({view>/OrderID})" />
+                </snappedTitleOnMobile>
+            </ObjectPageDynamicHeaderTitle>
+        </headerTitle>
+
+        <headerContent>
+            <m:FlexBox wrap="Wrap">
+                <m:Image src="../image/ryan.png" width="100px" height="100px" />
+                <layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
+                    <m:ObjectStatus title="Order ID" text="{view>/OrderID}" />
+                    <m:ObjectStatus title="Order Date" text="{
+                                            path : 'view>/OrderDate',
+                                            formatter : '.formatter.dateTimeString'
+                                        }" />
+                    <m:ObjectStatus title="Required Date" text="{
+                                            path : 'view>/RequiredDate',
+                                            formatter : '.formatter.dateTimeString'
+                                        }" />
+                </layout:VerticalLayout>
+
+                <layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
+                    <m:ObjectStatus title="Customer ID" text="{view>/Customer/CustomerID}" />
+                    <m:ObjectStatus title="Company Name" text="{view>/Customer/CompanyName}" />
+                    <m:ObjectStatus title="Contact Name" text="{view>/Customer/ContactName}" />
+                    <m:ObjectStatus title="Phone" text="{view>/Customer/Phone}" />
+                </layout:VerticalLayout>
+            </m:FlexBox>
+        </headerContent>
+
+        <sections>
+            <ObjectPageSection titleUppercase="false" title="기본정보">
+                <subSections>
+                    <ObjectPageSubSection titleUppercase="false">
+                        <blocks>
+                            <m:VBox>
+                                <f:SimpleForm editable="true" columnsM="2" columnsL="3" columnsXL="4" layout="ColumnLayout">
+                                    <f:content>
+                                        <m:Label text="Order ID" />
+                                        <m:Text text="{view>/OrderID}" />
+                                        <m:Label text="Order Date" />
+                                        <m:Text text="{
+                                            path : 'view>/OrderDate',
+                                            formatter : '.formatter.dateTimeString'
+                                        }" />
+                                        <m:Label text="Ship Name" />
+                                        <m:Text text="{view>/ShipName}" />
+                                        <m:Label text="Ship Region" />
+                                        <m:Text text="{view>/ShipRegion}" />
+
+                                        <m:Label text="Required Date" />
+                                        <m:Text text="{
+                                            path : 'view>/RequiredDate',
+                                            formatter : '.formatter.dateTimeString'
+                                        }" />
+                                        <m:Label text="Ship Adress" />
+                                        <m:Text text="{view>/ShipAddress}" />
+                                        <m:Label text="Ship PostalCode" />
+                                        <m:Text text="{view>/ShipPostalCode}" />
+
+                                        <m:Label text="Shipped Date" />
+                                        <m:Text text="{
+                                            path : 'view>/ShippedDate',
+                                            formatter : '.formatter.dateTimeString'
+                                        }" />
+                                        <m:Label text="Ship City" />
+                                        <m:Text text="{view>/ShipCity}" />
+                                        <m:Label text="Ship Country" />
+                                        <m:Text text="{view>/ShipCountry}" />
+                                    </f:content>
+                                </f:SimpleForm>
+                            </m:VBox>
+                        </blocks>
+                    </ObjectPageSubSection>
+                </subSections>
+            </ObjectPageSection>
+
+            <ObjectPageSection titleUppercase="false" title="고객정보">
+                <subSections>
+                    <ObjectPageSubSection titleUppercase="false">
+                        <blocks>
+                            <f:SimpleForm editable="true" columnsM="2" columnsL="3" columnsXL="4" layout="ColumnLayout">
+                                <f:content>
+                                    <m:Label text="Customer ID" />
+                                    <m:Text text="{view>/Customer/CustomerID}" />
+                                    <m:Link text="to Other Orders" press="onBack" />
+
+                                    <m:Label text="Company Name" />
+                                    <m:Text text="{view>/Customer/CompanyName}" />
+                                    <m:Label text="Address" />
+                                    <m:Text text="{view>/Customer/Address}" />
+                                    <m:Label text="Postal Code" />
+                                    <m:Text text="{view>/Customer/PostalCode}" />
+                                    <m:Label text="Phone" />
+                                    <m:Text text="{view>/Customer/Phone}" />
+
+                                    <m:Label text="Contact Name" />
+                                    <m:Text text="{view>/Customer/ContactName}" />
+                                    <m:Label text="City" />
+                                    <m:Text text="{view>/Customer/City}" />
+                                    <m:Label text="Country" />
+                                    <m:Text text="{view>/Customer/Country}" />
+                                    <m:Label text="Fax" />
+                                    <m:Text text="{view>/Customer/Fax}" />
+
+                                    <m:Label text="Contact Title" />
+                                    <m:Text text="{view>/Customer/ContactTitle}" />
+                                    <m:Label text="Region" />
+                                    <m:Text text="{view>/Customer/Region}" />
+                                </f:content>
+                            </f:SimpleForm>
+                        </blocks>
+                    </ObjectPageSubSection>
+                </subSections>
+            </ObjectPageSection>
+
+            <ObjectPageSection titleUppercase="false" title="상품정보">
+                <subSections>
+                    <ObjectPageSubSection titleUppercase="false">
+                        <blocks>
+                            <m:HBox>
+                                <t:Table rows="{view>/Order_Details/results}" selectionMode="None" visibleRowCount="7" ariaLabelledBy="title">
+                                    <t:columns>
+                                        <t:Column>
+                                            <m:Label text="Product ID" />
+                                            <t:template>
+                                                <m:Text text="{view>Product/ProductID}" wrapping="false" />
+                                            </t:template>
+                                        </t:Column>
+                                        <t:Column>
+                                            <m:Label text="Product Name" />
+                                            <t:template>
+                                                <m:Text text="{view>Product/ProductName}" wrapping="false" />
+                                            </t:template>
+                                        </t:Column>
+                                        <t:Column hAlign="Right">
+                                            <m:Label text="Unit Price" />
+                                            <t:template>
+                                                <m:Text text="{view>Product/UnitPrice}" wrapping="false" />
+                                            </t:template>
+                                        </t:Column>
+                                        <t:Column hAlign="Right">
+                                            <m:Label text="Quantity" />
+                                            <t:template>
+                                                <m:Text text="{view>Product/UnitsOnOrder}" wrapping="false" />
+                                            </t:template>
+                                        </t:Column>
+                                        <t:Column hAlign="Right">
+                                            <m:Label text="Discount" />
+                                            <t:template>
+                                                <m:Text text="{view>Discount}" wrapping="false" />
+                                            </t:template>
+                                        </t:Column>
+                                        <t:Column hAlign="Right">
+                                            <m:Label text="Net Price" />
+                                            <t:template>
+                                                <m:Text text="{= ${view>Product/UnitPrice}*${view>Product/UnitsOnOrder}*(1-${view>Discount})}" wrapping="false" />
+                                            </t:template>
+                                        </t:Column>
+                                    </t:columns>
+                                </t:Table>
+                                <viz:VizFrame
+                                    id="idPieChart"
+                                    vizType='pie'
+                                    height="300px"
+                                    vizProperties="{
+                                'legend' : { 'visible' : true },
+                                'title' : { 'visible' : true , text : 'Products Chart'},
+                                plotArea: {
+                                    dataLabel: { visible: false },
+                                    colorPalette:['#B5B2FF', '#B2EBF4', '#B7F0B1', '#FFE08C', '#FFC19E', '#FFA7A7']
+                                }
+                            }"
+                                >
+                                    <viz:dataset>
+                                        <viz.data:FlattenedDataset data="{view>/Order_Details/results}">
+                                            <viz.data:dimensions>
+                                                <viz.data:DimensionDefinition name="Product Name" value="{view>Product/ProductName}" />
+                                            </viz.data:dimensions>
+                                            <viz.data:measures>
+                                                <viz.data:MeasureDefinition name="Unit Price" value="{view>Product/UnitPrice}" />
+                                            </viz.data:measures>
+                                        </viz.data:FlattenedDataset>
+                                    </viz:dataset>
+
+                                    <viz:feeds>
+                                        <viz.feeds:FeedItem uid="size" type="Measure" values="Unit Price" />
+                                        <viz.feeds:FeedItem uid="color" type="Dimension" values="Product Name" />
+                                    </viz:feeds>
+                                </viz:VizFrame>
+                            </m:HBox>
+                        </blocks>
+                    </ObjectPageSubSection>
+                </subSections>
+            </ObjectPageSection>
+
+            <ObjectPageSection titleUppercase="false" title="기타정보">
+                <subSections>
+                    <ObjectPageSubSection titleUppercase="false">
+                        <blocks>
+                            <m:VBox>
+                                <f:SimpleForm editable="true" columnsM="2" columnsL="3" columnsXL="4" layout="ColumnLayout">
+                                    <f:content>
+                                        <m:Label text="Employee ID" />
+                                        <m:Text text="{view>/Employee/EmployeeID}" />
+                                        <m:Label text="First Name" />
+                                        <m:Text text="{view>/Employee/FirstName}" />
+                                        <m:Label text="Last Name" />
+                                        <m:Text text="{view>/Employee/LastName}" />
+
+                                        <m:Label text="Hire Date" />
+                                        <m:Text text="{
+                                                path : 'view>/Employee/HireDate',
+                                                formatter : '.formatter.dateTimeString'
+                                            }" />
+                                        <m:Label text="Title" />
+                                        <m:Text text="{view>/Employee/Title}" />
+                                    </f:content>
+                                </f:SimpleForm>
+                                <m:MessageStrip text="문의사항이 있는 경우 담당자에게 연락 바랍니다." showIcon="true" class="sapUiMediumMarginBottom" />
+                            </m:VBox>
+                        </blocks>
+                    </ObjectPageSubSection>
+                </subSections>
+            </ObjectPageSection>
+        </sections>
+    </ObjectPageLayout>
+</mvc:View>

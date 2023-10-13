@@ -1,0 +1,23 @@
+# yaml-language-server: $schema=https://sap.github.io/ui5-tooling/schema/ui5.yaml.json
+
+specVersion: "2.5"
+metadata:
+  name: zuigrid
+type: application
+builder:
+  resources:
+    excludes:
+      - /test/**
+      - /localService/**
+  customTasks:
+    - name: deploy-to-abap
+      afterTask: generateCachebusterInfo
+      configuration:
+        target:
+          url: http://edu.bgis.co.kr:8001
+          client: "100"
+        app:
+          name: ZUIS06GRID
+          description: UI5 Display Application Deploy
+          package: $tmp
+          transport: ""

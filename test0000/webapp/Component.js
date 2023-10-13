@@ -37,7 +37,7 @@ sap.ui.define(
       },
 
       getHelper: function () {
-        var oFCL = this.getRootControl().byId("fcl"),
+        var oFCL = this.getRootControl().byId("aaa"),
           oParams = UriParameters.fromQuery(location.search),
           oSettings = {
             defaultTwoColumnLayoutType: sap.f.LayoutType.TwoColumnsMidExpanded,

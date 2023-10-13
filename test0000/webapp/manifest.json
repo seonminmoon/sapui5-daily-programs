@@ -28,7 +28,6 @@
     }
   },
   "sap.ui": {
-    "fullWidth": true,
     "technology": "UI5",
     "icons": {
       "icon": "",
@@ -92,7 +91,7 @@
         "viewType": "XML",
         "async": true,
         "viewPath": "test0000.view",
-        "controlId": "fcl",
+        "controlId": "aaa",
         "transition": "slide"
       },
       "routes": [
@@ -100,6 +99,11 @@
           "name": "Main",
           "pattern": ":layout:",
           "target": ["mainView"]
+        },
+        {
+          "name": "NewDetail",
+          "pattern": "newDetail/:layout:",
+          "target": ["mainView", "newDetail"]
         },
         {
           "name": "Detail",
@@ -110,11 +114,18 @@
       "targets": {
         "mainView": {
           "viewName": "Main",
-          "controlAggregation": "beginColumnPages"
+          "controlAggregation": "beginColumnPages",
+          "clearControlAggregation": true
+        },
+        "newDetail": {
+          "viewName": "NewDetail",
+          "controlAggregation": "midColumnPages",
+          "clearControlAggregation": true
         },
         "detailView": {
           "viewName": "Detail",
-          "controlAggregation": "midColumnPages"
+          "controlAggregation": "midColumnPages",
+          "clearControlAggregation": true
         }
       }
     },
@@ -122,7 +133,7 @@
       "viewName": "test0000.view.App",
       "type": "XML",
       "async": true,
-      "id": "fcl"
+      "id": "app"
     },
     "config": {
       "fullWidth": true

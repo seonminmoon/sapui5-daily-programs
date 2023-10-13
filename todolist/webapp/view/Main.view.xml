@@ -1,32 +1,31 @@
 <mvc:View
-	controllerName="todolist.controller.Main"
-	xmlns="sap.m"
-	xmlns:t="sap.ui.table"
-	xmlns:f="sap.ui.layout.form"
+    controllerName="todolist.controller.Main"
+    xmlns="sap.m"
+    xmlns:t="sap.ui.table"
+    xmlns:f="sap.ui.layout.form"
     xmlns:viz="sap.viz.ui5.controls"
     xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds"
     xmlns:viz.data="sap.viz.ui5.data"
-	xmlns:mvc="sap.ui.core.mvc"
-	xmlns:custom="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
-	<SplitApp
-		id="SplitAppDemo"
-		initialDetail="detail"
-		initialMaster="master">
-		<masterPages>
-			<Page
-				id="maste"
-				title="Title"
-				backgroundDesign="List">
-				<List itemPress=".onListItemPress">
-					<items>
-						<StandardListItem title="Mobile Table" type="Active" custom:to="firstDetail" />
-						<StandardListItem title="PC Table" type="Active" custom:to="secondDetail" />
-						<StandardListItem title="Product Details Chart View" type="Active" custom:to="chartDetail" />
-						<StandardListItem title="second Detaildetail" type="Inactive" custom:to="secondDetaildetail" visible="false"/>
-					</items>
-				</List> 
-                <viz:Popover id="idPiePopover"/>
-                <viz:VizFrame id="idPieChart" vizType='pie' height="300px" width="auto" 
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:custom="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+>
+    <SplitApp id="SplitAppDemo" initialDetail="detail" initialMaster="master">
+        <masterPages>
+            <Page id="maste" title="Title" backgroundDesign="List">
+                <List itemPress=".onListItemPress">
+                    <items>
+                        <StandardListItem title="Mobile Table" type="Active" custom:to="firstDetail" />
+                        <StandardListItem title="PC Table" type="Active" custom:to="secondDetail" />
+                        <StandardListItem title="Product Details Chart View" type="Active" custom:to="chartDetail" />
+                        <StandardListItem title="second Detaildetail" type="Inactive" custom:to="secondDetaildetail" visible="false" />
+                    </items>
+                </List>
+                <viz:Popover id="idPiePopover" />
+                <viz:VizFrame
+                    id="idPieChart"
+                    vizType='pie'
+                    height="300px"
+                    width="auto"
                     uiConfig="{'applicationSet': 'fiori'}"
                     selectData="onChartSelectData"
                     custom:to="chartDetail"
@@ -38,7 +37,8 @@
                             dataLabel: { visible: true, type:'value'},
                             colorPalette:['#B5B2FF', '#B2EBF4', '#B7F0B1', '#FFE08C', '#FFC19E', '#FFA7A7']
                         }
-                    }">
+                    }"
+                >
                     <viz:dataset>
                         <viz.data:FlattenedDataset data="{/Product}">
                             <viz.data:dimensions>
@@ -55,90 +55,55 @@
                         <viz.feeds:FeedItem uid="color" type="Dimension" values="Product Name" />
                     </viz:feeds>
                 </viz:VizFrame>
-			</Page>
-		</masterPages>
-		<detailPages>
+            </Page>
+        </masterPages>
+        <detailPages>
             <!-- 첫번째 상세페이지 : M Table-->
-			<Page
-				id="firstDetail"
-				title="Detail Title"
-				backgroundDesign= "Solid">
-                <Table 
-                    id="idProductsTable"
-                    mode="MultiSelect"
-                    items="{/mTable}">
+            <Page id="firstDetail" title="Detail Title" backgroundDesign="Solid">
+                <Table id="idProductsTable" mode="MultiSelect" items="{/mTable}">
                     <headerToolbar>
                         <OverflowToolbar>
                             <content>
-                                <Title text="sap.m.Table"/>
+                                <Title text="sap.m.Table" />
                                 <ToolbarSpacer />
-                                <Button icon="sap-icon://add" press="onAddPress('m')"/>
-                                <Button icon="sap-icon://delete" press="onDeletePress($event, 'm')"/>
+                                <Button icon="sap-icon://add" press="onAddPress('m')" />
+                                <Button icon="sap-icon://delete" press="onDeletePress($event, 'm')" />
                             </content>
                         </OverflowToolbar>
                     </headerToolbar>
                     <infoToolbar>
                         <OverflowToolbar>
-                            <Label text="Wide range of available products"/>
+                            <Label text="Wide range of available products" />
                         </OverflowToolbar>
                     </infoToolbar>
                     <columns>
                         <Column>
                             <Text text="Product" />
                         </Column>
-                        <Column
-                            minScreenWidth="Tablet"
-                            demandPopin="true">
+                        <Column minScreenWidth="Tablet" demandPopin="true">
                             <Text text="Supplier" />
                         </Column>
                     </columns>
                     <items>
                         <ColumnListItem vAlign="Middle">
                             <cells>
-                                <ObjectIdentifier
-                                    title="{Name}"
-                                    text="{ProductId}"/>
-                                <Input
-                                    value="{SupplierName}" />
-                                <!-- <ObjectNumber
-                                    number="{WeightMeasure}"
-                                    unit="{WeightUnit}"
-                                    state="{
-                                        parts: [
-                                            {path: 'WeightMeasure'},
-                                            {path: 'WeightUnit'}
-                                        ],
-                                        formatter: 'sap.m.sample.Table.Formatter.weightState'
-                                    }" />
-                                <ObjectNumber
-                                        number="{
-                                            parts:[{path:'Price'},{path:'CurrencyCode'}],
-                                            type: 'sap.ui.model.type.Currency',
-                                            formatOptions: {showMeasure: false}
-                                        }"
-                                        unit="{CurrencyCode}" /> -->
+                                <ObjectIdentifier title="{Name}" text="{ProductId}" />
+                                <Input value="{SupplierName}" />
                             </cells>
                         </ColumnListItem>
                     </items>
                 </Table>
-			</Page>
+            </Page>
             <!-- 두번째 상세페이지 : UI Table-->
-			<Page
-				id="secondDetail"
-				title="Detail View 2"
-				backgroundDesign= "Solid">
-                <t:Table
-                    rows="{/uiTable}"
-                    visibleRowCount="7"
-                    rowSelectionChange="onUiTableRowSelectionChange"
-                    ariaLabelledBy="title">
+            <Page id="secondDetail" title="Detail View 2" backgroundDesign="Solid">
+                <t:Table rows="{/uiTable}" visibleRowCount="7" rowSelectionChange="onUiTableRowSelectionChange" ariaLabelledBy="title">
                     <t:extension>
                         <OverflowToolbar design="Transparent">
                             <content>
-                                <Title text="sap.ui.table.Table" level="H2"/>
+                                <Title text="sap.ui.table.Table" level="H2" />
                                 <ToolbarSpacer />
-                                <Button icon="sap-icon://add" press="onAddPress('ui')"/>
-                                <Button icon="sap-icon://delete" press="onDeletePress($event, 'ui')"/>
+                                <Button icon="sap-icon://add" press="onAddPress('ui')" />
+                                <Button icon="sap-icon://delete" press="onDeletePress($event, 'ui')" />
                                 <Button text="detail" press="onNavToSecondDetailDetailPress" />
                             </content>
                         </OverflowToolbar>
@@ -164,18 +129,11 @@
                         </t:Column>
                     </t:columns>
                 </t:Table>
-			</Page>
+            </Page>
             <!-- 세번째 상세페이지 : Chart Details -->
-			<Page
-				id="chartDetail"
-				title="Product Details Chart View"
-				backgroundDesign= "Solid">
-                <viz:Popover id="idLinePopover"/>
-                <viz:VizFrame 
-                    id="idLineChart"
-                    width="100%" height="70%"
-                    vizType='line'
-                    vizProperties="{ 'title' : { 'visible' : true , text : 'Product Details'} }">
+            <Page id="chartDetail" title="Product Details Chart View" backgroundDesign="Solid">
+                <viz:Popover id="idLinePopover" />
+                <viz:VizFrame id="idLineChart" width="100%" height="70%" vizType='line' vizProperties="{ 'title' : { 'visible' : true , text : 'Product Details'} }">
                     <viz:dataset>
                         <viz.data:FlattenedDataset data="{/chartDetail}">
                             <viz.data:dimensions>
@@ -194,16 +152,11 @@
                         <viz.feeds:FeedItem uid="valueAxis" type="Measure" values="Cost" />
                     </viz:feeds>
                 </viz:VizFrame>
-			</Page>
+            </Page>
             <!--두번째 상세페이지의 내부 상세페이지-->
-			<Page
-				id="secondDetaildetail"
-				title="UI Table RowItem Content"
-				backgroundDesign= "Solid"
-				showNavButton="true"
-				navButtonPress=".onBackNavButtonPress">
+            <Page id="secondDetaildetail" title="UI Table RowItem Content" backgroundDesign="Solid" showNavButton="true" navButtonPress=".onBackNavButtonPress">
                 <VBox class="sapUiSmallMargin">
-                    <f:SimpleForm 
+                    <f:SimpleForm
                         editable="false"
                         layout="ResponsiveGridLayout"
                         title="Contents"
@@ -219,7 +172,8 @@
                         columnsXL="1"
                         columnsL="1"
                         columnsM="1"
-                        singleContainerFullSize="false" >
+                        singleContainerFullSize="false"
+                    >
                         <f:content>
                             <Label text="Name" />
                             <Text id="nameText" text="{SupplierName}" />
@@ -232,7 +186,7 @@
                         </f:content>
                     </f:SimpleForm>
                 </VBox>
-			</Page>
-		</detailPages>
-	</SplitApp>
+            </Page>
+        </detailPages>
+    </SplitApp>
 </mvc:View>

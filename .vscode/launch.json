@@ -1,460 +1,380 @@
 {
-	"configurations": [
-		{
-			"name": "Start report",
-			"type": "node",
-			"request": "launch",
-			"runtimeExecutable": "npx",
-			"cwd": "${workspaceFolder}/report",
-			"windows": {
-				"runtimeExecutable": "npx.cmd"
-			},
-			"runtimeArgs": [
-				"fiori",
-				"run"
-			],
-			"args": [
-				"--open",
-				"test/flpSandbox.html?sap-ui-xx-viewCache=false#report-display"
-			],
-			"console": "integratedTerminal",
-			"internalConsoleOptions": "neverOpen",
-			"port": 9229,
-			"env": {
-				"DEBUG": "--inspect"
-			}
-		},
-		{
-			"name": "Start report with UI5 Version",
-			"type": "node",
-			"request": "launch",
-			"runtimeExecutable": "npx",
-			"cwd": "${workspaceFolder}/report",
-			"windows": {
-				"runtimeExecutable": "npx.cmd"
-			},
-			"runtimeArgs": [
-				"fiori",
-				"run"
-			],
-			"args": [
-				"--open",
-				"test/flpSandbox.html?sap-ui-xx-viewCache=false#report-display",
-				"${input:UI5MinVersion1.65.0}"
-			],
-			"console": "integratedTerminal",
-			"internalConsoleOptions": "neverOpen",
-			"port": 9229,
-			"env": {
-				"DEBUG": "--inspect"
-			}
-		},
-		{
-			"name": "Start report Local",
-			"type": "node",
-			"request": "launch",
-			"cwd": "${workspaceFolder}/report",
-			"runtimeExecutable": "npx",
-			"windows": {
-				"runtimeExecutable": "npx.cmd"
-			},
-			"runtimeArgs": [
-				"fiori",
-				"run"
-			],
-			"args": [
-				"--config",
-				"./ui5-local.yaml",
-				"--open",
-				"test/flpSandbox.html?sap-ui-xx-viewCache=false#report-display"
-			],
-			"console": "integratedTerminal",
-			"internalConsoleOptions": "neverOpen",
-			"port": 9229,
-			"env": {}
-		},
-		{
-			"name": "Start todolist",
-			"type": "node",
-			"request": "launch",
-			"runtimeExecutable": "npx",
-			"cwd": "${workspaceFolder}/todolist",
-			"windows": {
-				"runtimeExecutable": "npx.cmd"
-			},
-			"runtimeArgs": [
-				"fiori",
-				"run"
-			],
-			"args": [
-				"--open",
-				"test/flpSandbox.html?sap-ui-xx-viewCache=false#todolist-display"
-			],
-			"console": "integratedTerminal",
-			"internalConsoleOptions": "neverOpen",
-			"port": 9229,
-			"env": {
-				"DEBUG": "--inspect"
-			}
-		},
-		{
-			"name": "Start todolist with UI5 Version",
-			"type": "node",
-			"request": "launch",
-			"runtimeExecutable": "npx",
-			"cwd": "${workspaceFolder}/todolist",
-			"windows": {
-				"runtimeExecutable": "npx.cmd"
-			},
-			"runtimeArgs": [
-				"fiori",
-				"run"
-			],
-			"args": [
-				"--open",
-				"test/flpSandbox.html?sap-ui-xx-viewCache=false#todolist-display",
-				"${input:UI5MinVersion1.65.0}"
-			],
-			"console": "integratedTerminal",
-			"internalConsoleOptions": "neverOpen",
-			"port": 9229,
-			"env": {
-				"DEBUG": "--inspect"
-			}
-		},
-		{
-			"name": "Start todolist Local",
-			"type": "node",
-			"request": "launch",
-			"cwd": "${workspaceFolder}/todolist",
-			"runtimeExecutable": "npx",
-			"windows": {
-				"runtimeExecutable": "npx.cmd"
-			},
-			"runtimeArgs": [
-				"fiori",
-				"run"
-			],
-			"args": [
-				"--config",
-				"./ui5-local.yaml",
-				"--open",
-				"test/flpSandbox.html?sap-ui-xx-viewCache=false#todolist-display"
-			],
-			"console": "integratedTerminal",
-			"internalConsoleOptions": "neverOpen",
-			"port": 9229,
-			"env": {}
-		},
-		{
-			"name": "Start processflow",
-			"type": "node",
-			"request": "launch",
-			"runtimeExecutable": "npx",
-			"cwd": "${workspaceFolder}/processflow",
-			"windows": {
-				"runtimeExecutable": "npx.cmd"
-			},
-			"runtimeArgs": [
-				"fiori",
-				"run"
-			],
-			"args": [
-				"--open",
-				"test/flpSandbox.html?sap-ui-xx-viewCache=false#processflow-display"
-			],
-			"console": "integratedTerminal",
-			"internalConsoleOptions": "neverOpen",
-			"port": 9229,
-			"env": {
-				"DEBUG": "--inspect"
-			}
-		},
-		{
-			"name": "Start processflow with UI5 Version",
-			"type": "node",
-			"request": "launch",
-			"runtimeExecutable": "npx",
-			"cwd": "${workspaceFolder}/processflow",
-			"windows": {
-				"runtimeExecutable": "npx.cmd"
-			},
-			"runtimeArgs": [
-				"fiori",
-				"run"
-			],
-			"args": [
-				"--open",
-				"test/flpSandbox.html?sap-ui-xx-viewCache=false#processflow-display",
-				"${input:UI5MinVersion1.65.0}"
-			],
-			"console": "integratedTerminal",
-			"internalConsoleOptions": "neverOpen",
-			"port": 9229,
-			"env": {
-				"DEBUG": "--inspect"
-			}
-		},
-		{
-			"name": "Start processflow Local",
-			"type": "node",
-			"request": "launch",
-			"cwd": "${workspaceFolder}/processflow",
-			"runtimeExecutable": "npx",
-			"windows": {
-				"runtimeExecutable": "npx.cmd"
-			},
-			"runtimeArgs": [
-				"fiori",
-				"run"
-			],
-			"args": [
-				"--config",
-				"./ui5-local.yaml",
-				"--open",
-				"test/flpSandbox.html?sap-ui-xx-viewCache=false#processflow-display"
-			],
-			"console": "integratedTerminal",
-			"internalConsoleOptions": "neverOpen",
-			"port": 9229,
-			"env": {}
-		},
-		{
-			"name": "Start processflow",
-			"type": "node",
-			"request": "launch",
-			"runtimeExecutable": "npx",
-			"cwd": "${workspaceFolder}/processflow",
-			"windows": {
-				"runtimeExecutable": "npx.cmd"
-			},
-			"runtimeArgs": [
-				"fiori",
-				"run"
-			],
-			"args": [
-				"--open",
-				"test/flpSandbox.html?sap-ui-xx-viewCache=false#processflow-display"
-			],
-			"console": "integratedTerminal",
-			"internalConsoleOptions": "neverOpen",
-			"port": 9229,
-			"env": {
-				"DEBUG": "--inspect"
-			}
-		},
-		{
-			"name": "Start processflow with UI5 Version",
-			"type": "node",
-			"request": "launch",
-			"runtimeExecutable": "npx",
-			"cwd": "${workspaceFolder}/processflow",
-			"windows": {
-				"runtimeExecutable": "npx.cmd"
-			},
-			"runtimeArgs": [
-				"fiori",
-				"run"
-			],
-			"args": [
-				"--open",
-				"test/flpSandbox.html?sap-ui-xx-viewCache=false#processflow-display",
-				"${input:UI5MinVersion1.65.0}"
-			],
-			"console": "integratedTerminal",
-			"internalConsoleOptions": "neverOpen",
-			"port": 9229,
-			"env": {
-				"DEBUG": "--inspect"
-			}
-		},
-		{
-			"name": "Start processflow Local",
-			"type": "node",
-			"request": "launch",
-			"cwd": "${workspaceFolder}/processflow",
-			"runtimeExecutable": "npx",
-			"windows": {
-				"runtimeExecutable": "npx.cmd"
-			},
-			"runtimeArgs": [
-				"fiori",
-				"run"
-			],
-			"args": [
-				"--config",
-				"./ui5-local.yaml",
-				"--open",
-				"test/flpSandbox.html?sap-ui-xx-viewCache=false#processflow-display"
-			],
-			"console": "integratedTerminal",
-			"internalConsoleOptions": "neverOpen",
-			"port": 9229,
-			"env": {}
-		},
-		{
-			"name": "Start charts",
-			"type": "node",
-			"request": "launch",
-			"runtimeExecutable": "npx",
-			"cwd": "${workspaceFolder}/charts",
-			"windows": {
-				"runtimeExecutable": "npx.cmd"
-			},
-			"runtimeArgs": [
-				"fiori",
-				"run"
-			],
-			"args": [
-				"--open",
-				"test/flpSandbox.html?sap-ui-xx-viewCache=false#charts-display"
-			],
-			"console": "integratedTerminal",
-			"internalConsoleOptions": "neverOpen",
-			"port": 9229,
-			"env": {
-				"DEBUG": "--inspect"
-			}
-		},
-		{
-			"name": "Start charts with UI5 Version",
-			"type": "node",
-			"request": "launch",
-			"runtimeExecutable": "npx",
-			"cwd": "${workspaceFolder}/charts",
-			"windows": {
-				"runtimeExecutable": "npx.cmd"
-			},
-			"runtimeArgs": [
-				"fiori",
-				"run"
-			],
-			"args": [
-				"--open",
-				"test/flpSandbox.html?sap-ui-xx-viewCache=false#charts-display",
-				"${input:UI5MinVersion1.65.0}"
-			],
-			"console": "integratedTerminal",
-			"internalConsoleOptions": "neverOpen",
-			"port": 9229,
-			"env": {
-				"DEBUG": "--inspect"
-			}
-		},
-		{
-			"name": "Start charts Local",
-			"type": "node",
-			"request": "launch",
-			"cwd": "${workspaceFolder}/charts",
-			"runtimeExecutable": "npx",
-			"windows": {
-				"runtimeExecutable": "npx.cmd"
-			},
-			"runtimeArgs": [
-				"fiori",
-				"run"
-			],
-			"args": [
-				"--config",
-				"./ui5-local.yaml",
-				"--open",
-				"test/flpSandbox.html?sap-ui-xx-viewCache=false#charts-display"
-			],
-			"console": "integratedTerminal",
-			"internalConsoleOptions": "neverOpen",
-			"port": 9229,
-			"env": {}
-		},
-		{
-			"name": "Start test0000",
-			"type": "node",
-			"request": "launch",
-			"runtimeExecutable": "npx",
-			"cwd": "${workspaceFolder}/test0000",
-			"windows": {
-				"runtimeExecutable": "npx.cmd"
-			},
-			"runtimeArgs": [
-				"fiori",
-				"run"
-			],
-			"args": [
-				"--open",
-				"test/flpSandbox.html#test0000-display"
-			],
-			"console": "internalConsole",
-			"internalConsoleOptions": "openOnSessionStart",
-			"outputCapture": "std",
-			"port": 9229,
-			"env": {
-				"DEBUG": "--inspect",
-				"FIORI_TOOLS_URL_PARAMS": "sap-ui-xx-viewCache=false"
-			}
-		},
-		{
-			"name": "Start test0000 Mock",
-			"type": "node",
-			"request": "launch",
-			"cwd": "${workspaceFolder}/test0000",
-			"runtimeExecutable": "npx",
-			"windows": {
-				"runtimeExecutable": "npx.cmd"
-			},
-			"runtimeArgs": [
-				"fiori",
-				"run"
-			],
-			"args": [
-				"--config",
-				"./ui5-mock.yaml",
-				"--open",
-				"test/flpSandbox.html#test0000-display"
-			],
-			"console": "internalConsole",
-			"internalConsoleOptions": "openOnSessionStart",
-			"outputCapture": "std",
-			"port": 9229,
-			"env": {
-				"FIORI_TOOLS_URL_PARAMS": "sap-ui-xx-viewCache=false"
-			}
-		},
-		{
-			"name": "Start test0000 Local",
-			"type": "node",
-			"request": "launch",
-			"cwd": "${workspaceFolder}/test0000",
-			"runtimeExecutable": "npx",
-			"windows": {
-				"runtimeExecutable": "npx.cmd"
-			},
-			"runtimeArgs": [
-				"fiori",
-				"run"
-			],
-			"args": [
-				"--config",
-				"./ui5-local.yaml",
-				"--open",
-				"test/flpSandbox.html#test0000-display"
-			],
-			"console": "internalConsole",
-			"internalConsoleOptions": "openOnSessionStart",
-			"outputCapture": "std",
-			"port": 9229,
-			"env": {
-				"FIORI_TOOLS_URL_PARAMS": "sap-ui-xx-viewCache=false"
-			}
-		}
-	],
-	"compounds": [],
-	"inputs": [
-		{
-			"id": "UI5MinVersion1.65.0",
-			"type": "command",
-			"command": "sap.ux.appGenerator.ui5Version",
-			"args": {
-				"minUI5Version": "1.65.0"
-			}
-		}
-	]
+  "configurations": [
+    {
+      "name": "Start report",
+      "type": "node",
+      "request": "launch",
+      "runtimeExecutable": "npx",
+      "cwd": "${workspaceFolder}/report",
+      "windows": {
+        "runtimeExecutable": "npx.cmd"
+      },
+      "runtimeArgs": [
+        "fiori",
+        "run"
+      ],
+      "args": [
+        "--open",
+        "test/flpSandbox.html?sap-ui-xx-viewCache=false#report-display"
+      ],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "port": 9229,
+      "env": {
+        "DEBUG": "--inspect"
+      }
+    },
+    {
+      "name": "Start report with UI5 Version",
+      "type": "node",
+      "request": "launch",
+      "runtimeExecutable": "npx",
+      "cwd": "${workspaceFolder}/report",
+      "windows": {
+        "runtimeExecutable": "npx.cmd"
+      },
+      "runtimeArgs": [
+        "fiori",
+        "run"
+      ],
+      "args": [
+        "--open",
+        "test/flpSandbox.html?sap-ui-xx-viewCache=false#report-display",
+        "${input:UI5MinVersion1.65.0}"
+      ],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "port": 9229,
+      "env": {
+        "DEBUG": "--inspect"
+      }
+    },
+    {
+      "name": "Start report Local",
+      "type": "node",
+      "request": "launch",
+      "cwd": "${workspaceFolder}/report",
+      "runtimeExecutable": "npx",
+      "windows": {
+        "runtimeExecutable": "npx.cmd"
+      },
+      "runtimeArgs": [
+        "fiori",
+        "run"
+      ],
+      "args": [
+        "--config",
+        "./ui5-local.yaml",
+        "--open",
+        "test/flpSandbox.html?sap-ui-xx-viewCache=false#report-display"
+      ],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "port": 9229,
+      "env": {}
+    },
+    {
+      "name": "Start todolist",
+      "type": "node",
+      "request": "launch",
+      "runtimeExecutable": "npx",
+      "cwd": "${workspaceFolder}/todolist",
+      "windows": {
+        "runtimeExecutable": "npx.cmd"
+      },
+      "runtimeArgs": [
+        "fiori",
+        "run"
+      ],
+      "args": [
+        "--open",
+        "test/flpSandbox.html?sap-ui-xx-viewCache=false#todolist-display"
+      ],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "port": 9229,
+      "env": {
+        "DEBUG": "--inspect"
+      }
+    },
+    {
+      "name": "Start todolist with UI5 Version",
+      "type": "node",
+      "request": "launch",
+      "runtimeExecutable": "npx",
+      "cwd": "${workspaceFolder}/todolist",
+      "windows": {
+        "runtimeExecutable": "npx.cmd"
+      },
+      "runtimeArgs": [
+        "fiori",
+        "run"
+      ],
+      "args": [
+        "--open",
+        "test/flpSandbox.html?sap-ui-xx-viewCache=false#todolist-display",
+        "${input:UI5MinVersion1.65.0}"
+      ],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "port": 9229,
+      "env": {
+        "DEBUG": "--inspect"
+      }
+    },
+    {
+      "name": "Start todolist Local",
+      "type": "node",
+      "request": "launch",
+      "cwd": "${workspaceFolder}/todolist",
+      "runtimeExecutable": "npx",
+      "windows": {
+        "runtimeExecutable": "npx.cmd"
+      },
+      "runtimeArgs": [
+        "fiori",
+        "run"
+      ],
+      "args": [
+        "--config",
+        "./ui5-local.yaml",
+        "--open",
+        "test/flpSandbox.html?sap-ui-xx-viewCache=false#todolist-display"
+      ],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "port": 9229,
+      "env": {}
+    },
+    {
+      "name": "Start processflow",
+      "type": "node",
+      "request": "launch",
+      "runtimeExecutable": "npx",
+      "cwd": "${workspaceFolder}/processflow",
+      "windows": {
+        "runtimeExecutable": "npx.cmd"
+      },
+      "runtimeArgs": [
+        "fiori",
+        "run"
+      ],
+      "args": [
+        "--open",
+        "test/flpSandbox.html?sap-ui-xx-viewCache=false#processflow-display"
+      ],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "port": 9229,
+      "env": {
+        "DEBUG": "--inspect"
+      }
+    },
+    {
+      "name": "Start processflow with UI5 Version",
+      "type": "node",
+      "request": "launch",
+      "runtimeExecutable": "npx",
+      "cwd": "${workspaceFolder}/processflow",
+      "windows": {
+        "runtimeExecutable": "npx.cmd"
+      },
+      "runtimeArgs": [
+        "fiori",
+        "run"
+      ],
+      "args": [
+        "--open",
+        "test/flpSandbox.html?sap-ui-xx-viewCache=false#processflow-display",
+        "${input:UI5MinVersion1.65.0}"
+      ],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "port": 9229,
+      "env": {
+        "DEBUG": "--inspect"
+      }
+    },
+    {
+      "name": "Start processflow Local",
+      "type": "node",
+      "request": "launch",
+      "cwd": "${workspaceFolder}/processflow",
+      "runtimeExecutable": "npx",
+      "windows": {
+        "runtimeExecutable": "npx.cmd"
+      },
+      "runtimeArgs": [
+        "fiori",
+        "run"
+      ],
+      "args": [
+        "--config",
+        "./ui5-local.yaml",
+        "--open",
+        "test/flpSandbox.html?sap-ui-xx-viewCache=false#processflow-display"
+      ],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "port": 9229,
+      "env": {}
+    },
+    {
+      "name": "Start processflow",
+      "type": "node",
+      "request": "launch",
+      "runtimeExecutable": "npx",
+      "cwd": "${workspaceFolder}/processflow",
+      "windows": {
+        "runtimeExecutable": "npx.cmd"
+      },
+      "runtimeArgs": [
+        "fiori",
+        "run"
+      ],
+      "args": [
+        "--open",
+        "test/flpSandbox.html?sap-ui-xx-viewCache=false#processflow-display"
+      ],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "port": 9229,
+      "env": {
+        "DEBUG": "--inspect"
+      }
+    },
+    {
+      "name": "Start processflow with UI5 Version",
+      "type": "node",
+      "request": "launch",
+      "runtimeExecutable": "npx",
+      "cwd": "${workspaceFolder}/processflow",
+      "windows": {
+        "runtimeExecutable": "npx.cmd"
+      },
+      "runtimeArgs": [
+        "fiori",
+        "run"
+      ],
+      "args": [
+        "--open",
+        "test/flpSandbox.html?sap-ui-xx-viewCache=false#processflow-display",
+        "${input:UI5MinVersion1.65.0}"
+      ],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "port": 9229,
+      "env": {
+        "DEBUG": "--inspect"
+      }
+    },
+    {
+      "name": "Start processflow Local",
+      "type": "node",
+      "request": "launch",
+      "cwd": "${workspaceFolder}/processflow",
+      "runtimeExecutable": "npx",
+      "windows": {
+        "runtimeExecutable": "npx.cmd"
+      },
+      "runtimeArgs": [
+        "fiori",
+        "run"
+      ],
+      "args": [
+        "--config",
+        "./ui5-local.yaml",
+        "--open",
+        "test/flpSandbox.html?sap-ui-xx-viewCache=false#processflow-display"
+      ],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "port": 9229,
+      "env": {}
+    },
+    {
+      "name": "Start charts",
+      "type": "node",
+      "request": "launch",
+      "runtimeExecutable": "npx",
+      "cwd": "${workspaceFolder}/charts",
+      "windows": {
+        "runtimeExecutable": "npx.cmd"
+      },
+      "runtimeArgs": [
+        "fiori",
+        "run"
+      ],
+      "args": [
+        "--open",
+        "test/flpSandbox.html?sap-ui-xx-viewCache=false#charts-display"
+      ],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "port": 9229,
+      "env": {
+        "DEBUG": "--inspect"
+      }
+    },
+    {
+      "name": "Start charts with UI5 Version",
+      "type": "node",
+      "request": "launch",
+      "runtimeExecutable": "npx",
+      "cwd": "${workspaceFolder}/charts",
+      "windows": {
+        "runtimeExecutable": "npx.cmd"
+      },
+      "runtimeArgs": [
+        "fiori",
+        "run"
+      ],
+      "args": [
+        "--open",
+        "test/flpSandbox.html?sap-ui-xx-viewCache=false#charts-display",
+        "${input:UI5MinVersion1.65.0}"
+      ],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "port": 9229,
+      "env": {
+        "DEBUG": "--inspect"
+      }
+    },
+    {
+      "name": "Start charts Local",
+      "type": "node",
+      "request": "launch",
+      "cwd": "${workspaceFolder}/charts",
+      "runtimeExecutable": "npx",
+      "windows": {
+        "runtimeExecutable": "npx.cmd"
+      },
+      "runtimeArgs": [
+        "fiori",
+        "run"
+      ],
+      "args": [
+        "--config",
+        "./ui5-local.yaml",
+        "--open",
+        "test/flpSandbox.html?sap-ui-xx-viewCache=false#charts-display"
+      ],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "port": 9229,
+      "env": {}
+    }
+  ],
+  "compounds": [],
+  "inputs": [
+    {
+      "id": "UI5MinVersion1.65.0",
+      "type": "command",
+      "command": "sap.ux.appGenerator.ui5Version",
+      "args": {
+        "minUI5Version": "1.65.0"
+      }
+    }
+  ]
 }

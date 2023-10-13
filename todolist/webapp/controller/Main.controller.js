@@ -1,12 +1,6 @@
 sap.ui.define(
-  [
-    "sap/m/MessageToast",
-    "sap/ui/core/mvc/Controller",
-    "sap/ui/Device",
-    "sap/base/Log",
-    "sap/ui/model/json/JSONModel",
-  ],
-  function (MessageToast, Controller, Device, Log, JSONModel) {
+  ["sap/ui/core/mvc/Controller", "sap/base/Log"],
+  function (Controller, Log) {
     "use strict";
 
     return Controller.extend("todolist.controller.Main", {
@@ -32,7 +26,7 @@ sap.ui.define(
        * Split App Info
        */
       _getSplitAppObj: function () {
-        var result = this.byId("SplitAppDemo");
+        let result = this.byId("SplitAppDemo");
         if (!result) {
           Log.info("SplitApp object can't be found");
         }
@@ -57,7 +51,7 @@ sap.ui.define(
        * SplitApp MasterPage List itemPress Event
        */
       onListItemPress: function (oEvent) {
-        var sToPageId = oEvent
+        let sToPageId = oEvent
           .getParameter("listItem")
           .getCustomData()[0]
           .getValue();
@@ -69,10 +63,10 @@ sap.ui.define(
        * Pie Chart SelectData Event
        */
       onChartSelectData: function (oEvent) {
-        var oModel = this.getView().getModel(); // chart model
-        var sToPageId = oEvent.getSource().data().to; // chartPage custom data (page id)
-        var sSelectKey = oEvent.getParameters().data[0].data["Product Name"]; // pie chart selected key
-        var aSelectItems = oModel.getData().Product.filter(function (item) {
+        let oModel = this.getView().getModel(); // chart model
+        let sToPageId = oEvent.getSource().data().to; // chartPage custom data (page id)
+        let sSelectKey = oEvent.getParameters().data[0].data["Product Name"]; // pie chart selected key
+        let aSelectItems = oModel.getData().Product.filter(function (item) {
           // get selected items
           return item.ProductName === sSelectKey;
         });
@@ -93,11 +87,14 @@ sap.ui.define(
         let oModel = this.getView().getModel();
         let aDatas;
 
+        // sap.ui.table.Table
         const addUiTable = () => {
           aDatas = oModel.getData().uiTable;
           aDatas.push({ data1: "default value" });
           oModel.setProperty("/uiTable", aDatas);
         };
+
+        // sap.m.Table
         const addMTable = () => {
           aDatas = oModel.getData().mTable;
           aDatas.push({
@@ -115,11 +112,12 @@ sap.ui.define(
        * Table Row Delete Button Press Event
        */
       onDeletePress: function (oEvent, gubun) {
-        var oTable = oEvent.getSource().getParent().getParent();
-        var oModel = this.getView().getModel();
-        var aDatas, aSelectItems;
+        let oTable = oEvent.getSource().getParent().getParent();
+        let oModel = this.getView().getModel();
+        let aDatas, aSelectItems;
 
-        if (gubun === "ui") {
+        // sap.ui.table.Table - multi row delete
+        const deleteUiTable = () => {
           aDatas = oModel.getData().uiTable;
           aSelectItems = oTable.getSelectedIndices();
 
@@ -127,7 +125,10 @@ sap.ui.define(
             aDatas.splice(aSelectItems[i], 1);
           }
           oModel.setProperty("/uiTable", aDatas);
-        } else {
+        };
+
+        // sap.m.Table - multi row delete
+        const deleteMTable = () => {
           aDatas = oModel.getData().mTable;
           aSelectItems = oTable.getSelectedContextPaths();
 
@@ -144,7 +145,9 @@ sap.ui.define(
 
           oModel.setProperty("/mTable", aDatas);
           oTable.removeSelections();
-        }
+        };
+
+        gubun === "ui" ? deleteUiTable() : deleteMTable();
       },
     });
   }
