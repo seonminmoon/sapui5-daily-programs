@@ -1,0 +1,67 @@
+<mvc:View 
+    controllerName="ux410.controller.Detail"
+	  xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.uxap"
+	  xmlns:l="sap.ui.layout"
+	  xmlns:f="sap.ui.layout.form"
+	  xmlns:core="sap.ui.core"
+	  xmlns:m="sap.m">
+	<ObjectPageLayout id="ObjectPageLayout" upperCaseAnchorBar="false">
+		<headerTitle>
+			<ObjectPageHeader objectTitle="OrderID : {OrderID}">
+			</ObjectPageHeader>
+		</headerTitle>
+
+		<headerContent>
+			<m:ObjectAttribute title="" text="Order Detail View Details"/>
+		</headerContent>
+
+		<sections>
+			<ObjectPageSection titleUppercase="false" title="Info">
+				<subSections>
+					<ObjectPageSubSection titleUppercase="false">
+						<blocks>
+                
+              <f:SimpleForm id="SimpleFormDisplay354"
+                editable="false"
+                layout="ResponsiveGridLayout"
+                title="Address"
+                labelSpanXL="3"
+                labelSpanL="3"
+                labelSpanM="3"
+                labelSpanS="12"
+                adjustLabelSpan="false"
+                emptySpanXL="4"
+                emptySpanL="4"
+                emptySpanM="4"
+                emptySpanS="0"
+                columnsXL="1"
+                columnsL="1"
+                columnsM="1"
+                singleContainerFullSize="false" >
+                <f:content>
+                  <m:Label text="OrderID" />
+                  <m:Text text="{OrderID}" />
+                  
+                  <m:Label text="ProductID" />
+                  <m:Text text="{ProductID}" />
+
+                  <m:Label text="UnitPrice" />
+                  <m:Text text="{UnitPrice}" />
+
+                  <m:Label text="Quantity" />
+                  <m:Text text="{Quantity}" />
+
+                  <m:Label text="Discount" />
+                  <m:Text text="{Discount}" />
+                </f:content>
+              </f:SimpleForm>
+						</blocks>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+
+		</sections>
+
+	</ObjectPageLayout>
+</mvc:View>
